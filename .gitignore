@@ -6,6 +6,8 @@ api_meta
 # Env + secrets
 .env
 .env.*
+!.env.example
+!**/.env.example
 *.key
 *.pem
 

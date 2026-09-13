@@ -1,0 +1,20 @@
+# API key files — never commit secrets
+api_gemini
+api_key_groq
+api_meta
+
+# Env + secrets
+.env
+.env.*
+*.key
+*.pem
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node / tooling (never commit deps)
+node_modules/
+.opencode/node_modules/

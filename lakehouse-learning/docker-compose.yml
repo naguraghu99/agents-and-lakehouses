@@ -1,0 +1,154 @@
+version: "3.9"
+
+# ============================================================
+# Local Lakehouse — Week 1 Environment
+# RustFS (S3 object storage) + Spark/Jupyter (compute) + Iceberg REST Catalog
+# ============================================================
+
+services:
+  # ----------------------------------------------------------
+  # rustfs-perms — fix volume ownership for the non-root rustfs user (UID 10001)
+  # ----------------------------------------------------------
+  rustfs-perms:
+    image: docker.io/library/alpine:latest
+    container_name: lakehouse-rustfs-perms
+    volumes:
+      - rustfs-data:/data
+      - rustfs-logs:/logs
+    command: >
+      sh -c "chown -R 10001:10001 /data /logs &&
+      echo 'RustFS volume permissions fixed' &&
+      exit 0
+      "
+    restart: "no"
+
+  # ----------------------------------------------------------
+  # rustfs — S3-compatible object storage (the "lake")
+  # ----------------------------------------------------------
+  rustfs:
+    image: docker.io/rustfs/rustfs:latest
+    container_name: lakehouse-rustfs
+    depends_on:
+      - rustfs-perms
+    environment:
+      RUSTFS_VOLUMES: /data/rustfs0
+      RUSTFS_ADDRESS: 0.0.0.0:9000
+      RUSTFS_CONSOLE_ADDRESS: 0.0.0.0:9001
+      RUSTFS_CONSOLE_ENABLE: "true"
+      RUSTFS_ACCESS_KEY: admin
+      RUSTFS_SECRET_KEY: password
+      RUSTFS_OBS_LOGGER_LEVEL: error
+      RUSTFS_OBS_LOG_DIRECTORY: /app/logs
+    ports:
+      - "9000:9000"   # S3 API
+      - "9001:9001"   # Web console
+    volumes:
+      - rustfs-data:/data
+      - rustfs-logs:/app/logs
+    healthcheck:
+      test: "curl -fsS http://127.0.0.1:9000/health && curl -fsS http://127.0.0.1:9001/rustfs/console/health"
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # ----------------------------------------------------------
+  # rustfs-init — create the Bronze/Silver/Gold buckets on startup
+  # (aws-cli talks to the RustFS S3 endpoint)
+  # ----------------------------------------------------------
+  rustfs-init:
+    image: docker.io/amazon/aws-cli:latest
+    container_name: lakehouse-rustfs-init
+    depends_on:
+      - rustfs
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        until aws s3 ls >/dev/null 2>&1; do
+          echo "Waiting for RustFS to be ready..."
+          sleep 2
+        done
+        for b in warehouse bronze silver gold raw; do
+          aws s3 mb "s3://$$b" 2>/dev/null || echo "bucket $$b already exists"
+        done
+        echo 'Buckets ready: warehouse, bronze, silver, gold, raw'
+    environment:
+      AWS_ACCESS_KEY_ID: admin
+      AWS_SECRET_ACCESS_KEY: password
+      AWS_DEFAULT_REGION: us-east-1
+      AWS_ENDPOINT_URL: http://rustfs:9000
+      AWS_EC2_METADATA_DISABLED: "true"
+
+  # ----------------------------------------------------------
+  # Iceberg REST Catalog — table metadata server
+  # ----------------------------------------------------------
+  iceberg-rest:
+    image: docker.io/apache/iceberg-rest-fixture:latest
+    container_name: lakehouse-iceberg-rest
+    depends_on:
+      - rustfs
+    environment:
+      AWS_ACCESS_KEY_ID: admin
+      AWS_SECRET_ACCESS_KEY: password
+      AWS_REGION: us-east-1
+      CATALOG_WAREHOUSE: s3://warehouse/
+      CATALOG_IO__IMPL: org.apache.iceberg.aws.s3.S3FileIO
+      CATALOG_S3_ENDPOINT: http://rustfs:9000
+      CATALOG_S3_PATH__STYLE__ACCESS: "true"
+      CATALOG_S3_ACCESS__KEY__ID: admin
+      CATALOG_S3_SECRET__ACCESS__KEY: password
+      CATALOG_S3_REGION: us-east-1
+    ports:
+      - "8181:8181"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  # ----------------------------------------------------------
+  # Spark — Jupyter + PySpark + RustFS/Iceberg support
+  # ----------------------------------------------------------
+  spark:
+    image: docker.io/jupyter/pyspark-notebook:latest
+    container_name: lakehouse-spark
+    user: root
+    environment:
+      - GRANT_SUDO=yes
+      - JUPYTER_ENABLE_LAB=yes
+    ports:
+      - "8888:8888"   # Jupyter
+      - "4040:4040"   # Spark UI
+    volumes:
+      - ./week-1:/home/week-1
+      - ./data:/home/data
+    working_dir: /home/week-1
+    command:
+      - /bin/bash
+      - -c
+      - |
+        HADOOP_VERSION="$$(ls /usr/local/spark/jars | grep -oP 'hadoop-client-api-\K[0-9]+\.[0-9]+\.[0-9]+' | head -1)"
+        echo "Detected Hadoop version: $$HADOOP_VERSION"
+        if [ -n "$$HADOOP_VERSION" ]; then
+          HADOOP_AWS_JAR="/usr/local/spark/jars/hadoop-aws-$$HADOOP_VERSION.jar"
+          if [ ! -f "$$HADOOP_AWS_JAR" ]; then
+            curl -fsSL "https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/$$HADOOP_VERSION/hadoop-aws-$$HADOOP_VERSION.jar" -o "$$HADOOP_AWS_JAR" \
+              || echo "WARNING: failed to download hadoop-aws-$$HADOOP_VERSION.jar"
+          fi
+          SDK_VERSION="$$(curl -fsSL "https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-project/$$HADOOP_VERSION/hadoop-project-$$HADOOP_VERSION.pom" | tr -d '\n' | grep -oP 'aws-java-sdk.version>\K[0-9.]+' | head -1)"
+          if [ -n "$$SDK_VERSION" ]; then
+            SDK_JAR="/usr/local/spark/jars/aws-java-sdk-bundle-$$SDK_VERSION.jar"
+            if [ ! -f "$$SDK_JAR" ]; then
+              curl -fsSL "https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/$$SDK_VERSION/aws-java-sdk-bundle-$$SDK_VERSION.jar" -o "$$SDK_JAR" \
+                || echo "WARNING: failed to download aws-java-sdk-bundle-$$SDK_VERSION.jar"
+            fi
+          fi
+        fi
+        pip install -q 'pyiceberg[s3fs]' boto3
+        # Ensure Jupyter's user (jovyan) can write to the mounted host volumes.
+        chmod -R a+rwX /home/week-1 /home/data
+        exec start-notebook.sh --ip=0.0.0.0 --port=8888 --no-browser --NotebookApp.token='' --NotebookApp.password=''
+    depends_on:
+      - rustfs
+      - iceberg-rest
+
+volumes:
+  rustfs-data:
+  rustfs-logs:

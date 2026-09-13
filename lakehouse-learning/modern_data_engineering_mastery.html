@@ -1,0 +1,240 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>30-Day Modern Data Engineering Mastery</title><style>
+*{box-sizing:border-box}body{margin:0;background:#0b1220;color:#e5e7eb;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:10;background:#0b1220ee;backdrop-filter:blur(10px);padding:18px 5%;border-bottom:1px solid #263244}
+.header-title{display:flex;justify-content:space-between;align-items:center;gap:16px}h1{font-size:1.45rem;margin:0}.stats-badge{border:1px solid #263244;padding:7px 12px;border-radius:999px;color:#94a3b8;font-size:.85rem}
+.progress-container{height:5px;background:#1f2937;border-radius:10px;margin:14px 0}.progress-bar{height:100%;width:0;background:#34d399;border-radius:10px;transition:.2s}
+.filter-tabs{display:flex;gap:7px;flex-wrap:wrap}.tab-btn{background:transparent;color:#94a3b8;border:1px solid #263244;border-radius:7px;padding:7px 10px;cursor:pointer}.tab-btn.active{color:white;border-color:#60a5fa;background:#17243a}
+main{max-width:1100px;margin:24px auto;padding:0 18px}.hero{background:#111827;border:1px solid #263244;border-radius:12px;padding:22px;margin-bottom:16px}.hero h2{margin:0 0 8px;color:#34d399}.hero p{color:#94a3b8;line-height:1.6}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.meta span{border:1px solid #263244;padding:6px 9px;border-radius:7px;color:#94a3b8;font-size:.8rem}
+.day-card{background:#111827;border:1px solid #263244;border-radius:10px;margin:10px 0;overflow:hidden}.day-card.completed{border-color:#166534}
+.day-header{padding:15px;display:flex;justify-content:space-between;align-items:center;gap:12px}.day-header-left{display:flex;align-items:center;gap:10px}.day-title{font-weight:650}.week-tag{font-size:.72rem;color:#a78bfa;border:1px solid #263244;padding:4px 7px;border-radius:5px}
+.day-body{padding:0 18px 18px;border-top:1px solid #263244}.section-title{font-weight:700;margin:16px 0 7px}.detail{color:#94a3b8;line-height:1.55;margin:0 0 8px}
+.resource-list{margin:7px 0;padding-left:20px}.resource-list li{margin:9px 0}.resource-list a{color:#60a5fa;font-weight:600;text-decoration:underline;cursor:pointer}.resource-list a:hover{color:white}
+.checkbox-custom{width:18px;height:18px;accent-color:#34d399;cursor:pointer}.hidden{display:none!important}
+</style></head><body>
+<header><div class="header-title"><h1>30-Day Modern Data Engineering Mastery</h1><div class="stats-badge" id="stats">0 / 30 Days Done (0%)</div></div>
+<div class="progress-container"><div class="progress-bar" id="progress-bar"></div></div>
+<div class="filter-tabs"><button class="tab-btn active" data-filter="all">All Days</button><button class="tab-btn" data-filter="w1">Week 1</button><button class="tab-btn" data-filter="w2">Week 2</button><button class="tab-btn" data-filter="w3">Week 3</button><button class="tab-btn" data-filter="w4">Week 4</button><button class="tab-btn" data-filter="w5">Week 5</button><button class="tab-btn" data-filter="pending">Pending</button><button class="tab-btn" data-filter="completed">Completed</button></div></header>
+<main><section class="hero"><h2>Learn deeply → build daily → prove it with one real lakehouse</h2><p>I rebuilt the resource strategy around your feedback. Each day has <b>one topic-specific primary resource</b> and <b>one deeper secondary resource</b>. Courses, long-form videos, conference talks and technical books/blogs are preferred; platform docs are not the main learning material.</p><div class="meta"><span>⏱ 60 min weekdays</span><span>⚡ Spark/PySpark</span><span>🧊 Iceberg</span><span>🟦 Delta</span><span>📨 Kafka</span><span>🔄 Airflow</span><span>🔎 Trino</span><span>☁️ Azure</span></div></section>
+<div id="days-container"><article class="day-card" data-week="w1" data-day="1">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="1"><span class="day-title">Day 1: Lakehouse Architecture</span></div><span class="week-tag">W1</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Understand lakehouse architecture and why compute, storage and table metadata are separated.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.youtube.com/results?search_query=data+lakehouse+architecture+deep+dive+data+engineering" target="_blank" rel="noopener noreferrer">Data Lakehouse architecture deep dive</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://github.com/DataTalksClub/data-engineering-zoomcamp" target="_blank" rel="noopener noreferrer">Data Engineering Zoomcamp</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Set up the local project and draw Bronze/Silver/Gold with storage, compute and metadata responsibilities.</p>
+</div></article><article class="day-card" data-week="w1" data-day="2">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="2"><span class="day-title">Day 2: Parquet Internals</span></div><span class="week-tag">W1</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Learn row groups, column chunks, statistics, encoding and compression.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.youtube.com/results?search_query=Apache+Parquet+deep+dive+columnar+storage+row+groups" target="_blank" rel="noopener noreferrer">Apache Parquet deep dive: columnar storage and row groups</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://www.oreilly.com/library/view/learning-spark-2nd/9781492050032/" target="_blank" rel="noopener noreferrer">Learning Spark, 2nd Edition</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Generate trade data, write Parquet and inspect file size, row groups and statistics.</p>
+</div></article><article class="day-card" data-week="w1" data-day="3">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="3"><span class="day-title">Day 3: Object Storage &amp; Data Layout</span></div><span class="week-tag">W1</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Understand object storage, partition layouts and the small-file problem.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.youtube.com/results?search_query=MinIO+object+storage+data+lake+deep+dive" target="_blank" rel="noopener noreferrer">MinIO / object storage data lake deep dive</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://github.com/DataTalksClub/data-engineering-zoomcamp" target="_blank" rel="noopener noreferrer">Data Engineering Zoomcamp</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Create raw/bronze/silver/gold prefixes in MinIO and compare flat versus partitioned layouts.</p>
+</div></article><article class="day-card" data-week="w1" data-day="4">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="4"><span class="day-title">Day 4: PySpark Fundamentals</span></div><span class="week-tag">W1</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Learn DataFrames, transformations, actions and lazy evaluation.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.youtube.com/results?search_query=PySpark+full+course+deep+dive+DataFrames+Spark" target="_blank" rel="noopener noreferrer">PySpark full course: DataFrames and Spark fundamentals</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://rockthejvm.com/courses/apache-spark-essentials-with-scala" target="_blank" rel="noopener noreferrer">Rock the JVM — Spark Essentials</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Build a PySpark notebook and inspect explain() for a simple transformation and aggregation.</p>
+</div></article><article class="day-card" data-week="w1" data-day="5">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="5"><span class="day-title">Day 5: Spark Architecture</span></div><span class="week-tag">W1</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Understand driver, executors, stages, tasks, DAGs and shuffle.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.youtube.com/results?search_query=Apache+Spark+architecture+internals+driver+executor+stage+task+deep+dive" target="_blank" rel="noopener noreferrer">Spark architecture &amp; internals deep dive</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://www.youtube.com/results?search_query=Spark+architecture+performance+tuning+Spark+UI" target="_blank" rel="noopener noreferrer">Spark UI / performance deep dive</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Run a join and aggregation and trace job → stage → task in Spark UI.</p>
+</div></article><article class="day-card" data-week="w1" data-day="6">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="6"><span class="day-title">Day 6: Spark Joins &amp; Skew</span></div><span class="week-tag">W1</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Understand broadcast joins, shuffle joins, skew and partitioning.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.youtube.com/results?search_query=Spark+join+optimization+shuffle+skew+broadcast+join+deep+dive" target="_blank" rel="noopener noreferrer">Spark join optimization: shuffle, skew and broadcast</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://www.oreilly.com/library/view/high-performance-spark/9781491943199/" target="_blank" rel="noopener noreferrer">High Performance Spark</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Create skewed trade/customer data and compare sort-merge versus broadcast joins.</p>
+</div></article><article class="day-card" data-week="w1" data-day="7">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="7"><span class="day-title">Day 7: Spark Performance &amp; AQE</span></div><span class="week-tag">W1</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Learn Catalyst, query plans, partition pruning and Adaptive Query Execution.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://rockthejvm.com/courses/apache-spark-optimization-with-scala" target="_blank" rel="noopener noreferrer">Rock the JVM — Spark Optimization</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://www.oreilly.com/library/view/high-performance-spark/9781491943199/" target="_blank" rel="noopener noreferrer">High Performance Spark</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Optimize one deliberately slow query and record runtime, shuffle bytes and partition behavior.</p>
+</div></article><article class="day-card" data-week="w2" data-day="8">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="8"><span class="day-title">Day 8: Iceberg Architecture</span></div><span class="week-tag">W2</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Understand table formats, metadata trees, manifests, snapshots and catalogs.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.youtube.com/watch?v=X-xU6OZfZok" target="_blank" rel="noopener noreferrer">Apache Iceberg Deep Dive — architecture and catalogs</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://developer.confluent.io/courses/apache-iceberg/introduction/" target="_blank" rel="noopener noreferrer">Confluent — Apache Iceberg course</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Create an Iceberg table and map snapshots, manifests and metadata to the architecture.</p>
+</div></article><article class="day-card" data-week="w2" data-day="9">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="9"><span class="day-title">Day 9: Iceberg Writes &amp; MERGE</span></div><span class="week-tag">W2</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Understand atomic writes, MERGE and idempotent lakehouse updates.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://developer.confluent.io/courses/apache-iceberg/introduction/" target="_blank" rel="noopener noreferrer">Confluent — Apache Iceberg deep course</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://www.youtube.com/results?search_query=Alex+Merced+Iceberg+Lakehouse+Engineering" target="_blank" rel="noopener noreferrer">Iceberg Lakehouse Engineering</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Implement idempotent MERGE upserts and rerun the same batch without duplicate business keys.</p>
+</div></article><article class="day-card" data-week="w2" data-day="10">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="10"><span class="day-title">Day 10: Iceberg Snapshots &amp; Time Travel</span></div><span class="week-tag">W2</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Learn snapshot isolation, history, rollback and auditability.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.youtube.com/results?search_query=Apache+Iceberg+snapshots+time+travel+deep+dive" target="_blank" rel="noopener noreferrer">Apache Iceberg snapshots and time travel deep dive</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://iceberg.apache.org/talks/" target="_blank" rel="noopener noreferrer">Iceberg Summit talks</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Create multiple snapshots, time-travel to an earlier state and recover from a bad write.</p>
+</div></article><article class="day-card" data-week="w2" data-day="11">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="11"><span class="day-title">Day 11: Iceberg Schema Evolution</span></div><span class="week-tag">W2</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Understand safe add/rename/drop evolution and reader compatibility.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.youtube.com/results?search_query=Apache+Iceberg+schema+evolution+deep+dive" target="_blank" rel="noopener noreferrer">Apache Iceberg schema evolution deep dive</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://developer.confluent.io/courses/apache-iceberg/introduction/" target="_blank" rel="noopener noreferrer">Confluent — Apache Iceberg course</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Add/rename trade attributes and test old/new readers.</p>
+</div></article><article class="day-card" data-week="w2" data-day="12">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="12"><span class="day-title">Day 12: Iceberg Partition Evolution</span></div><span class="week-tag">W2</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Learn hidden partitioning, transforms and evolving partition specs.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.youtube.com/results?search_query=Apache+Iceberg+partition+evolution+Alex+Merced" target="_blank" rel="noopener noreferrer">Apache Iceberg partition evolution deep dive</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://iceberg.apache.org/talks/" target="_blank" rel="noopener noreferrer">Iceberg Summit talks</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Evolve the partition specification and test pruning before and after evolution.</p>
+</div></article><article class="day-card" data-week="w2" data-day="13">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="13"><span class="day-title">Day 13: Iceberg Maintenance</span></div><span class="week-tag">W2</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Understand small files, compaction, snapshot expiration and orphan files.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://iceberg.apache.org/talks/" target="_blank" rel="noopener noreferrer">Iceberg production and maintenance talks</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://developer.confluent.io/courses/apache-iceberg/introduction/" target="_blank" rel="noopener noreferrer">Confluent — Apache Iceberg course</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Generate small files, compact them, expire snapshots and measure the result.</p>
+</div></article><article class="day-card" data-week="w2" data-day="14">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="14"><span class="day-title">Day 14: Delta Internals</span></div><span class="week-tag">W2</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Understand the Delta transaction log, checkpoints and snapshots over Parquet.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.youtube.com/watch?v=de-6a6Bfw6E" target="_blank" rel="noopener noreferrer">Deep Dive into Delta Lake — transaction log</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://delta.io/blog/2020-03-13-diving-into-delta-lake-online-tech-talk-series/" target="_blank" rel="noopener noreferrer">Delta Lake — Diving Into Delta Lake series</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Create a Delta table and inspect _delta_log after append/update.</p>
+</div></article><article class="day-card" data-week="w3" data-day="15">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="15"><span class="day-title">Day 15: Iceberg vs Delta</span></div><span class="week-tag">W3</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Compare transaction metadata, schema evolution, partitioning and maintenance.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://delta.io/learn/videos/" target="_blank" rel="noopener noreferrer">Delta Lake Deep Dives</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://iceberg.apache.org/talks/" target="_blank" rel="noopener noreferrer">Apache Iceberg Summit talks</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Implement the same upsert/time-travel workflow in Iceberg and Delta and write a decision matrix.</p>
+</div></article><article class="day-card" data-week="w3" data-day="16">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="16"><span class="day-title">Day 16: Structured Streaming</span></div><span class="week-tag">W3</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Learn micro-batches, checkpoints, watermarks and late data.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.youtube.com/results?search_query=Spark+Structured+Streaming+deep+dive+watermark+checkpoint" target="_blank" rel="noopener noreferrer">Spark Structured Streaming deep dive</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://rockthejvm.com/courses/apache-spark-streaming-with-scala" target="_blank" rel="noopener noreferrer">Rock the JVM — Spark Streaming</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Stream events with checkpoints/watermarks and restart the query safely.</p>
+</div></article><article class="day-card" data-week="w3" data-day="17">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="17"><span class="day-title">Day 17: Streaming Upserts</span></div><span class="week-tag">W3</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Learn foreachBatch, MERGE, idempotency and replay.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.youtube.com/results?search_query=Spark+Structured+Streaming+foreachBatch+MERGE+deep+dive" target="_blank" rel="noopener noreferrer">Spark Structured Streaming + foreachBatch + MERGE</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://delta.io/learn/videos/" target="_blank" rel="noopener noreferrer">Delta Lake streaming deep dives</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Use foreachBatch + MERGE and prove replay does not duplicate business keys.</p>
+</div></article><article class="day-card" data-week="w3" data-day="18">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="18"><span class="day-title">Day 18: Kafka Fundamentals</span></div><span class="week-tag">W3</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Understand topics, partitions, consumer groups, offsets and replication.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.confluent.io/resources/kafka-summit-2020/apache-kafka-fundamentals-training/" target="_blank" rel="noopener noreferrer">Confluent — Apache Kafka Fundamentals</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://training.confluent.io/learn/courses/1073/confluent-apache-kafka-fundamentals-course-accreditation" target="_blank" rel="noopener noreferrer">Apache Kafka Fundamentals course</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Run Kafka locally and inspect partitions and consumer groups.</p>
+</div></article><article class="day-card" data-week="w3" data-day="19">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="19"><span class="day-title">Day 19: Kafka Internals</span></div><span class="week-tag">W3</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Understand broker internals, replication, request processing and reliability.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.coursera.org/learn/apache-kafka-architecture-and-internals" target="_blank" rel="noopener noreferrer">Kafka Architecture and Internals — deep course</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://www.coursera.org/specializations/complete-apache-kafka-course" target="_blank" rel="noopener noreferrer">Complete Apache Kafka specialization</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Change Kafka settings and observe throughput, lag and reliability.</p>
+</div></article><article class="day-card" data-week="w3" data-day="20">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="20"><span class="day-title">Day 20: Airflow Fundamentals</span></div><span class="week-tag">W3</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Learn DAGs, scheduling, retries, backfills and idempotency.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.youtube.com/watch?v=iYQVhVYtO50" target="_blank" rel="noopener noreferrer">Airflow 3 full course</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://www.udemy.com/course/the-ultimate-hands-on-course-to-master-apache-airflow/" target="_blank" rel="noopener noreferrer">Marc Lamberti — Complete Hands-On Airflow</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Build ingest → Spark transform → quality-check as an Airflow DAG.</p>
+</div></article><article class="day-card" data-week="w3" data-day="21">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="21"><span class="day-title">Day 21: Airflow Production Patterns</span></div><span class="week-tag">W3</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Learn dynamic task mapping, sensors, retries and production DAG design.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.astronomer.io/events/webinars/best-practices-for-dag-authoring-in-airflow-video/" target="_blank" rel="noopener noreferrer">Astronomer — DAG authoring best practices</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://www.udemy.com/course/the-ultimate-hands-on-course-to-master-apache-airflow/" target="_blank" rel="noopener noreferrer">Marc Lamberti — Complete Hands-On Airflow</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Add retries, parameters, backfill behavior and dynamic task mapping where useful.</p>
+</div></article><article class="day-card" data-week="w4" data-day="22">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="22"><span class="day-title">Day 22: Airflow + Lakehouse Operations</span></div><span class="week-tag">W4</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Use Airflow as the operational control plane for data pipelines and maintenance.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.astronomer.io/events/webinars/best-practices-for-running-airflow-at-scale-2025-video/" target="_blank" rel="noopener noreferrer">Astronomer — running Airflow at scale</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://www.astronomer.io/events/webinars/stopping-bad-data-before-it-breaks-your-airflow-pipelines-video/" target="_blank" rel="noopener noreferrer">Airflow data quality in production</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Build ingest → transform → quality → compact → expire snapshots with failure handling.</p>
+</div></article><article class="day-card" data-week="w4" data-day="23">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="23"><span class="day-title">Day 23: Trino Query Layer</span></div><span class="week-tag">W4</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Understand distributed SQL and why Trino complements Spark.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.youtube.com/watch?v=4xYPUL7YHJU" target="_blank" rel="noopener noreferrer">Trino + Iceberg lakehouse workshop</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://www.youtube.com/watch?v=kU2OpgimIdg" target="_blank" rel="noopener noreferrer">Starburst — Trino + Iceberg</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Connect Trino to Iceberg and compare the same analytical query in Trino and Spark.</p>
+</div></article><article class="day-card" data-week="w4" data-day="24">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="24"><span class="day-title">Day 24: Data Quality</span></div><span class="week-tag">W4</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Learn freshness, completeness, uniqueness, validity and quarantine patterns.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.astronomer.io/events/webinars/stopping-bad-data-before-it-breaks-your-airflow-pipelines-video/" target="_blank" rel="noopener noreferrer">Airflow data quality in production</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://github.com/DataTalksClub/data-engineering-zoomcamp" target="_blank" rel="noopener noreferrer">Data Engineering Zoomcamp</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Build null, uniqueness, freshness and valid-range checks with quarantine handling.</p>
+</div></article><article class="day-card" data-week="w4" data-day="25">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="25"><span class="day-title">Day 25: Lineage &amp; Observability</span></div><span class="week-tag">W4</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Understand dataset and column lineage plus operational metadata.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://openlineage.io/" target="_blank" rel="noopener noreferrer">OpenLineage talks and demos</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://iceberg.apache.org/talks/" target="_blank" rel="noopener noreferrer">Iceberg production talks</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Capture source → table → column relationships and render a simple impact graph.</p>
+</div></article><article class="day-card" data-week="w4" data-day="26">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="26"><span class="day-title">Day 26: Gold Data Products</span></div><span class="week-tag">W4</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Learn workload-driven modeling and serving-layer design.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://www.youtube.com/results?search_query=lakehouse+gold+layer+data+modeling+deep+dive" target="_blank" rel="noopener noreferrer">Lakehouse Gold layer and data modeling deep dive</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://github.com/DataTalksClub/data-engineering-zoomcamp" target="_blank" rel="noopener noreferrer">Data Engineering Zoomcamp</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Build Gold exposure, counterparty and daily aggregates for downstream consumers.</p>
+</div></article><article class="day-card" data-week="w4" data-day="27">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="27"><span class="day-title">Day 27: Performance Engineering</span></div><span class="week-tag">W4</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Benchmark file sizing, partitioning, compaction, joins and query tuning.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://rockthejvm.com/courses/apache-spark-optimization-with-scala" target="_blank" rel="noopener noreferrer">Rock the JVM — Spark Optimization</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://www.oreilly.com/library/view/high-performance-spark/9781491943199/" target="_blank" rel="noopener noreferrer">High Performance Spark</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Create a repeatable benchmark and quantify the impact of file size, partitioning, compaction and join strategy.</p>
+</div></article><article class="day-card" data-week="w4" data-day="28">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="28"><span class="day-title">Day 28: Azure Data Engineering</span></div><span class="week-tag">W4</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Map the local lakehouse to ADLS Gen2, Azure Databricks, identity and monitoring.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://learn.microsoft.com/en-us/training/paths/get-started-data-engineering/" target="_blank" rel="noopener noreferrer">Microsoft Learn — Azure Data Engineering path</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://www.youtube.com/results?search_query=Azure+Databricks+end+to+end+data+engineering+project" target="_blank" rel="noopener noreferrer">Azure Databricks end-to-end project</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Map the local architecture to ADLS Gen2 + Azure Databricks and produce a target design.</p>
+</div></article><article class="day-card" data-week="w5" data-day="29">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="29"><span class="day-title">Day 29: End-to-End Capstone</span></div><span class="week-tag">W5</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Integrate ingestion, Spark, Iceberg/Delta, Kafka, Airflow, quality and Trino.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://github.com/DataTalksClub/data-engineering-zoomcamp" target="_blank" rel="noopener noreferrer">Data Engineering Zoomcamp — end-to-end project approach</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://iceberg.apache.org/talks/" target="_blank" rel="noopener noreferrer">Iceberg Summit production talks</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Run the full pipeline, inject failures, recover and collect benchmark/observability evidence.</p>
+</div></article><article class="day-card" data-week="w5" data-day="30">
+<div class="day-header"><div class="day-header-left"><input type="checkbox" class="checkbox-custom" data-check="30"><span class="day-title">Day 30: Architecture &amp; Portfolio</span></div><span class="week-tag">W5</span></div>
+<div class="day-body">
+<div class="section-title">🎯 What to learn</div><p class="detail">Turn the implementation into architecture judgment, benchmarks and interview stories.</p>
+<div class="section-title">🎓 Primary deep resource</div><ul class="resource-list"><li><a href="https://iceberg.apache.org/talks/" target="_blank" rel="noopener noreferrer">Iceberg Summit — architecture and production talks</a></li></ul>
+<div class="section-title">📚 Secondary resource</div><ul class="resource-list"><li><a href="https://delta.io/learn/videos/" target="_blank" rel="noopener noreferrer">Delta Lake Deep Dives</a></li></ul>
+<div class="section-title">⚡ Hands-on</div><p class="detail">Package README, architecture diagram, benchmark report and Iceberg-vs-Delta decision record.</p>
+</div></article></div></main>
+<script>
+const KEY="modern_de_v5";let completed=JSON.parse(localStorage.getItem(KEY)||"[]");
+function update(){
+document.querySelectorAll("[data-check]").forEach(c=>c.checked=completed.includes(Number(c.dataset.check)));
+document.querySelectorAll(".day-card").forEach(c=>c.classList.toggle("completed",completed.includes(Number(c.dataset.day))));
+let p=Math.round(completed.length/30*100);document.getElementById("stats").textContent=completed.length+" / 30 Days Done ("+p+"%)";document.getElementById("progress-bar").style.width=p+"%";
+}
+document.addEventListener("change",e=>{if(!e.target.matches("[data-check]"))return;let n=Number(e.target.dataset.check);completed=e.target.checked?[...new Set([...completed,n])]:completed.filter(x=>x!==n);localStorage.setItem(KEY,JSON.stringify(completed));update();});
+document.querySelector(".filter-tabs").addEventListener("click",e=>{let b=e.target.closest(".tab-btn");if(!b)return;document.querySelectorAll(".tab-btn").forEach(x=>x.classList.remove("active"));b.classList.add("active");let f=b.dataset.filter;document.querySelectorAll(".day-card").forEach(c=>{let n=Number(c.dataset.day),done=completed.includes(n),show=f==="all"||(f==="pending"&&!done)||(f==="completed"&&done)||(f===c.dataset.week);c.classList.toggle("hidden",!show)})});
+update();
+</script></body></html>

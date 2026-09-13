@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TOPIC_TITLE}}</title>
+<script>
+  window.MathJax = { tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']] } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+  /*
+    DEFAULT variant — warm paper, serif body, cream background.
+    Same section IDs / element IDs as the chalkboard and notebook variants.
+  */
+  :root {
+    --bg: #fbf9f4; --fg: #1f1c17; --muted: #6b6355; --accent: #8a5a2b;
+    --card: #ffffff; --border: #e6ddcc; --box: #fff4dd; --box-border: #d8b35a;
+    --fwd: #2f7d4f; --grad: #b5432a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #171512; --fg: #ece6d9; --muted: #a89f8c; --accent: #d59a52;
+      --card: #201d18; --border: #3a3428; --box: #2b2410; --box-border: #a97a2e;
+      --fwd: #5fbf87; --grad: #e2836a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: Georgia, 'Times New Roman', serif; line-height: 1.6;
+  }
+  .progress { position: sticky; top: 0; height: 4px; background: var(--border); z-index: 10; }
+  .progress-fill { height: 100%; width: 0%; background: var(--accent); transition: width .1s linear; }
+  header { max-width: 760px; margin: 0 auto; padding: 2.5rem 1.25rem 1rem; }
+  header h1 { font-size: 1.9rem; margin: 0 0 .25rem; }
+  header p.sub { color: var(--muted); margin: 0; font-family: system-ui, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 0 1.25rem 4rem; }
+  section { margin: 2.5rem 0; }
+  section h2 {
+    font-family: system-ui, sans-serif; font-size: 1rem; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--accent); border-bottom: 1px solid var(--border);
+    padding-bottom: .4rem; margin-bottom: 1rem;
+  }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 1.25rem 1.5rem; margin: 1rem 0;
+  }
+  .card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .box {
+    background: var(--box); border: 1.5px solid var(--box-border); border-radius: 8px;
+    padding: 1rem 1.25rem; margin: 1rem 0; font-family: system-ui, sans-serif;
+  }
+  .box strong { display: block; margin-bottom: .35rem; }
+  .fwd { color: var(--fwd); font-weight: 600; }
+  .grad { color: var(--grad); font-weight: 600; }
+  label { font-family: system-ui, sans-serif; font-size: .9rem; color: var(--muted); }
+  input[type=range] { width: 100%; }
+  .readout { font-family: system-ui, sans-serif; font-weight: 600; }
+  /* Always-visible usage caption for any interactive control. Not a doubt callout. */
+  .hint { display: block; font-family: system-ui, sans-serif; font-size: .78rem; color: var(--muted); margin-top: .2rem; }
+  .step-nav .hint { display: inline; margin: 0 0 0 .5rem; }
+  /* Collapsed doubt callout — zero visible length until opened. */
+  details.doubt {
+    border-left: 3px solid var(--accent); background: color-mix(in srgb, var(--accent) 6%, transparent);
+    border-radius: 0 6px 6px 0; padding: .5rem .9rem; margin: .9rem 0;
+    font-family: system-ui, sans-serif; font-size: .9rem;
+  }
+  details.doubt summary {
+    cursor: pointer; color: var(--accent); font-weight: 600;
+    font-size: .8rem; letter-spacing: .04em; text-transform: uppercase;
+  }
+  details.doubt p { margin: .55rem 0 .15rem; }
+  .step-nav { display: flex; gap: .5rem; align-items: center; font-family: system-ui, sans-serif; margin-top: .75rem; flex-wrap: wrap; }
+  .step-nav button {
+    font: inherit; padding: .4rem .9rem; border-radius: 6px; border: 1px solid var(--border);
+    background: var(--card); color: var(--fg); cursor: pointer;
+  }
+  .step-nav button:disabled { opacity: .4; cursor: default; }
+  .step { display: none; }
+  .step.active { display: block; }
+  .quick-check .q { margin: 1rem 0; }
+  .quick-check button.opt {
+    display: block; width: 100%; text-align: left; font: inherit; padding: .6rem .9rem;
+    margin: .3rem 0; border: 1px solid var(--border); border-radius: 6px; background: var(--card);
+    color: var(--fg); cursor: pointer; font-family: system-ui, sans-serif;
+  }
+  .quick-check button.opt.correct { border-color: var(--fwd); background: color-mix(in srgb, var(--fwd) 15%, var(--card)); }
+  .quick-check button.opt.wrong { border-color: var(--grad); background: color-mix(in srgb, var(--grad) 15%, var(--card)); }
+  .feedback { font-family: system-ui, sans-serif; font-size: .9rem; margin-top: .4rem; min-height: 1.2em; }
+  canvas { width: 100%; height: 260px; display: block; border-radius: 8px; background: var(--card); border: 1px solid var(--border); }
+  .diagram-alt { font-family: system-ui, sans-serif; font-size: .85rem; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+
+<header>
+  <h1>{{TOPIC_TITLE}}</h1>
+  <p class="sub">{{TOPIC_SUBTITLE}}</p>
+</header>
+
+<main>
+
+  <section id="hook">
+    <h2>{{HOOK_HEADING — topic-specific phrase, not the word "Hook"}}</h2>
+    <p>{{HOOK_TEXT — concrete question or minimal example, no equations here. Max 3 sentences, one paragraph.}}</p>
+  </section>
+
+  <section id="intuition">
+    <h2>{{INTUITION_HEADING — topic-specific phrase, not the word "Intuition"}}</h2>
+    <p>{{INTUITION_TEXT — max 3 sentences, one paragraph.}}</p>
+    <div class="card">
+      <label for="slider1">{{SLIDER_LABEL}}: <span class="readout" id="slider1Val">{{DEFAULT}}</span></label>
+      <input type="range" id="slider1" min="0" max="100" value="50" aria-label="{{SLIDER_ARIA_LABEL — what the control varies and over what range}}">
+      <span class="hint">{{SLIDER_HINT — e.g. "drag to watch the weights redistribute"}}</span>
+      <canvas id="plot1" width="700" height="260" role="img" aria-label="{{PLOT_ALT_TEXT — describe what the plot shows at both extremes of the slider}}"></canvas>
+    </div>
+    <p>{{INTUITION_PAYOFF — 1-2 sentences naming what the widget just showed and pointing at the derivation. Optional; cut if the section already lands.}}</p>
+  </section>
+
+  <section id="precise">
+    <h2>{{PRECISE_HEADING — topic-specific phrase, not "Make it precise"}}</h2>
+    <p>{{PRECISE_TEXT — restate the intuition with typed notation, e.g. $X \in \mathbb{R}^d$, $Y \in \mathbb{R}$. Max 3 sentences; type every symbol as it appears, don't re-justify what intuition already established.}}</p>
+  </section>
+
+  <section id="math">
+    <h2>{{MATH_HEADING — topic-specific phrase, not "The math"}}</h2>
+    <div class="card" id="derivation" tabindex="0">
+      <div class="step active" data-step="1">
+        <p><strong>1. Define & type.</strong> {{one sentence of narration max}} $$ {{typed objects as an equation, e.g. y = f(x) + \epsilon}} $$</p>
+      </div>
+      <div class="step" data-step="2">
+        <p><strong>2. The naive goal.</strong> {{one sentence max}} $$ {{the naive objective, as an equation}} $$</p>
+      </div>
+      <div class="step" data-step="3">
+        <p><strong>3. Why it can't be done directly.</strong> {{one sentence max, ∵ ...}}</p>
+      </div>
+      <div class="step" data-step="4">
+        <p><strong>Question:</strong> {{the question this derivation answers}}</p>
+        <details class="doubt">
+          <summary>{{DOUBT_1_SUMMARY — the confusion in the student's own words, e.g. "Why can't we just use the raw scores?"}}</summary>
+          <p>{{DOUBT_1_ANSWER — acknowledgment tic, then a terse direct answer or a named forward-pointer. Per teaching-philosophy.md §5. 2-3 sentences. A side-question only — never re-derive the main line here.}}</p>
+        </details>
+      </div>
+      <div class="step" data-step="5">
+        <p><strong>4. Derive the fix.</strong> {{one sentence of narration}} $$ {{show every intermediate line of the algebra — a reader following only the equations should be able to reconstruct the derivation}} $$</p>
+        <div class="box">
+          <strong>{{BOXED_RESULT_NAME}}</strong>
+          $$ {{boxed equation}} $$
+        </div>
+        <details class="doubt">
+          <summary>{{DOUBT_2_SUMMARY — the confusion readers actually hit at the boxed result}}</summary>
+          <p>{{DOUBT_2_ANSWER — same register, 2-3 sentences.}}</p>
+        </details>
+      </div>
+      <div class="step" data-step="6">
+        <p><strong>5. Ground it.</strong> {{one sentence}} $$ {{the numeric/concrete instance as an equation, e.g. plugging in the hook's example}} $$</p>
+      </div>
+      <div class="step-nav">
+        <button id="prevStep">&larr; Prev</button>
+        <span class="readout" id="stepCount">1 / 6</span>
+        <button id="nextStep">Next &rarr;</button>
+        <span class="hint">step through with &larr; &rarr; or the buttons</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <h2>{{WHY_HEADING — topic-specific phrase, not "Why it matters"}}</h2>
+    <p>{{WHY_TEXT — exactly ONE connection: where the boxed result recurs or what it makes possible. 1-2 sentences. Not a list of use cases.}}</p>
+  </section>
+
+  <section id="edges">
+    <h2>{{EDGES_HEADING — topic-specific phrase, not "Edges & what's next"}}</h2>
+    <p>{{EDGES_TEXT — at most TWO caveats, 1-2 sentences each, plus a pointer to the next topic. Three or more caveats means pick the most consequential and cut the rest.}}</p>
+  </section>
+
+  <section id="check" class="quick-check">
+    <h2>{{CHECK_HEADING — topic-specific phrase, not "Quick check"}}</h2>
+    <div class="q" data-answer="1" data-why="{{WHY_THIS_ANSWER — one sentence on why the correct option is correct. Shown on both right and wrong answers; this is the highest-value teaching moment on the page, so make it explain the reason, not restate the option.}}">
+      <p>{{QUESTION_TEXT}}</p>
+      <button class="opt" data-idx="0">{{OPTION_A}}</button>
+      <button class="opt" data-idx="1">{{OPTION_B — correct}}</button>
+      <button class="opt" data-idx="2">{{OPTION_C}}</button>
+      <div class="feedback"></div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// Progress bar
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+});
+
+// Slider + live canvas plot (placeholder function — replace with the real one per topic)
+const slider1 = document.getElementById('slider1');
+const slider1Val = document.getElementById('slider1Val');
+const canvas1 = document.getElementById('plot1');
+const ctx1 = canvas1.getContext('2d');
+function drawPlot(k) {
+  const w = canvas1.width, h = canvas1.height;
+  ctx1.clearRect(0, 0, w, h);
+  ctx1.strokeStyle = getComputedStyle(document.body).getPropertyValue('--fwd');
+  ctx1.lineWidth = 2;
+  ctx1.beginPath();
+  for (let px = 0; px <= w; px++) {
+    const x = (px / w) * 10 - 5;
+    const y = Math.sin(x * (k / 20 + 0.1)) * (h / 4); // placeholder curve
+    const py = h / 2 - y;
+    px === 0 ? ctx1.moveTo(px, py) : ctx1.lineTo(px, py);
+  }
+  ctx1.stroke();
+}
+slider1.addEventListener('input', () => {
+  slider1Val.textContent = slider1.value;
+  drawPlot(Number(slider1.value));
+});
+drawPlot(Number(slider1.value));
+
+// Step-through derivation
+const derivation = document.getElementById('derivation');
+const steps = Array.from(document.querySelectorAll('#derivation .step'));
+let stepIdx = 0;
+const prevBtn = document.getElementById('prevStep');
+const nextBtn = document.getElementById('nextStep');
+const stepCount = document.getElementById('stepCount');
+function renderStep() {
+  steps.forEach((s, i) => s.classList.toggle('active', i === stepIdx));
+  stepCount.textContent = `${stepIdx + 1} / ${steps.length}`;
+  prevBtn.disabled = stepIdx === 0;
+  nextBtn.disabled = stepIdx === steps.length - 1;
+  // Keep keyboard control alive when the focused button becomes disabled at a boundary.
+  if (document.activeElement && document.activeElement.disabled) derivation.focus();
+}
+prevBtn.addEventListener('click', () => { stepIdx = Math.max(0, stepIdx - 1); renderStep(); });
+nextBtn.addEventListener('click', () => { stepIdx = Math.min(steps.length - 1, stepIdx + 1); renderStep(); });
+// Arrow-key navigation, so the "use ← →" hint is actually true.
+derivation.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.key === 'ArrowLeft')  { stepIdx = Math.max(0, stepIdx - 1); renderStep(); e.preventDefault(); }
+  if (e.key === 'ArrowRight') { stepIdx = Math.min(steps.length - 1, stepIdx + 1); renderStep(); e.preventDefault(); }
+});
+renderStep();
+
+// Quick-check — always explain WHY, on right and wrong alike.
+document.querySelectorAll('.quick-check .q').forEach(q => {
+  const correct = Number(q.dataset.answer);
+  const why = q.dataset.why || '';
+  const fb = q.querySelector('.feedback');
+  q.querySelectorAll('.opt').forEach(btn => {
+    btn.addEventListener('click', () => {
+      q.querySelectorAll('.opt').forEach(b => b.classList.remove('correct', 'wrong'));
+      const idx = Number(btn.dataset.idx);
+      if (idx === correct) {
+        btn.classList.add('correct');
+        fb.textContent = why ? 'Right. ' + why : 'Right.';
+      } else {
+        btn.classList.add('wrong');
+        q.querySelectorAll('.opt')[correct].classList.add('correct');
+        fb.textContent = why ? 'Not quite — the right one is highlighted. ' + why
+                             : 'Not quite — correct answer highlighted.';
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

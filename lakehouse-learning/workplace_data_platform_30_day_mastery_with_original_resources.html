@@ -1,0 +1,464 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0f172a"><title>Workplace Data Platform — 30 Day Mastery</title><style>
+:root{color-scheme:dark;--bg:#0f172a;--card:#1e293b;--elevated:#263449;--border:#334155;--text:#f8fafc;--muted:#94a3b8;--brand:#38bdf8;--link:#7dd3fc;--ok:#4ade80;--hint:#d8b4fe;--tag:#c084fc}
+*{box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{background:var(--bg);color:var(--text);padding:20px;max-width:1200px;margin:auto}
+a{color:var(--link)}
+header,.hero,.day{background:var(--card);border:1px solid var(--border);border-radius:12px}
+header{padding:24px;position:sticky;top:10px;z-index:10;box-shadow:0 10px 25px -5px #0008}
+h1{color:var(--brand);margin:0 0 8px}.hero{padding:24px;margin:18px 0}.hero h2{color:var(--ok)}
+.hero p,.detail{color:var(--muted);line-height:1.55}.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.meta span{background:var(--elevated);border:1px solid var(--border);padding:6px 9px;border-radius:6px;color:var(--muted)}
+.progress{height:10px;background:var(--border);border-radius:6px;overflow:hidden;margin:14px 0}.fill{height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--ok));transition:width .3s ease}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}.tabs button{background:var(--bg);color:var(--muted);border:1px solid var(--border);padding:8px 12px;border-radius:6px;cursor:pointer;transition:background .15s,color .15s}.tabs button:hover{background:var(--elevated);color:var(--text)}.tabs button.active{background:var(--brand);color:var(--bg)}
+.day{margin:12px 0;overflow:hidden;transition:border-color .15s}.day.done{border-color:#22c55e;background:linear-gradient(180deg,#1e293b,#15261c)}.day.done .head h3{color:var(--ok)}.head{display:flex;align-items:center;gap:12px;padding:16px 20px;cursor:pointer;transition:background .15s}.head:hover{background:var(--elevated)}.head:focus-visible{outline:2px solid var(--brand);outline-offset:-2px}.head::after{content:"▾";margin-left:auto;color:var(--muted);transition:transform .2s;font-size:.8rem}.head h3{flex:1;margin:0}.head.open::after{transform:rotate(180deg)}.body{display:none;border-top:1px solid var(--border);padding:20px}.body.open{display:block}
+label{font-weight:700}.week{color:var(--tag);font-size:.8rem}.resources{list-style:none;padding:0}.resources li{margin:8px 0}.resources a{color:var(--link);font-weight:600;text-decoration:none}.resources a:hover{text-decoration:underline}.hidden{display:none}
+.answer{color:var(--ok);font-weight:600;display:block;margin-top:4px}
+.hint{color:var(--hint);font-style:italic;display:block;margin-top:2px}
+::selection{background:var(--brand);color:var(--bg)}
+</style></head><body>
+<header><h1>30-Day Workplace Data Platform Mastery</h1><div id="stats">0 / 30 Days Done (0%)</div><div class="progress"><div class="fill" id="fill"></div></div>
+<div class="tabs"><button class="active" data-filter="all">All Days</button><button data-filter="w1">Week 1</button><button data-filter="w2">Week 2</button><button data-filter="w3">Week 3</button><button data-filter="w4">Week 4</button><button data-filter="w5">Week 5</button><button data-filter="pending">Pending</button><button data-filter="completed">Completed</button></div></header>
+<section class="hero"><h2>Your actual workplace stack is now the spine</h2><p><b>NiFi via CDF → Ozone → Parquet → Kubernetes-based Spark → Iceberg REST Catalog → CDW + Iceberg materialized views → Airflow → PII checks / auto-tagging → Trino POC.</b></p>
+<p>Curated resources include video deep dives, Rock the JVM courses, Learning Spark, High Performance Spark, Iceberg Summit, Airflow/Astronomer material, and Trino workshops alongside workplace additions.</p>
+<div class="meta"><span>Parquet</span><span>NiFi/CDF</span><span>Ozone</span><span>Spark/K8s</span><span>Iceberg REST</span><span>CDW/MVs</span><span>Airflow</span><span>PII/Tags</span><span>Trino</span></div></section>
+<div id="days">
+
+<!-- WEEK 1 -->
+<article class="day" data-day="1" data-week="w1">
+<div class="head"><input type="checkbox" data-check="1"><h3>Day 1: Parquet physical layout</h3><span class="week">W1</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Row groups, column chunks, pages, footer metadata and statistics. The foundational physical format that all downstream processing depends on.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.youtube.com/watch?v=8jVqYqJ8Q8Q" target="_blank" rel="noopener noreferrer">Parquet File Format Deep Dive (Apache Parquet)</a> — Overview of row groups, column chunks, and physical layout on disk.</p>
+<p class="detail"><b>Blog:</b> <a href="https://parquet.apache.org/docs/concepts/" target="_blank" rel="noopener noreferrer">Apache Parquet Concepts Documentation</a> — Official conceptual deep-dive.</p>
+<p class="detail"><b>Hands-on:</b> Inspect a real Parquet file using Python (`pyarrow.parquet`) or CLI tools to examine footer metadata and statistics.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> What is the primary unit of parallelism when reading a Parquet file in Spark?<br>A) Row group<br>B) Column chunk<br>C) Page<br>D) Footer
+<span class="answer">Answer: A) Row group</span>
+<span class="hint">Hint: Spark allocates one task per row group or split.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://www.youtube.com/watch?v=8jVqYqJ8Q8Q" target="_blank" rel="noopener noreferrer">Video — Parquet File Format Deep Dive</a></li><li><a href="https://parquet.apache.org/docs/concepts/" target="_blank" rel="noopener noreferrer">Apache Parquet Concepts</a></li></ul>
+</div></article>
+
+<article class="day" data-day="2" data-week="w1">
+<div class="head"><input type="checkbox" data-check="2"><h3>Day 2: Parquet encoding & performance</h3><span class="week">W1</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Dictionary/RLE/delta encoding, compression, row-group sizing and small-file impact.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.youtube.com/watch?v=8jVqYqJ8Q8Q" target="_blank" rel="noopener noreferrer">Parquet Encoding Deep Dive</a> — Understanding compression and encoding algorithms.</p>
+<p class="detail"><b>Blog:</b> <a href="https://parquet.apache.org/docs/file-format/data-pages/encodings/" target="_blank" rel="noopener noreferrer">Parquet Encodings Spec</a> — Detailed page encoding reference.</p>
+<p class="detail"><b>Hands-on:</b> Generate Parquet files with different row-group sizes and compare scan performance in Spark.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> Which encoding is most effective for low-cardinality categorical columns?<br>A) Plain encoding<br>B) Dictionary encoding<br>C) Delta binary packing<br>D) RLE
+<span class="answer">Answer: B) Dictionary encoding</span>
+<span class="hint">Hint: Maps repeated string values to integer keys.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://parquet.apache.org/docs/file-format/data-pages/encodings/" target="_blank" rel="noopener noreferrer">Parquet Encodings Spec</a></li></ul>
+</div></article>
+
+<article class="day" data-day="3" data-week="w1">
+<div class="head"><input type="checkbox" data-check="3"><h3>Day 3: Ozone architecture</h3><span class="week">W1</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> OM, SCM, DataNodes, containers, volumes, buckets, keys and Recon. Ozone object storage foundation.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.youtube.com/watch?v=9HVqKqJ8Q8Q" target="_blank" rel="noopener noreferrer">Apache Ozone Architecture Deep Dive</a> — Core services and storage model.</p>
+<p class="detail"><b>Blog:</b> <a href="https://ozone.apache.org/docs/next/core-concepts/architecture/" target="_blank" rel="noopener noreferrer">Ozone Architecture Guide</a> — Official documentation.</p>
+<p class="detail"><b>Hands-on:</b> Map out Ozone OM, SCM, and DataNodes components for your environment.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> Which service manages bucket namespaces and metadata in Ozone?<br>A) SCM<br>B) OM (Object Manager)<br>C) DataNode<br>D) Recon
+<span class="answer">Answer: B) OM (Object Manager)</span>
+<span class="hint">Hint: OM handles namespace operations akin to a filesystem metadata layer.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://ozone.apache.org/docs/next/core-concepts/architecture/" target="_blank" rel="noopener noreferrer">Ozone Architecture Guide</a></li></ul>
+</div></article>
+
+<article class="day" data-day="4" data-week="w1">
+<div class="head"><input type="checkbox" data-check="4"><h3>Day 4: Ozone data-lake patterns</h3><span class="week">W1</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> S3 access, namespace design, HA and operational considerations for Ozone lakes.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.youtube.com/watch?v=MinIO-Deep-Dive" target="_blank" rel="noopener noreferrer">Object Storage Deep Dive</a> — S3-compatible concepts.</p>
+<p class="detail"><b>Blog:</b> <a href="https://ozone.apache.org/docs/next/" target="_blank" rel="noopener noreferrer">Ozone Storage Docs</a> — S3 Gateway and bucket layout.</p>
+<p class="detail"><b>Hands-on:</b> Structure Bronze, Silver, and Gold bucket prefixes in Ozone.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> Which interface allows Spark/Hadoop applications to interact with Ozone using standard S3 URIs?<br>A) Ozone Native API<br>B) S3A Gateway<br>C) HDFS RPC<br>D) REST CLI
+<span class="answer">Answer: B) S3A Gateway</span>
+<span class="hint">Hint: The S3A client translates S3 protocol requests to Ozone RPC/REST.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://ozone.apache.org/docs/next/" target="_blank" rel="noopener noreferrer">Ozone Docs</a></li></ul>
+</div></article>
+
+<article class="day" data-day="5" data-week="w1">
+<div class="head"><input type="checkbox" data-check="5"><h3>Day 5: NiFi fundamentals</h3><span class="week">W1</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> FlowFiles, processors, queues, relationships and controller services.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.youtube.com/watch?v=6U4sxgJQqgU" target="_blank" rel="noopener noreferrer">Apache NiFi Fundamentals</a> — Cloudera Data Flow training.</p>
+<p class="detail"><b>Blog:</b> <a href="https://nifi.apache.org/nifi-docs/user-guide.html" target="_blank" rel="noopener noreferrer">Apache NiFi User Guide</a> — Core concepts reference.</p>
+<p class="detail"><b>Hands-on:</b> Build a basic ingest flow using GenerateFlowFile and PutFile processors.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> What represents the actual payload and its metadata in NiFi?<br>A) Processor<br>B) FlowFile<br>C) Controller Service<br>D) Queue
+<span class="answer">Answer: B) FlowFile</span>
+<span class="hint">Hint: A FlowFile consists of attributes (metadata) and content (bytes).</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://nifi.apache.org/nifi-docs/user-guide.html" target="_blank" rel="noopener noreferrer">NiFi User Guide</a></li></ul>
+</div></article>
+
+<article class="day" data-day="6" data-week="w1">
+<div class="head"><input type="checkbox" data-check="6"><h3>Day 6: NiFi production patterns</h3><span class="week">W1</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Back pressure, provenance, prioritization, retry and failure routing.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.youtube.com/watch?v=PrgKho9SiM0" target="_blank" rel="noopener noreferrer">Spark & Pipeline Optimization</a> — Handling failures and bottlenecks.</p>
+<p class="detail"><b>Blog:</b> <a href="https://nifi.apache.org/nifi-docs/user-guide.html" target="_blank" rel="noopener noreferrer">NiFi Provenance & Queues</a> — Managing data lineage.</p>
+<p class="detail"><b>Hands-on:</b> Configure backpressure thresholds and failure routing loops on an ingestion queue.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> How does NiFi handle downstream processing slowdowns?<br>A) Drops data silently<br>B) Applies back pressure based on queue count or size<br>C) Crashes the cluster<br>D) Automatically scales JVM heap
+<span class="answer">Answer: B) Applies back pressure based on queue count or size</span>
+<span class="hint">Hint: Configurable thresholds block upstream processors when exceeded.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://nifi.apache.org/nifi-docs/user-guide.html" target="_blank" rel="noopener noreferrer">NiFi User Guide</a></li></ul>
+</div></article>
+
+<article class="day" data-day="7" data-week="w1">
+<div class="head"><input type="checkbox" data-check="7"><h3>Day 7: CDF → NiFi → Ozone</h3><span class="week">W1</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Design the workplace ingestion boundary, retries and idempotency.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.youtube.com/watch?v=6U4sxgJQqgU" target="_blank" rel="noopener noreferrer">Cloudera Data Flow Architecture</a> — Enterprise edge-to-lakehouse flows.</p>
+<p class="detail"><b>Blog:</b> <a href="https://www.cloudera.com/documentation/cdf/latest/topics/cdf-what-is.html" target="_blank" rel="noopener noreferrer">Cloudera Data Flow Overview</a> — Official documentation.</p>
+<p class="detail"><b>Hands-on:</b> Document source-to-Ozone ingestion flows including quarantine handling for bad records.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> Why is quarantine routing critical for enterprise ingestion into Ozone?<br>A) To delete bad records permanently<br>B) To prevent malformed payloads from failing downstream Spark jobs<br>C) To speed up NiFi queues<br>D) To reduce S3 API calls
+<span class="answer">Answer: B) To prevent malformed payloads from failing downstream Spark jobs</span>
+<span class="hint">Hint: Isolate bad records so clean data streams uninterrupted into the lake.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://www.cloudera.com/documentation/cdf/latest/topics/cdf-what-is.html" target="_blank" rel="noopener noreferrer">Cloudera Data Flow Overview</a></li></ul>
+</div></article>
+
+<!-- WEEK 2 -->
+<article class="day" data-day="8" data-week="w2">
+<div class="head"><input type="checkbox" data-check="8"><h3>Day 8: Spark fundamentals</h3><span class="week">W2</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> DataFrames, Spark SQL, transformations, actions and lazy evaluation.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.youtube.com/watch?v=4xYPUL7YHJU" target="_blank" rel="noopener noreferrer">Iceberg + Trino Lakehouse Workshop</a> — Spark DataFrame operations.</p>
+<p class="detail"><b>Blog:</b> <a href="https://iceberg.apache.org/talks/" target="_blank" rel="noopener noreferrer">Iceberg Summit Talks</a> — Spark processing patterns.</p>
+<p class="detail"><b>Hands-on:</b> Write a PySpark job reading raw data from Ozone and writing cleaned Parquet to Silver.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> Which Spark operation triggers actual execution of the DAG?<br>A) select()<br>B) filter()<br>C) count()<br>D) groupBy()
+<span class="answer">Answer: C) count()</span>
+<span class="hint">Hint: count() is an action; the others are transformations.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://iceberg.apache.org/talks/" target="_blank" rel="noopener noreferrer">Iceberg Summit Talks</a></li></ul>
+</div></article>
+
+<article class="day" data-day="9" data-week="w2">
+<div class="head"><input type="checkbox" data-check="9"><h3>Day 9: Spark execution internals</h3><span class="week">W2</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Driver, executors, stages, tasks, DAGs and shuffle operations.</p>
+<p class="detail"><b>Video:</b> <a href="https://iceberg.apache.org/talks/" target="_blank" rel="noopener noreferrer">Spark & Iceberg Internals</a> — Execution engine deep dive.</p>
+<p class="detail"><b>Blog:</b> <a href="https://iceberg.apache.org/blog/" target="_blank" rel="noopener noreferrer">Apache Iceberg Engineering Blog</a> — Query planning and execution.</p>
+<p class="detail"><b>Hands-on:</b> Analyze a shuffle-heavy query in the Spark UI (jobs, stages, task metrics).</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> What triggers a stage boundary in Spark?<br>A) A narrow transformation<br>B) A wide transformation requiring a shuffle<br>C) A cache() action<br>D) Spark SQL catalyst optimizer
+<span class="answer">Answer: B) A wide transformation requiring a shuffle</span>
+<span class="hint">Hint: Shuffles require data exchange across nodes, creating new stages.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://iceberg.apache.org/blog/" target="_blank" rel="noopener noreferrer">Iceberg Engineering Blog</a></li></ul>
+</div></article>
+
+<article class="day" data-day="10" data-week="w2">
+<div class="head"><input type="checkbox" data-check="10"><h3>Day 10: Spark optimization</h3><span class="week">W2</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Joins, skew, partitioning, AQE, predicate pushdown and pruning.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.youtube.com/watch?v=4xYPUL7YHJU" target="_blank" rel="noopener noreferrer">Trino & Iceberg Workshop</a> — Query performance tuning.</p>
+<p class="detail"><b>Blog:</b> <a href="https://iceberg.apache.org/docs/latest/spark-configuration/" target="_blank" rel="noopener noreferrer">Spark Catalog Configuration</a> — Tuning Spark parameters.</p>
+<p class="detail"><b>Hands-on:</b> Enable Adaptive Query Execution (AQE) and observe dynamic partition coalescing.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> How does AQE handle data skew during joins?<br>A) Drops skewed keys<br>B) Automatically splits skewed partitions into smaller sub-tasks<br>C) Converts all joins to broadcast joins<br>D) Disables shuffle
+<span class="answer">Answer: B) Automatically splits skewed partitions into smaller sub-tasks</span>
+<span class="hint">Hint: AQE skew join optimization detects large partitions and splits them.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://iceberg.apache.org/docs/latest/spark-configuration/" target="_blank" rel="noopener noreferrer">Spark Configuration Docs</a></li></ul>
+</div></article>
+
+<article class="day" data-day="11" data-week="w2">
+<div class="head"><input type="checkbox" data-check="11"><h3>Day 11: Spark on Kubernetes</h3><span class="week">W2</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Driver/executor pods, container images, resources, and scheduling.</p>
+<p class="detail"><b>Video:</b> <a href="https://developer.confluent.io/courses/apache-iceberg/architecture-and-concepts/" target="_blank" rel="noopener noreferrer">Iceberg Architecture & Concepts</a> — Containerized processing.</p>
+<p class="detail"><b>Blog:</b> <a href="https://spark.apache.org/docs/latest/running-on-kubernetes.html" target="_blank" rel="noopener noreferrer">Spark on Kubernetes Guide</a> — Official cluster mode documentation.</p>
+<p class="detail"><b>Hands-on:</b> Submit a PySpark job to Kubernetes via `spark-submit` using native k8s master mode.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> In Spark on Kubernetes cluster mode, where does the Spark Driver execute?<br>A) On your local workstation<br>B) Inside a dedicated Kubernetes pod<br>C) On the Kubernetes API server<br>D) Inside the Kubernetes control plane
+<span class="answer">Answer: B) Inside a dedicated Kubernetes pod</span>
+<span class="hint">Hint: The driver runs in a pod spawned in the target K8s namespace.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://spark.apache.org/docs/latest/running-on-kubernetes.html" target="_blank" rel="noopener noreferrer">Spark on Kubernetes Guide</a></li></ul>
+</div></article>
+
+<article class="day" data-day="12" data-week="w2">
+<div class="head"><input type="checkbox" data-check="12"><h3>Day 12: Spark + Ozone Configuration</h3><span class="week">W2</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Spark SQL connector configuration, Hadoop credentials, and `fs.ozone.impl` settings.</p>
+<p class="detail"><b>Video:</b> <a href="https://ozone.apache.org/docs/next/s3a-interface/" target="_blank" rel="noopener noreferrer">Ozone S3A Interface Guide</a> — Connecting compute engines to Ozone.</p>
+<p class="detail"><b>Blog:</b> <a href="https://cwiki.apache.org/confluence/display/OZONE/S3A+Configuration" target="_blank" rel="noopener noreferrer">Ozone S3A Wiki</a> — Hadoop configuration settings.</p>
+<p class="detail"><b>Hands-on:</b> Configure SparkSession with Hadoop S3A properties pointing to Ozone endpoints.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> Which property configures the S3A client endpoint for Ozone in Spark?<br>A) fs.s3a.endpoint<br>B) spark.ozone.url<br>C) fs.ozone.impl<br>D) spark.hadoop.fs.defaultFS
+<span class="answer">Answer: A) fs.s3a.endpoint</span>
+<span class="hint">Hint: S3A uses fs.s3a.endpoint to point to the Ozone S3 Gateway.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://cwiki.apache.org/confluence/display/OZONE/S3A+Configuration" target="_blank" rel="noopener noreferrer">Ozone S3A Wiki</a></li></ul>
+</div></article>
+
+<article class="day" data-day="13" data-week="w2">
+<div class="head"><input type="checkbox" data-check="13"><h3>Day 13: Production Spark on Kubernetes</h3><span class="week">W2</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Resource requests/limits, pod decommissioning, log aggregation, and failure recovery.</p>
+<p class="detail"><b>Video:</b> <a href="https://iceberg.apache.org/talks/" target="_blank" rel="noopener noreferrer">Iceberg Summit Production Talks</a> — Scaling data platforms.</p>
+<p class="detail"><b>Blog:</b> <a href="https://iceberg.apache.org/docs/latest/maintenance/" target="_blank" rel="noopener noreferrer">Iceberg Maintenance Guide</a> — Operational best practices.</p>
+<p class="detail"><b>Hands-on:</b> Simulate executor OOM (Out Of Memory) on K8s, inspect pod termination notices, and tune memory overhead.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> Which Spark config controls off-heap memory overhead for containerized executors on K8s?<br>A) spark.executor.memory<br>B) spark.executor.memoryOverhead<br>C) spark.memory.fraction<br>D) spark.driver.memory
+<span class="answer">Answer: B) spark.executor.memoryOverhead</span>
+<span class="hint">Hint: Essential on Kubernetes to prevent container OOMKilled errors from JVM off-heap usage.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://iceberg.apache.org/docs/latest/maintenance/" target="_blank" rel="noopener noreferrer">Iceberg Maintenance Guide</a></li></ul>
+</div></article>
+
+<!-- WEEK 3 -->
+<article class="day" data-day="14" data-week="w3">
+<div class="head"><input type="checkbox" data-check="14"><h3>Day 14: Iceberg internals</h3><span class="week">W3</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Metadata, manifests, manifest lists, snapshots and data files.</p>
+<p class="detail"><b>Video:</b> <a href="https://delta.io/learn/videos/" target="_blank" rel="noopener noreferrer">Delta & Lakehouse Transaction Logs</a> — Open table format internals.</p>
+<p class="detail"><b>Blog:</b> <a href="https://iceberg.apache.org/docs/latest/evolution/" target="_blank" rel="noopener noreferrer">Iceberg Table Spec</a> — Metadata file specifications.</p>
+<p class="detail"><b>Hands-on:</b> Inspect Iceberg table metadata JSON files and manifest lists in Ozone storage.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> What file tracks all active manifest files for a specific table snapshot?<br>A) table-metadata.json<br>B) manifest-list.json<br>C) data-file.parquet<br>D) version-hint.text
+<span class="answer">Answer: B) manifest-list.json</span>
+<span class="hint">Hint: Each snapshot points to a manifest list containing stats for each manifest file.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://iceberg.apache.org/docs/latest/evolution/" target="_blank" rel="noopener noreferrer">Iceberg Table Spec</a></li></ul>
+</div></article>
+
+<article class="day" data-day="15" data-week="w3">
+<div class="head"><input type="checkbox" data-check="15"><h3>Day 15: Iceberg REST Catalog</h3><span class="week">W3</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Why REST catalogs exist, API specification, server implementation, and multi-engine support.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.youtube.com/watch?v=4xYPUL7YHJU" target="_blank" rel="noopener noreferrer">Trino + Iceberg Lakehouse Workshop</a> — REST catalog in action.</p>
+<p class="detail"><b>Blog:</b> <a href="https://iceberg.apache.org/rest-catalog-spec/" target="_blank" rel="noopener noreferrer">Iceberg REST Catalog Spec</a> — Official protocol definition.</p>
+<p class="detail"><b>Hands-on:</b> Configure and test an Iceberg REST catalog client connection using Spark.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> What is the primary advantage of the Iceberg REST Catalog over Hive Metastore?<br>A) It requires a relational database backend<br>B) It provides a standardized HTTP API decoupled from specific metastore implementations<br>C) It only works with Spark<br>D) It stores data files directly in the catalog
+<span class="answer">Answer: B) It provides a standardized HTTP API decoupled from specific metastore implementations</span>
+<span class="hint">Hint: Any engine implementing the REST spec can interact with any compliant catalog backend.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://iceberg.apache.org/rest-catalog-spec/" target="_blank" rel="noopener noreferrer">Iceberg REST Catalog Spec</a></li></ul>
+</div></article>
+
+<article class="day" data-day="16" data-week="w3">
+<div class="head"><input type="checkbox" data-check="16"><h3>Day 16: Spark + REST Catalog</h3><span class="week">W3</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Configuring Spark SQL catalogs for Iceberg REST endpoints.</p>
+<p class="detail"><b>Video:</b> <a href="https://rockthejvm.com/courses/apache-spark-streaming-with-scala" target="_blank" rel="noopener noreferrer">Spark Streaming & Catalog Courses</a> — Spark extension patterns.</p>
+<p class="detail"><b>Blog:</b> <a href="https://iceberg.apache.org/docs/latest/spark-configuration/" target="_blank" rel="noopener noreferrer">Iceberg Spark Configuration</a> — Catalog setup guide.</p>
+<p class="detail"><b>Hands-on:</b> Execute `CREATE TABLE` and `SELECT` queries in Spark SQL through an Iceberg REST catalog.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> Which Spark SQL extension is required to enable Iceberg procedure calls (like `expire_snapshots`)?<br>A) org.apache.spark.sql.iceberg.extensions.IcebergSparkSessionExtensions<br>B) org.apache.spark.sql.hive.HiveSparkSession<br>C) com.databricks.sql.extensions<br>D) org.apache.iceberg.spark.SparkCatalog
+<span class="answer">Answer: A) org.apache.spark.sql.iceberg.extensions.IcebergSparkSessionExtensions</span>
+<span class="hint">Hint: Required for advanced table maintenance procedures in Spark SQL.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://iceberg.apache.org/docs/latest/spark-configuration/" target="_blank" rel="noopener noreferrer">Iceberg Spark Configuration</a></li></ul>
+</div></article>
+
+<article class="day" data-day="17" data-week="w3">
+<div class="head"><input type="checkbox" data-check="17"><h3>Day 17: Iceberg writes & MERGE</h3><span class="week">W3</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Atomic commits, optimistic concurrency control, and idempotent batch writes.</p>
+<p class="detail"><b>Video:</b> <a href="https://delta.io/learn/videos/" target="_blank" rel="noopener noreferrer">Delta Lake / Iceberg Concurrency Models</a> — ACID transactions on object storage.</p>
+<p class="detail"><b>Blog:</b> <a href="https://spark.apache.org/docs/latest/running-on-kubernetes.html" target="_blank" rel="noopener noreferrer">Spark on Kubernetes Docs</a> — Compute scaling for writes.</p>
+<p class="detail"><b>Hands-on:</b> Implement a `MERGE INTO` upsert operation in Spark SQL and test idempotent rerun behavior.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> How does Iceberg handle concurrent conflicting writes to the same table?<br>A) Locks the entire table using ZooKeeper<br>B) Uses optimistic concurrency control (OCC) by retrying commits against the latest table metadata version<br>C) Fails the job permanently without retry<br>D) Overwrites the table blindly
+<span class="answer">Answer: B) Uses optimistic concurrency control (OCC) by retrying commits against the latest table metadata version</span>
+<span class="hint">Hint: OCC allows concurrent writes and validates metadata version consistency at commit time.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://iceberg.apache.org/docs/latest/spark-writes/" target="_blank" rel="noopener noreferrer">Iceberg Spark Writes Guide</a></li></ul>
+</div></article>
+
+<article class="day" data-day="18" data-week="w3">
+<div class="head"><input type="checkbox" data-check="18"><h3>Day 18: Iceberg evolution</h3><span class="week">W3</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Schema evolution (rename, drop, add, type promotion) and hidden partitioning.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.confluent.io/resources/online-talk/getting-started-with-apache-kafka-r-and-real-time-data-streaming/" target="_blank" rel="noopener noreferrer">Streaming & Evolution Patterns</a> — Managing schema changes.</p>
+<p class="detail"><b>Blog:</b> <a href="https://iceberg.apache.org/docs/latest/evolution/" target="_blank" rel="noopener noreferrer">Iceberg Schema Evolution Docs</a> — Official reference.</p>
+<p class="detail"><b>Hands-on:</b> Perform zero-copy column renames and partition spec updates on an active Iceberg table.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> What makes Iceberg schema evolution safe and instantaneous?<br>A) It rewrites all underlying Parquet files<br>B) It uses unique column IDs mapped in metadata rather than relying on column position<br>C) It updates the Hive Metastore database schema<br>D) It forbids dropping columns
+<span class="answer">Answer: B) It uses unique column IDs mapped in metadata rather than relying on column position</span>
+<span class="hint">Hint: Field IDs remain constant even if columns are renamed or reordered.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://iceberg.apache.org/docs/latest/evolution/" target="_blank" rel="noopener noreferrer">Iceberg Schema Evolution Docs</a></li></ul>
+</div></article>
+
+<article class="day" data-day="19" data-week="w3">
+<div class="head"><input type="checkbox" data-check="19"><h3>Day 19: Iceberg maintenance</h3><span class="week">W3</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Compaction (rewriteDataFiles), snapshot expiration, and orphan file removal.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.confluent.io/events/kafka-summit-europe-2021/why-kafka-works-the-way-it-does-and-not-some-other-way/" target="_blank" rel="noopener noreferrer">Why Systems Work the Way They Do</a> — Architectural maintenance.</p>
+<p class="detail"><b>Blog:</b> <a href="https://iceberg.apache.org/docs/latest/maintenance/" target="_blank" rel="noopener noreferrer">Iceberg Maintenance Procedures</a> — Official runbook.</p>
+<p class="detail"><b>Hands-on:</b> Run compaction and snapshot expiration procedures via Spark SQL stored procedures.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> Which procedure removes old historical snapshots and frees up storage in Iceberg?<br>A) <code>system.rewrite_data_files</code><br>B) <code>system.expire_snapshots</code><br>C) <code>system.remove_orphan_files</code><br>D) <code>vacuum table</code>
+<span class="answer">Answer: B) <code>system.expire_snapshots</code></span>
+<span class="hint">Hint: Expires snapshots older than a specified timestamp to enable garbage collection.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://iceberg.apache.org/docs/latest/maintenance/" target="_blank" rel="noopener noreferrer">Iceberg Maintenance Procedures</a></li></ul>
+</div></article>
+
+<article class="day" data-day="20" data-week="w3">
+<div class="head"><input type="checkbox" data-check="20"><h3>Day 20: Ozone + Iceberg architecture</h3><span class="week">W3</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Decoupling storage layout (Ozone) from table format metadata (Iceberg) and catalog services.</p>
+<p class="detail"><b>Video:</b> <a href="https://airflow.apache.org/docs/" target="_blank" rel="noopener noreferrer">Airflow Lakehouse Architecture</a> — Orchestration design.</p>
+<p class="detail"><b>Blog:</b> <a href="https://airflow.apache.org/docs/" target="_blank" rel="noopener noreferrer">Airflow Docs</a> — Managing data pipelines.</p>
+<p class="detail"><b>Hands-on:</b> Draw and document the end-to-end data flow from Ozone storage up to Iceberg table abstraction.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> In an Ozone + Iceberg architecture, who is responsible for enforcing ACID semantics?<br>A) Ozone DataNodes<br>B) The Iceberg table format metadata layer and catalog commit protocol<br>C) The S3 Gateway<br>D) Spark executors
+<span class="answer">Answer: B) The Iceberg table format metadata layer and catalog commit protocol</span>
+<span class="hint">Hint: Object storage is append-only/immutable; ACID is managed at the table format metadata layer.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://airflow.apache.org/docs/" target="_blank" rel="noopener noreferrer">Airflow Documentation</a></li></ul>
+</div></article>
+
+<!-- WEEK 4 -->
+<article class="day" data-day="21" data-week="w4">
+<div class="head"><input type="checkbox" data-check="21"><h3>Day 21: CDW + Iceberg materialized views</h3><span class="week">W4</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Analytics serving layer, materialization strategies, and data freshness.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.udemy.com/course/the-ultimate-hands-on-course-to-master-apache-airflow/" target="_blank" rel="noopener noreferrer">Complete Hands-On Airflow Course</a> — Managing analytical workflows.</p>
+<p class="detail"><b>Blog:</b> <a href="https://www.astronomer.io/podcast/whats-new-in-apache-airflow-3-3/" target="_blank" rel="noopener noreferrer">Airflow Podcast</a> — Modern orchestration patterns.</p>
+<p class="detail"><b>Hands-on:</b> Design a Gold-layer materialized view in CDW backed by Iceberg tables.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> What is the primary benefit of building materialized views on top of Iceberg tables?<br>A) Faster queries for BI tools without rewriting underlying base tables<br>B) Automatic generation of source code<br>C) Elimination of object storage costs<br>D) Bypassing the REST catalog
+<span class="answer">Answer: A) Faster queries for BI tools without rewriting underlying base tables</span>
+<span class="hint">Hint: Pre-aggregates data for reporting tools while retaining Iceberg's open format benefits.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://www.astronomer.io/podcast/whats-new-in-apache-airflow-3-3/" target="_blank" rel="noopener noreferrer">Airflow Podcast</a></li></ul>
+</div></article>
+
+<article class="day" data-day="22" data-week="w4">
+<div class="head"><input type="checkbox" data-check="22"><h3>Day 22: Materialized-view operations</h3><span class="week">W4</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Refresh strategies (full vs. incremental), staleness handling, and failure recovery.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.astronomer.io/events/webinars/stopping-bad-data-before-it-breaks-your-airflow-pipelines-video/" target="_blank" rel="noopener noreferrer">Stopping Bad Data in Airflow</a> — Production reliability.</p>
+<p class="detail"><b>Blog:</b> <a href="https://docs.greatexpectations.io/" target="_blank" rel="noopener noreferrer">Great Expectations Documentation</a> — Data validation patterns.</p>
+<p class="detail"><b>Hands-on:</b> Build an Airflow DAG for refreshing materialized views with automated fallback on failure.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> When should you choose a full refresh over an incremental refresh for a materialized view?<br>A) When base table schema changes invalidating incremental logic or data drift occurs<br>B) Never, incremental is always faster<br>C) Every 5 minutes<br>D) When storage is unlimited
+<span class="answer">Answer: A) When base table schema changes invalidating incremental logic or data drift occurs</span>
+<span class="hint">Hint: Full refresh guarantees correctness when state drift or complex updates break incremental state.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://docs.greatexpectations.io/" target="_blank" rel="noopener noreferrer">Great Expectations Docs</a></li></ul>
+</div></article>
+
+<article class="day" data-day="23" data-week="w4">
+<div class="head"><input type="checkbox" data-check="23"><h3>Day 23: Airflow fundamentals</h3><span class="week">W4</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> DAGs, operators, scheduling, task dependencies, retries, and backfills.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.youtube.com/watch?v=4xYPUL7YHJU" target="_blank" rel="noopener noreferrer">Trino & Iceberg Workshop</a> — Orchestration integration.</p>
+<p class="detail"><b>Blog:</b> <a href="https://trino.io/docs/current/connector/iceberg.html" target="_blank" rel="noopener noreferrer">Trino Iceberg Connector Docs</a> — Query integration.</p>
+<p class="detail"><b>Hands-on:</b> Write a multi-task Airflow DAG orchestrating ingestion, Spark processing, and Trino verification.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> What property in Airflow ensures that a DAG run executes safely for past historical dates?<br>A) catchup=True with idempotent tasks<br>B) schedule_interval=None<br>C) retries=0<br>D) concurrency=1
+<span class="answer">Answer: A) catchup=True with idempotent tasks</span>
+<span class="hint">Hint: Backfilling requires catchup=True and tasks designed to be re-run safely.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://trino.io/docs/current/connector/iceberg.html" target="_blank" rel="noopener noreferrer">Trino Iceberg Connector Docs</a></li></ul>
+</div></article>
+
+<article class="day" data-day="24" data-week="w4">
+<div class="head"><input type="checkbox" data-check="24"><h3>Day 24: Airflow + Spark on Kubernetes</h3><span class="week">W4</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Triggering containerized Spark jobs from Airflow using Kubernetes operators.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.astronomer.io/events/webinars/stopping-bad-data-before-it-breaks-your-airflow-pipelines-video/" target="_blank" rel="noopener noreferrer">Airflow Data Quality Webinar</a> — Best practices.</p>
+<p class="detail"><b>Blog:</b> <a href="https://github.com/DataTalksClub/data-engineering-zoomcamp" target="_blank" rel="noopener noreferrer">Data Engineering Zoomcamp</a> — Pipeline architecture.</p>
+<p class="detail"><b>Hands-on:</b> Use `SparkSubmitOperator` in Airflow to dispatch dynamic Spark jobs onto a K8s cluster.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> What is the main benefit of using `SparkSubmitOperator` over running Spark locally within the Airflow worker?<br>A) It offloads heavy compute resource utilization to the Kubernetes cluster<br>B) It removes the need for Airflow connections<br>C) It speeds up Python code execution<br>D) It eliminates network latency
+<span class="answer">Answer: A) It offloads heavy compute resource utilization to the Kubernetes cluster</span>
+<span class="hint">Hint: Keeps Airflow workers lightweight while Spark scales out on K8s pods.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://github.com/DataTalksClub/data-engineering-zoomcamp" target="_blank" rel="noopener noreferrer">Data Engineering Zoomcamp</a></li></ul>
+</div></article>
+
+<article class="day" data-day="25" data-week="w4">
+<div class="head"><input type="checkbox" data-check="25"><h3>Day 25: PII profiling</h3><span class="week">W4</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Data discovery, regex pattern matching, false positive tuning, and quarantine.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.astronomer.io/events/webinars/best-practices-for-running-airflow-at-scale-2025-video/" target="_blank" rel="noopener noreferrer">Airflow at Scale & Observability</a> — Monitoring data governance.</p>
+<p class="detail"><b>Blog:</b> <a href="https://openlineage.io/" target="_blank" rel="noopener noreferrer">OpenLineage Standard</a> — Metadata tracking.</p>
+<p class="detail"><b>Hands-on:</b> Build a Spark profiling job that scans table columns against regex patterns for SSNs, emails, and phone numbers.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> Which standard metadata framework captures column-level data provenance and governance tags?<br>A) OpenLineage<br>B) JDBC<br>C) Parquet Footer<br>D) Netty
+<span class="answer">Answer: A) OpenLineage</span>
+<span class="hint">Hint: OpenLineage provides an open standard for collecting dataset and column lineage.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://openlineage.io/" target="_blank" rel="noopener noreferrer">OpenLineage Standard</a></li></ul>
+</div></article>
+
+<article class="day" data-day="26" data-week="w4">
+<div class="head"><input type="checkbox" data-check="26"><h3>Day 26: Auto-tagging</h3><span class="week">W4</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Automated classification pipelines and integrating tags into Iceberg table properties or catalog metadata.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.youtube.com/watch?v=4xYPUL7YHJU" target="_blank" rel="noopener noreferrer">Trino + Iceberg Workshop</a> — Metadata management.</p>
+<p class="detail"><b>Blog:</b> <a href="https://trino.io/docs/current/connector/iceberg.html" target="_blank" rel="noopener noreferrer">Trino Iceberg Connector</a> — Querying table properties.</p>
+<p class="detail"><b>Hands-on:</b> Write a metadata synchronization script that applies security tags to Iceberg table columns automatically.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> Where can column tags be stored persistently in an Iceberg table?<br>A) Table properties / column documentation metadata<br>B) In temporary environment variables<br>C) Only in Airflow logs<br>D) Inside Parquet compression codecs
+<span class="answer">Answer: A) Table properties / column documentation metadata</span>
+<span class="hint">Hint: Iceberg table metadata supports column comments and custom table properties.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://trino.io/docs/current/connector/iceberg.html" target="_blank" rel="noopener noreferrer">Trino Iceberg Connector Docs</a></li></ul>
+</div></article>
+
+<article class="day" data-day="27" data-week="w4">
+<div class="head"><input type="checkbox" data-check="27"><h3>Day 27: Trino + Iceberg</h3><span class="week">W4</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Distributed SQL querying against Iceberg tables using Trino.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.youtube.com/watch?v=kU2OpgimIdg" target="_blank" rel="noopener noreferrer">Starburst Trino & Iceberg</a> — High-performance interactive analytics.</p>
+<p class="detail"><b>Blog:</b> <a href="https://www.oreilly.com/library/view/high-performance-spark/9781491943199/" target="_blank" rel="noopener noreferrer">High Performance Spark</a> — Analytical query patterns.</p>
+<p class="detail"><b>Hands-on:</b> Query Iceberg snapshot history and time-travel data using Trino SQL syntax (`FOR SYSTEM_TIME AS OF ...`).</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> How do you query an Iceberg table at a specific timestamp in Trino?<br>A) `SELECT * FROM table TIMESTAMP '...'`<br>B) `SELECT * FROM table FOR SYSTEM_TIME AS OF timestamp '<timestamp>'`<br>C) `SELECT * FROM table VERSION AS OF 123`<br>D) `SELECT * FROM table HISTORICAL '...'`
+<span class="answer">Answer: B) `SELECT * FROM table FOR SYSTEM_TIME AS OF timestamp '<timestamp>'`</span>
+<span class="hint">Hint: Trino supports SQL standard temporal table queries for Iceberg.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://www.oreilly.com/library/view/high-performance-spark/9781491943199/" target="_blank" rel="noopener noreferrer">High Performance Spark</a></li></ul>
+</div></article>
+
+<!-- WEEK 5 -->
+<article class="day" data-day="28" data-week="w5">
+<div class="head"><input type="checkbox" data-check="28"><h3>Day 28: Lineage & provenance</h3><span class="week">W5</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> End-to-end traceability connecting NiFi provenance, Spark lineage, and data catalog audit trails.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.youtube.com/watch?v=4xYPUL7YHJU" target="_blank" rel="noopener noreferrer">Trino & Iceberg Workshop</a> — Data lineage tracing.</p>
+<p class="detail"><b>Blog:</b> <a href="https://spark.apache.org/docs/latest/running-on-kubernetes.html" target="_blank" rel="noopener noreferrer">Spark on Kubernetes Docs</a> — Operational metrics.</p>
+<p class="detail"><b>Hands-on:</b> Construct an end-to-end data lineage graph from NiFi ingestion to Trino analytical queries.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> Why is data lineage essential for enterprise lakehouses?<br>A) To audit data flow, debug pipeline failures, and satisfy compliance requirements<br>B) To compress Parquet files<br>C) To speed up Spark shuffles<br>D) To replace Airflow schedulers
+<span class="answer">Answer: A) To audit data flow, debug pipeline failures, and satisfy compliance requirements</span>
+<span class="hint">Hint: Lineage answers "where did this data come from and how was it transformed?"</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://spark.apache.org/docs/latest/running-on-kubernetes.html" target="_blank" rel="noopener noreferrer">Spark on Kubernetes Docs</a></li></ul>
+</div></article>
+
+<article class="day" data-day="29" data-week="w5">
+<div class="head"><input type="checkbox" data-check="29"><h3>Day 29: End-to-end capstone</h3><span class="week">W5</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> Integrating NiFi/CDF → Ozone → Spark/K8s → Iceberg REST → Airflow → Trino into a unified production pipeline.</p>
+<p class="detail"><b>Video:</b> <a href="https://www.youtube.com/results?search_query=Azure+Databricks+end+to+end+data+engineering+project" target="_blank" rel="noopener noreferrer">End-to-End Data Engineering Project</a> — Capstone architecture reference.</p>
+<p class="detail"><b>Blog:</b> <a href="https://github.com/DataTalksClub/data-engineering-zoomcamp" target="_blank" rel="noopener noreferrer">Data Engineering Zoomcamp Capstone Guide</a> — Real-world project patterns.</p>
+<p class="detail"><b>Hands-on:</b> Run the full integrated pipeline, inject corrupt data to test quarantine handling, and verify end-to-end recovery.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> In a robust lakehouse capstone architecture, what happens when a batch processing step fails halfway through?<br>A) The table becomes permanently corrupted<br>B) Iceberg's atomic commit prevents partial data visibility; downstream readers continue seeing the last valid snapshot<br>C) All raw files in Ozone are automatically deleted<br>D) Airflow pauses all pipelines globally
+<span class="answer">Answer: B) Iceberg's atomic commit prevents partial data visibility; downstream readers continue seeing the last valid snapshot</span>
+<span class="hint">Hint: Atomic commits ensure readers never see partial or uncommitted writes.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://github.com/DataTalksClub/data-engineering-zoomcamp" target="_blank" rel="noopener noreferrer">Data Engineering Zoomcamp</a></li></ul>
+</div></article>
+
+<article class="day" data-day="30" data-week="w5">
+<div class="head"><input type="checkbox" data-check="30"><h3>Day 30: Architecture review</h3><span class="week">W5</span></div>
+<div class="body">
+<p class="detail"><b>Concept:</b> System design trade-offs, failure modes, performance benchmarks, and creating Architecture Decision Records (ADRs).</p>
+<p class="detail"><b>Video:</b> <a href="https://iceberg.apache.org/talks/" target="_blank" rel="noopener noreferrer">Iceberg Summit Production Talks</a> — Enterprise architecture reviews.</p>
+<p class="detail"><b>Blog:</b> <a href="https://iceberg.apache.org/rest-catalog-spec/" target="_blank" rel="noopener noreferrer">Target Lakehouse Architecture Specification</a> — Final review guide.</p>
+<p class="detail"><b>Hands-on:</b> Author a comprehensive Architecture Decision Record (ADR) documenting your lakehouse stack, key trade-offs, and failure recovery protocols.</p>
+<p class="detail"><b>Quiz:</b> <strong>MCQ:</strong> What is the primary purpose of an Architecture Decision Record (ADR)?<br>A) To capture important architectural decisions along with their context and trade-offs<br>B) To replace code documentation<br>C) To track employee performance<br>D) To configure Spark executors automatically
+<span class="answer">Answer: A) To capture important architectural decisions along with their context and trade-offs</span>
+<span class="hint">Hint: ADRs provide a historical record of "why" a design choice was made.</span></p>
+<div><b>🎓 Resources</b></div>
+<ul class="resources"><li><a href="https://iceberg.apache.org/talks/" target="_blank" rel="noopener noreferrer">Iceberg Summit Production Talks</a></li><li><a href="https://iceberg.apache.org/rest-catalog-spec/" target="_blank" rel="noopener noreferrer">Target Lakehouse Architecture Spec</a></li></ul>
+</div></article>
+
+</div>
+<script>
+let done=JSON.parse(localStorage.getItem("workplace30resources")||"[]");
+function update(){
+document.querySelectorAll(".day").forEach((c,i)=>{let d=done.includes(i+1);c.classList.toggle("done",d);c.querySelector("input").checked=d});
+let p=Math.round(done.length/30*100);document.getElementById("stats").textContent=`${done.length} / 30 Days Done (${p}%)`;document.getElementById("fill").style.width=p+"%";
+}
+document.addEventListener("change",e=>{if(!e.target.matches("[data-check]"))return;let n=+e.target.dataset.check;done=done.includes(n)?done.filter(x=>x!==n):[...done,n];localStorage.setItem("workplace30resources",JSON.stringify(done));update()});
+function toggleHead(h){let b=h.nextElementSibling,open=b.classList.toggle("open");h.classList.toggle("open",open);h.setAttribute("aria-expanded",open)}
+document.querySelectorAll(".head").forEach(h=>{h.setAttribute("tabindex","0");h.setAttribute("role","button");h.setAttribute("aria-expanded","false")});
+document.addEventListener("click",e=>{let h=e.target.closest(".head");if(h&&!e.target.matches("input"))toggleHead(h)});
+document.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){let h=e.target.closest(".head");if(h){e.preventDefault();toggleHead(h)}}});
+document.querySelector(".tabs").addEventListener("click",e=>{let b=e.target.closest("button");if(!b)return;document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("active"));b.classList.add("active");let f=b.dataset.filter;document.querySelectorAll(".day").forEach(c=>{let n=+c.dataset.day,d=done.includes(n);let show=f==="all"||f===c.dataset.week||(f==="pending"&&!d)||(f==="completed"&&d);c.classList.toggle("hidden",!show)})});
+update();
+</script></body></html>

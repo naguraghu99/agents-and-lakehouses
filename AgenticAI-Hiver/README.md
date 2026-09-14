@@ -44,6 +44,7 @@ AgenticAI-Hiver/
 │   ├── 00-start-here.md
 │   ├── 01-problem-framing.md       ← STEP 1 (start here)
 │   └── decisions.md                ← running 10-15 decision log
+│   └── learning-log.md             ← assistant self-improvement log (corrections go here)
 ├── lakehouse/              ← Bronze→Silver→Gold for Twitter data
 ├── agent/                  ← classify / draft / route agent
 ├── eval/                   ← golden set + harness + judge

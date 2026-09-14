@@ -2,6 +2,69 @@
 
 Total: 7 phases. Each phase = AgenticAI concept + Lakehouse concept + Hiver deliverable.
 Do them in order. Checkboxes are your definition-of-done.
+Corrections and preferences go in `journey/learning-log.md` — the assistant reads it first each session and appends new lessons the same turn they surface.
+
+## Architecture
+
+### Diagram A — Numbered flow (boxed by phase)
+
+```mermaid
+flowchart TB
+    subgraph P0["P0 Baseline"]
+        B0["stack verified"]
+    end
+    subgraph P1["P1 Framing"]
+        F["1 brand + intents + GOOD"]
+    end
+    subgraph P2["P2 Lakehouse"]
+        B["bronze: raw subset"] --> S["silver: clean threads"] --> G["gold: threads + eval_pool"]
+    end
+    subgraph P3["P3 Agent"]
+        A["2 baselines + Agent v0<br/>classify → retrieve → draft/route"]
+    end
+    subgraph P4["P4 Eval"]
+        H["golden 150-250 + metrics/judge"]
+    end
+    subgraph P5["P5 Harden"]
+        HD["streaming + DAG + guardrails"]
+    end
+    subgraph P6["P6 Report"]
+        R["report.md: 6 sections"]
+    end
+
+    SRC["twcs.csv ~3M"] -->|"1. sample"| F
+    F -->|"2. ingest"| B
+    G -->|"3. RAG"| A
+    G -->|"4. label"| H
+    A -->|"5. score"| H
+    H -->|"6. write"| R
+    HD -.-> G
+    HD -.-> A
+```
+
+### Diagram B — System view (no phases)
+
+```mermaid
+flowchart LR
+    subgraph ST["Store"]
+        B2["bronze"] --> S2["silver"] --> G2["gold"]
+    end
+    subgraph AG["Agent"]
+        P["classify → retrieve → draft/route"] -.- LLM["Groq LLM"]
+    end
+    subgraph EV["Eval"]
+        GL["golden"] --> SC["metrics + judge"]
+    end
+
+    CSV["twcs.csv"] --> B2
+    SPARK["Spark + Iceberg + Trino"] -.- ST
+    G2 --> P
+    G2 --> GL
+    P -->|"intent, reply, route"| SC
+    SC --> REP2["report.md"]
+```
+
+A = build order (follow 1–6). B = running system (left → right).
 
 ---
 

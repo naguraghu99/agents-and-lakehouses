@@ -2,6 +2,11 @@
 
 > Learn both worlds by solving **one real problem**: turn ~3M messy Twitter support tweets into a trustworthy AI support agent, built on a real lakehouse.
 
+> This repo is part of a **public, learn-by-building course**. If you are a learner, start at
+> [`/COURSE.md`](../../COURSE.md) (the course homepage) and read `concepts/` — every concept
+> used in the roadmap is explained in plain English there. This folder is the course's *project
+> and syllabus*; `concepts/` is the *teaching layer*.
+
 This repo is **both**:
 1. Your **self-learning course** (documented journey, step-by-step)
 2. Your **Hiver submission repo** (runnable pipeline + eval + report)

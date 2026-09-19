@@ -20,6 +20,7 @@ You then have to convince us the agent is **good enough to trust**. That is the 
 
 - **Primary:** Customer Support on Twitter (Kaggle, `thoughtvector/customer-support-on-twitter`) — ~3M tweets, multi-turn threads, dozens of brands. Real, noisy, and imperfect.
 - **Optional secondary (for intent work only):** Banking77 (Hugging Face `PolyAI/banking77`) — 13k queries, 77 labelled intents.
+  - **Decision: deprioritized.** A single-brand agent gets no payoff from a lab-split intent corpus; the v0 intents are defined from the chosen brand's own data (`journey/01-problem-framing.md`). Cited as evaluated-and-rejected in `journey/decisions.md`, not built.
 - You may use any LLM API or open model.
 
 ---

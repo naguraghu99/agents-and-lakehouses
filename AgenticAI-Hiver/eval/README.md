@@ -10,8 +10,8 @@
 | Path | What |
 |---|---|
 | `golden.csv` | 150–250 hand labels, stratified by v0 intent + confidence. Columns: `text, true_intent, good_reply_traits, should_escalate, notes` |
-| `run.py` | Harness: runs baselines + Agent v0 over `golden.csv`, outputs metrics |
-| `judge.py` | LLM-as-judge: 1–5 rubric on `groundedness, tone-match, actionability, no-hallucination` |
+| `run.py` | Harness: runs baselines + Agent v0 over `golden.csv`, outputs metrics. Also re-checks the retrieval holdout (no golden thread in retrieved contexts). |
+| `judge.py` | LLM-as-judge: 1–5 rubric on `groundedness, tone-match, actionability, no-hallucination`. Uses a DIFFERENT model than the drafter (avoids correlated agreement) — model id stated at top of file. |
 | `agreement.md` | Human re-scores 30–50 judge outputs → Cohen's κ or % agreement |
 | `sampling.md` | Short note: how you sampled + labelled (required by Hiver §3.2) |
 
@@ -19,6 +19,7 @@
 - Intent: accuracy / F1
 - Escalation: precision / recall (recall matters most on angry/safety cases)
 - Reply: BLEU/ROUGE (auto, weak signal) + judge 1–5 (primary) + human agreement (κ)
+- **Retrieval: context hit-rate / recall@k** — did the right supporting thread get retrieved for each golden example? A RAG failure at retrieval otherwise only shows up indirectly in reply scores.
 
 ## Planned structure
 ```
@@ -39,4 +40,5 @@ eval/
 
 ## Rules
 - Source pool comes from `lakehouse/` Gold `eval_pool` — record which silver version → which label → which score (lineage, Week 5 DQ practice).
+- **Leakage:** every `tweet_id` in `golden.csv` is excluded from the agent's retrieval index. Holdout enforced at index build, re-verified in `run.py`.
 - Headline numbers without a "what's misleading" note don't count.

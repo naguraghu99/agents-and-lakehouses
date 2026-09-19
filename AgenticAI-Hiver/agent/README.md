@@ -5,6 +5,8 @@
 ## What this is for
 - Implements the 3 Hiver sub-tasks as 3 graph nodes: **classify → retrieve → draft+route**.
 - Grounds replies in how the brand historically resolved similar issues (RAG over `lakehouse/` Gold `threads` table).
+- **Retrieval leakage guard:** every `tweet_id` in `eval/golden.csv` (and its `eval_pool` source rows) is excluded from the retrieval index in `tools.py` — the agent must never retrieve a golden example's own thread. Enforced at index build, verified in `run.py`.
+- **Grounding scope:** retrieved resolutions are historical *patterns* (twcs.csv ~2017), not current policy. Groundedness measures "follows the brand's documented historical pattern".
 - Compares 3 systems: 2 required baselines + Agent v0 (Hiver report §4.2).
 
 ## Systems
@@ -19,9 +21,9 @@
 agent/
 ├── README.md          ← you are here
 ├── graph.py           ← LangGraph: 3 nodes + edge logic
-├── tools.py           ← search_historic_resolutions, escalate (+ PII redaction in Phase 5)
+├── tools.py           ← search_historic_resolutions (golden-holdout filtered), escalate (+ PII redaction in Phase 5)
 ├── prompts/           ← classifier, drafter, router, judge prompts (reuse techniques from AgenticAI/4.prompt_engineering/)
-└── run.py             ← run all 3 systems over gold/eval_pool, log accuracy + cost/latency
+└── run.py             ← run all 3 systems over gold/eval_pool, log accuracy + cost/latency + retrieval hit-rate
 ```
 
 ## Stack
@@ -29,7 +31,7 @@ agent/
 - Phase 5 additions (not yet): thread-state memory, guardrails (PII/tone/refusal), tracing, cost control.
 
 ## Exit criteria (Phase 3)
-- [ ] All 3 systems run on `eval_pool`; accuracy + cost/latency logged
+- [ ] All 3 systems run on `eval_pool`; accuracy + cost/latency logged; golden holdout verified (no golden thread retrieved)
 - [ ] Journey log `journey/03-agent-v0.md`: prompts pasted, 5 errors pasted, what RAG fixed vs didn't
 
 ## Inputs / Outputs

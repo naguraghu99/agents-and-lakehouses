@@ -8,7 +8,7 @@
 
 ## Required sections (Hiver §3.4)
 1. **Problem framing** — what "good" means for this brand (from `journey/01-problem-framing.md`), and what you chose NOT to build.
-2. **Results vs ≥2 baselines** — Agent v0 vs trivial (keyword/template) vs simple (zero-shot, no RAG): intent accuracy/F1, escalation P/R, reply judge scores + cost/latency.
+2. **Results vs ≥2 baselines** — Agent v0 vs trivial (keyword/template) vs simple (zero-shot, no RAG): intent accuracy/F1, escalation P/R, reply judge scores + retrieval hit-rate + cost/latency. Note the golden-holdout that keeps retrieval honest.
 3. **Failure analysis** — top 5 failure modes with real examples + hypotheses.
 4. **"What is misleading about my headline number?"** — mandatory. Sampling bias, judge bias, metric gaming, small-n, etc.
 5. **What you'd do next** — with one more week.

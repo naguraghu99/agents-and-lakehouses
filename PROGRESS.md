@@ -61,8 +61,8 @@ that is what `COURSE.md` calls "both skill sets, one problem".
 
 Do these in order; a phase's checkboxes are its definition of done.
 
-- [x] Phase 0 — baseline (services installed: Python, Groq, RustFS/Spark/Iceberg)
-- [ ] **Phase 0 exit items** — re-run Week 1 pipeline, re-run `tool_calling.py`, fill `journey/00-start-here.md` *(this gates Phase 1)*
+- [x] Phase 0A/0B — orientation + foundations set up (Python, Groq, RustFS/Spark/Iceberg installed)
+- [ ] **Phase 0 exit items** — 0B: re-run Week 1 pipeline · 0A: re-run `tool_calling.py` · then fill `journey/00-start-here.md` *(this gates Phase 1)*
 - [ ] Phase 1 — problem framing (brand, intents, "good")
 - [ ] Phase 2 — lakehouse ingest: Bronze → Silver → Gold + eval_pool holdout
 - [ ] Phase 3 — baselines + agent v0

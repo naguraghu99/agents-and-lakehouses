@@ -2,7 +2,7 @@
 
 Purpose: prove your baseline before touching Hiver data. This is Phase 0 exit.
 
-## 1. Lakehouse baseline
+## 1. Lakehouse baseline (Phase 0B)
 - [ ] Ran `podman-compose up -d` in `lakehouse/` — all 3 services Up?
 - [ ] Ran `bronze_silver_gold.py` — rows bronze / silver / gold?
   - Bronze: __  Silver: __  Gold: __
@@ -10,7 +10,7 @@ Purpose: prove your baseline before touching Hiver data. This is Phase 0 exit.
 
 > Write here:
 
-## 2. AgenticAI baseline
+## 2. Agentic AI baseline (Phase 0A)
 - [ ] Ran `agentic-ai-40-days/5.tool_calling/tool_calling.py` — what two tools exist?
 - In 3 sentences, explain the `bind_tools` → `tool_calls` → execute → re-invoke loop:
 

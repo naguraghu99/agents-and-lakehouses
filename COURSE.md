@@ -132,7 +132,7 @@ Order matters. Do not skip phases — later work hands you the failure analysis 
 
 | Phase | Quick summary | Concepts you'll meet | Artifact you ship |
 |---|---|---|---|
-| 0 | Baseline: run the toy pipelines | 01–08 (+ infra 26) | filled `journey/00-start-here.md` |
+| 0 | Orientation + two parallel tracks: 0A agentic (tool-calling), 0B lakehouse (medallion) | 0A: 01–08 (+ infra 26) · 0B: 09–11 | filled `journey/00-start-here.md` |
 | 1 | Pick a brand, define intents + "good" | 01–07, 15, 16 | `journey/01-problem-framing.md` |
 | 2 | Real tweets → Bronze → Silver → Gold (label in parallel) | 09–16 (+ infra 27, 28) | `lakehouse/` pipeline + `eval/golden.csv` |
 | 3 | Agent v0: classify → retrieve → draft/route + baselines | 07, 08, 12–16 (+ infra 29, 30) | `agent/graph.py`, baselines |
@@ -142,6 +142,17 @@ Order matters. Do not skip phases — later work hands you the failure analysis 
 
 > Concepts marked *(planned)* are written when the project reaches that phase — the course
 > grows with the build, so nothing goes stale. See the index in `concepts/README.md` for status.
+
+## T-shaped learning — the sequencing rule
+
+**Learn concepts separately, practice them together, deepen them only when the project
+demands it.** Phase 0 is two parallel foundation tracks, not a sequence: Phase 0A gives you a
+runnable tool-calling agent, Phase 0B a runnable Bronze → Silver → Gold pipeline — a shallow,
+provable slice of each, nothing more. Then the Hiver build integrates them and supplies depth
+on demand: the lakehouse weeks 2–5 happen *inside* Phases 2–5, and LangGraph, memory, and
+streaming are learned when the agent phases require them. Do **not** complete either subject
+in isolation before joining the build, and do **not** reach for advanced tooling early —
+everything is a dead end until the project asks for it.
 
 ---
 
@@ -175,6 +186,7 @@ the moment they surface — the assistant reads that file first every session.
 2. Read `hiver/ROADMAP.md` (the syllabus).
 3. Read `concepts/01-what-is-an-llm.md` and `concepts/09-medallion-architecture.md` (the two
    worlds in one page each).
-4. Complete Phase 0, then Phase 1 — no pipeline code before the framing doc is filled.
+4. Complete Phase 0 — **both parallel tracks** 0A (tool-calling agent) and 0B (medallion
+   pipeline) — then Phase 1. No pipeline code before the framing doc is filled.
 
 Track live status at any time in [`PROGRESS.md`](PROGRESS.md).

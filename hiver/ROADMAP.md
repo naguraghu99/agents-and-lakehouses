@@ -13,8 +13,8 @@ Corrections and preferences go in `journey/learning-log.md` — the assistant re
 
 ```mermaid
 flowchart TB
-    subgraph P0["P0 Baseline"]
-        B0["stack verified"]
+    subgraph P0["P0 Orientation"]
+        B0["two parallel tracks:<br/>0A tool-calling agent + 0B medallion"]
     end
     subgraph P1["P1 Framing"]
         F["1 brand + intents + GOOD"]
@@ -71,14 +71,26 @@ A = build order (follow 1–6). B = running system (left → right).
 
 ---
 
-## Phase 0 — Baseline (baseline services installed; exit items NOT yet done)
-**AgenticAI:** Python, LLM params (temp/top-k/top-p), 9 prompting techniques, basic tool calling
-**Lakehouse:** Week 1 medallion on synthetic trades, RustFS+Spark+Iceberg up
-**Concepts first:** [`01`](../concepts/01-what-is-an-llm.md) → [`08`](../concepts/08-tool-calling.md) · infra `26` (containers) written when this phase starts
-**Exit:** `bronze_silver_gold.py` runs; you can explain temp 0 vs 1.0 and Bronze vs Gold
-- [ ] Re-run Week 1 pipeline, screenshot RustFS buckets
+## Phase 0 — Orientation + two parallel foundation tracks (exit items NOT yet done)
+
+Phase 0 is **two tracks run in parallel, not a sequence**: finish the first small artifact in
+each, then move into the integrated build. Deepen each subject later, only when the project
+demands it (T-shaped: shallow in both, deep where needed).
+
+### Phase 0A — Agentic AI foundations
+- Python basics, LLM params (temp/top-k/top-p), 9 prompting techniques, basic tool calling
+- **Use:** `agentic-ai-40-days/` modules 0–5 · concepts [`01`](../concepts/01-what-is-an-llm.md) → [`08`](../concepts/08-tool-calling.md)
 - [ ] Re-run `tool_calling.py`, explain `bind_tools` flow in your own words in `journey/00-start-here.md`
-- [ ] Fill `journey/00-start-here.md` — this gates Phase 1. Do not start framing until the checkboxes above are green.
+
+### Phase 0B — Lakehouse foundations
+- Week 1 medallion on synthetic trades; RustFS+Spark+Iceberg up
+- **Use:** `lakehouse/week-1/` · concepts [`09`](../concepts/09-medallion-architecture.md) → [`11`](../concepts/11-parquet-and-iceberg.md) · infra `26` (containers) written when this phase starts
+- [ ] Re-run Week 1 pipeline, screenshot RustFS buckets
+
+### Phase 0 exit — connect the two tracks
+- [ ] Fill `journey/00-start-here.md`: explain temp 0 vs 1.0 AND Bronze vs Gold — and how the
+      tool-calling agent would retrieve from a Gold table. This gates Phase 1. Do not start
+      framing until the checkboxes above are all green.
 
 ## Phase 1 — Problem Framing (2-3 days) ← START HERE
 **AgenticAI:** intent taxonomy design, task decomposition (classify/draft/route as 3 sub-tasks), what "good" means

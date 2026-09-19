@@ -2,6 +2,11 @@
 
 > Learn both worlds by solving **one real problem**: turn ~3M messy Twitter support tweets into a trustworthy AI support agent, built on a real lakehouse.
 
+> This repo is part of a **public, learn-by-building course**. If you are a learner, start at
+> [`/COURSE.md`](../../COURSE.md) (the course homepage) and read `concepts/` — every concept
+> used in the roadmap is explained in plain English there. This folder is the course's *project
+> and syllabus*; `concepts/` is the *teaching layer*.
+
 This repo is **both**:
 1. Your **self-learning course** (documented journey, step-by-step)
 2. Your **Hiver submission repo** (runnable pipeline + eval + report)
@@ -44,6 +49,7 @@ AgenticAI-Hiver/
 │   ├── 00-start-here.md
 │   ├── 01-problem-framing.md       ← STEP 1 (start here)
 │   └── decisions.md                ← running 10-15 decision log
+│   └── learning-log.md             ← assistant self-improvement log (corrections go here)
 ├── lakehouse/              ← Bronze→Silver→Gold for Twitter data
 ├── agent/                  ← classify / draft / route agent
 ├── eval/                   ← golden set + harness + judge

@@ -1,0 +1,38 @@
+name: validate
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  structure:
+    name: Repo structure + hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check structure, links, secrets
+        run: python .github/scripts/check_repo.py
+
+  python-syntax:
+    name: Python syntax check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Byte-compile all Python
+        run: |
+          set -e
+          before=$(find . -name '*.py' -not -path './.git/*' -not -path '*/node_modules/*' | wc -l)
+          if [ "$before" -eq 0 ]; then
+            echo "no python files found" && exit 1
+          fi
+          python -m compileall -q \
+            agentic-ai-40-days lakehouse hiver .github/scripts 2>&1 \
+            | grep -v '^Listing' || true

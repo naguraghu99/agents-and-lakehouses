@@ -37,6 +37,11 @@ courses for real:
 - "Prove it's good enough to trust" → forces golden sets, LLM-as-judge, baselines, and
   honest failure analysis — the part everyone skips.
 
+> **The dataset is not in this repo.** The Hiver problem uses the Kaggle dataset
+> `thoughtvector/customer-support-on-twitter` (`twcs.csv`, ~3M rows, ~2017). Download it
+> yourself and keep it outside the repo — it is large, historical, and can't be
+> redistributed from here. See [`SETUP.md`](SETUP.md).
+
 So this repo is three things at once: **my learning plan**, **the build**, and **the public
 course that teaches everything used in the build** — as a course for others, one small
 explained concept at a time.
@@ -97,6 +102,15 @@ tells you *what* to build and *why*. The `journey/` logs are the proof that it a
 happened. Nothing is assumed — if a term appears, it either has its own concept file or is
 glossed inline.
 
+**Where `concepts/` ends and the course modules begin:** `concepts/` is the *why* —
+one page each, plain English, for a reader who has never met the idea. The modules in
+`agentic-ai-40-days/` are the *how* — follow-along code, runnable exercises, real output
+(`concepts/` tells you what you're doing, the module shows you running it). If a concept
+confuses you, read it, then run the module it points at in "Where you'll use it".
+
+Setup (Python, Groq key, lakehouse containers) is in [`SETUP.md`](SETUP.md); the single
+status page is [`PROGRESS.md`](PROGRESS.md).
+
 ---
 
 ## How the course works (the loop)
@@ -156,7 +170,11 @@ the moment they surface — the assistant reads that file first every session.
 
 ## Start here
 
-1. Read `hiver/ROADMAP.md` (the syllabus).
-2. Read `concepts/01-what-is-an-llm.md` and `concepts/09-medallion-architecture.md` (the two
+1. Set up your machine — [`SETUP.md`](SETUP.md): Python + one free Groq key (Track A) and
+   the lakehouse containers (Track B).
+2. Read `hiver/ROADMAP.md` (the syllabus).
+3. Read `concepts/01-what-is-an-llm.md` and `concepts/09-medallion-architecture.md` (the two
    worlds in one page each).
-3. Complete Phase 0, then Phase 1 — no pipeline code before the framing doc is filled.
+4. Complete Phase 0, then Phase 1 — no pipeline code before the framing doc is filled.
+
+Track live status at any time in [`PROGRESS.md`](PROGRESS.md).

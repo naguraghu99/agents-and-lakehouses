@@ -11,7 +11,7 @@ Purpose: prove your baseline before touching Hiver data. This is Phase 0 exit.
 > Write here:
 
 ## 2. AgenticAI baseline
-- [ ] Ran `5.tool_calling/tool_calling.py` — what two tools exist?
+- [ ] Ran `agentic-ai-40-days/5.tool_calling/tool_calling.py` — what two tools exist?
 - In 3 sentences, explain the `bind_tools` → `tool_calls` → execute → re-invoke loop:
 
 > Write here:

@@ -77,7 +77,7 @@ queryable tables the agent retrieves from.
 ## The four layers of this repo
 
 ```
-Coding/
+# Agents and Lakehouses (repo root)
 ├── COURSE.md                        ← you are here (this file)
 ├── concepts/                        ← the teaching layer: one file per small concept
 │   ├── README.md                    ← how explainers are written + full index

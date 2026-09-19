@@ -22,7 +22,7 @@ agent/
 ├── README.md          ← you are here
 ├── graph.py           ← LangGraph: 3 nodes + edge logic
 ├── tools.py           ← search_historic_resolutions (golden-holdout filtered), escalate (+ PII redaction in Phase 5)
-├── prompts/           ← classifier, drafter, router, judge prompts (reuse techniques from AgenticAI/4.prompt_engineering/)
+├── prompts/           ← classifier, drafter, router, judge prompts (reuse techniques from agentic-ai-40-days/4.prompt_engineering/)
 └── run.py             ← run all 3 systems over gold/eval_pool, log accuracy + cost/latency + retrieval hit-rate
 ```
 

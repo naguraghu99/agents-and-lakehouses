@@ -55,10 +55,10 @@ back.
 
 ## Where you'll use it
 
-- `AgenticAI/40_day_of_agentic_ai/5.tool_calling/tool_calling.py` — the working example (Groq
+- `agentic-ai-40-days/5.tool_calling/tool_calling.py` — the working example (Groq
   + LangChain `@tool` + `bind_tools`).
-- `AgenticAI-Hiver/agent/tools.py` — the project's real tools, same mechanism.
-- `AgenticAI-Hiver/journey/00-start-here.md` — Phase 0 asks you to explain this loop in 3 sentences.
+- `hiver/agent/tools.py` — the project's real tools, same mechanism.
+- `hiver/journey/00-start-here.md` — Phase 0 asks you to explain this loop in 3 sentences.
 
 ## Check yourself
 

@@ -48,8 +48,8 @@ the task is a lookup.
 
 ## Where you'll use it
 
-- `AgenticAI/40_day_of_agentic_ai/4.prompt_engineering/techniques/chain_of_thought.py`.
-- `AgenticAI-Hiver/eval/judge.py` (planned) — dimension-by-dimension rubric scoring = CoT.
+- `agentic-ai-40-days/4.prompt_engineering/techniques/chain_of_thought.py`.
+- `hiver/eval/judge.py` (planned) — dimension-by-dimension rubric scoring = CoT.
 - Keep it OUT of `agent/prompts/classifier.txt` for the 8-intent classification.
 
 ## Check yourself

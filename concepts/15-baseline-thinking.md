@@ -43,10 +43,10 @@ points and standard care by 12."
 
 ## Where you'll use it
 
-- `AgenticAI-Hiver/agent/README.md` — the Systems table (Baseline A / B / Agent v0).
-- `AgenticAI-Hiver/agent/run.py` — runs all three over the same eval pool; logs accuracy,
+- `hiver/agent/README.md` — the Systems table (Baseline A / B / Agent v0).
+- `hiver/agent/run.py` — runs all three over the same eval pool; logs accuracy,
   cost/latency, retrieval hit-rate.
-- `AgenticAI-Hiver/report/report.md` (planned) — the three-column results table.
+- `hiver/report/report.md` (planned) — the three-column results table.
 
 ## Check yourself
 

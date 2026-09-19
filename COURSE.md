@@ -5,9 +5,9 @@
 This is a public, learn-by-building course. It is made of three things that live in this
 repository:
 
-1. **A 40-day Agentic AI course** — `AgenticAI/40_day_of_agentic_ai/`
-2. **A Lakehouse course** — `lakehouse-learning/`
-3. **A real problem to solve with both** — the OpenHiver SDE take-home — `AgenticAI-Hiver/`
+1. **A 40-day Agentic AI course** — `agentic-ai-40-days/`
+2. **A Lakehouse course** — `lakehouse/`
+3. **A real problem to solve with both** — the OpenHiver SDE take-home — `hiver/`
 
 Every small concept you meet along the way is explained in plain English in `concepts/`,
 with no jargon left unexplained. If you are a beginner, that layer is for you.
@@ -64,7 +64,7 @@ queryable tables the agent retrieves from.
 - **You.** If you are doing this course, you are learning both skill sets from scratch.
 - **Target reader of this course:** someone who knows *basic* Python (variables, loops,
   functions, dicts/lists) and nothing else about AI or data engineering. If you don't have
-  that yet, do `AgenticAI/40_day_of_agentic_ai/0.python_basics/` first.
+  that yet, do `agentic-ai-40-days/0.python_basics/` first.
 - **No GPU, no big infra.** Everything runs on a laptop with free/cheap APIs and containers.
 
 ---
@@ -78,14 +78,14 @@ Coding/
 │   ├── README.md                    ← how explainers are written + full index
 │   └── NN-name.md                   ← plain-English explainers, numbered in order of use
 │
-├── AgenticAI/                       ← your 40-day agentic AI course
-│   └── 40_day_of_agentic_ai/
-│       ├── 0.python_basics/  …  5.tool_calling/   (days -3 → 5)
+├── agentic-ai-40-days/               ← the 40-day agentic AI course (synced from syedjaferk)
+│   ├── 0.python_basics/  …  5.tool_calling/   (days -3 → 5)
+│   └── 7.simple_rag/ … 9.data_validation/     (latest sync, 2026-09)
 │
-├── lakehouse-learning/              ← your lakehouse course
+├── lakehouse/              ← your lakehouse course
 │   └── week-1/  …  week-5/         (week 1 done, rest planned)
 │
-└── AgenticAI-Hiver/                 ← the build = the course's project
+└── hiver/                 ← the build = the course's project
     ├── ROADMAP.md                    ← the 7-phase plan (this is the course's syllabus)
     ├── problem_statement.md          ← the OpenHiver assignment
     ├── journey/                      ← learning journals (the evidence trail)
@@ -101,7 +101,7 @@ glossed inline.
 
 ## How the course works (the loop)
 
-For each phase in `AgenticAI-Hiver/ROADMAP.md`:
+For each phase in `hiver/ROADMAP.md`:
 
 1. **Read the concepts** linked for that phase (`concepts/` — plain English, a few minutes each).
 2. **Build the thing** the phase describes (small, runnable, subsampled).
@@ -118,10 +118,10 @@ Order matters. Do not skip phases — later work hands you the failure analysis 
 
 | Phase | Quick summary | Concepts you'll meet | Artifact you ship |
 |---|---|---|---|
-| 0 | Baseline: run the toy pipelines | 01–08 | filled `journey/00-start-here.md` |
+| 0 | Baseline: run the toy pipelines | 01–08 (+ infra 26) | filled `journey/00-start-here.md` |
 | 1 | Pick a brand, define intents + "good" | 01–07, 15, 16 | `journey/01-problem-framing.md` |
-| 2 | Real tweets → Bronze → Silver → Gold (label in parallel) | 09–16 | `lakehouse/` pipeline + `eval/golden.csv` |
-| 3 | Agent v0: classify → retrieve → draft/route + baselines | 07, 08, 12–16 | `agent/graph.py`, baselines |
+| 2 | Real tweets → Bronze → Silver → Gold (label in parallel) | 09–16 (+ infra 27, 28) | `lakehouse/` pipeline + `eval/golden.csv` |
+| 3 | Agent v0: classify → retrieve → draft/route + baselines | 07, 08, 12–16 (+ infra 29, 30) | `agent/graph.py`, baselines |
 | 4 | Golden set + eval harness + judge | 16–21 (planned) | `eval/run.py` + reproducible numbers |
 | 5 | Harden: guardrails, memory, DAG, streaming | 22–25 (planned) | hardened agent + `journey/05-harden.md` |
 | 6 | Report + publish | — | `report/report.md` + public repo |
@@ -147,16 +147,16 @@ Order matters. Do not skip phases — later work hands you the failure analysis 
 - **40-day Agentic AI course:** days -3 → 5 done (basics → tool calling); rests on the roadmap.
 - **Lakehouse course:** week 1 done (synthetic); weeks 2–5 are completed *inside* the Hiver
   build (this is the point).
-- **The build:** Phase 0 exit items pending (journey templates empty). See `AgenticAI-Hiver/ROADMAP.md`.
+- **The build:** Phase 0 exit items pending (journey templates empty). See `hiver/ROADMAP.md`.
 
-Corrections, wrong guesses, and preferences are logged in `AgenticAI-Hiver/journey/learning-log.md`
+Corrections, wrong guesses, and preferences are logged in `hiver/journey/learning-log.md`
 the moment they surface — the assistant reads that file first every session.
 
 ---
 
 ## Start here
 
-1. Read `AgenticAI-Hiver/ROADMAP.md` (the syllabus).
+1. Read `hiver/ROADMAP.md` (the syllabus).
 2. Read `concepts/01-what-is-an-llm.md` and `concepts/09-medallion-architecture.md` (the two
    worlds in one page each).
 3. Complete Phase 0, then Phase 1 — no pipeline code before the framing doc is filled.

@@ -74,7 +74,7 @@ A = build order (follow 1–6). B = running system (left → right).
 ## Phase 0 — Baseline (baseline services installed; exit items NOT yet done)
 **AgenticAI:** Python, LLM params (temp/top-k/top-p), 9 prompting techniques, basic tool calling
 **Lakehouse:** Week 1 medallion on synthetic trades, RustFS+Spark+Iceberg up
-**Concepts first:** [`01`](../concepts/01-what-is-an-llm.md) → [`08`](../concepts/08-tool-calling.md)
+**Concepts first:** [`01`](../concepts/01-what-is-an-llm.md) → [`08`](../concepts/08-tool-calling.md) · infra `26` (containers) written when this phase starts
 **Exit:** `bronze_silver_gold.py` runs; you can explain temp 0 vs 1.0 and Bronze vs Gold
 - [ ] Re-run Week 1 pipeline, screenshot RustFS buckets
 - [ ] Re-run `tool_calling.py`, explain `bind_tools` flow in your own words in `journey/00-start-here.md`
@@ -95,7 +95,7 @@ A = build order (follow 1–6). B = running system (left → right).
 **AgenticAI:** (supporting) data prep for LLM — thread reconstruction, cleaning for prompts
 **Lakehouse:** Weeks 2-3 in practice: Parquet, Iceberg tables, partitioning, MERGE/dedup
 **Hiver:** runnable pipeline foundation (§3.1)
-**Concepts first:** [`09`](../concepts/09-medallion-architecture.md) → [`11`](../concepts/11-parquet-and-iceberg.md), [`16`](../concepts/16-golden-set-and-sampling.md)
+**Concepts first:** [`09`](../concepts/09-medallion-architecture.md) → [`11`](../concepts/11-parquet-and-iceberg.md), [`16`](../concepts/16-golden-set-and-sampling.md) · infra `27`–`28` (object store, Spark vs pandas) written when this phase starts
 - `lakehouse/` structure:
   - `bronze/` = raw twcs.csv subset (1 brand, immutable, partitioned by `created_at` date)
   - `silver/` = cleaned + thread-reconstructed (join `tweet_id`↔`response_tweet_id`/`in_response_to_tweet_id`), deduped, language-filtered
@@ -111,7 +111,7 @@ A = build order (follow 1–6). B = running system (left → right).
 **AgenticAI:** LangGraph agent with 3 nodes (classify → retrieve → draft+route), few-shot + RAG grounding
 **Lakehouse:** Gold tables as retrieval source (brand's historic resolutions)
 **Hiver:** §4.2 baselines (trivial + simple) — required
-**Concepts first:** [`07`](../concepts/07-agent-loop.md), [`12`](../concepts/12-rag.md) → [`16`](../concepts/16-golden-set-and-sampling.md)
+**Concepts first:** [`07`](../concepts/07-agent-loop.md), [`12`](../concepts/12-rag.md) → [`16`](../concepts/16-golden-set-and-sampling.md) · infra `29`–`30` (embeddings/vector, REST) written when this phase starts
 - Baseline A (trivial): keyword/regex classifier + template reply + always-escalate router
 - Baseline B (simple): zero-shot Groq classifier + prompt-only drafter (no retrieval)
 - Agent v0: LangGraph, tools = `search_historic_resolutions(thread)` (over Gold, with `eval_pool` IDs held out — never over a golden example's own thread), `escalate(reason)`; prompts reuse your `4.prompt_engineering` techniques (start: few-shot + instruction-based, temp 0)

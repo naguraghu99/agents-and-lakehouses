@@ -3,7 +3,7 @@
 Purpose: prove your baseline before touching Hiver data. This is Phase 0 exit.
 
 ## 1. Lakehouse baseline
-- [ ] Ran `podman-compose up -d` in `lakehouse-learning/` — all 3 services Up?
+- [ ] Ran `podman-compose up -d` in `lakehouse/` — all 3 services Up?
 - [ ] Ran `bronze_silver_gold.py` — rows bronze / silver / gold?
   - Bronze: __  Silver: __  Gold: __
 - In 2 sentences, why is Bronze append-only?

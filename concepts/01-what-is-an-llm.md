@@ -38,10 +38,10 @@ reality, and enough structure that it can't confidently bluff.
 
 ## Where you'll use it
 
-- `AgenticAI/40_day_of_agentic_ai/3.llm_and_terminology/details.md` — the course's own notes.
-- `AgenticAI/40_day_of_agentic_ai/4.prompt_engineering/groq_client.py` — the client that talks
+- `agentic-ai-40-days/3.llm_and_terminology/details.md` — the course's own notes.
+- `agentic-ai-40-days/4.prompt_engineering/groq_client.py` — the client that talks
   to the LLM (Groq, very fast, free tier).
-- `AgenticAI-Hiver/agent/README.md` — the LLM does classify → draft → route inside the agent.
+- `hiver/agent/README.md` — the LLM does classify → draft → route inside the agent.
 
 ## Check yourself
 

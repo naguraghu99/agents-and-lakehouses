@@ -126,7 +126,7 @@ sudo apt update && sudo apt install -y podman podman-compose
 
 ```bash
 # From the project root
-cd lakehouse-learning
+cd lakehouse
 podman-compose up -d
 ```
 

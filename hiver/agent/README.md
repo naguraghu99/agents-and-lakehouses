@@ -27,7 +27,7 @@ agent/
 ```
 
 ## Stack
-- Groq (`openai/gpt-oss-120b`) + LangChain `@tool` / `bind_tools` + LangGraph (see `AgenticAI/40_day_of_agentic_ai/5.tool_calling/tool_calling.py`).
+- Groq (`openai/gpt-oss-120b`) + LangChain `@tool` / `bind_tools` + LangGraph (see `agentic-ai-40-days/5.tool_calling/tool_calling.py`).
 - Phase 5 additions (not yet): thread-state memory, guardrails (PII/tone/refusal), tracing, cost control.
 
 ## Exit criteria (Phase 3)

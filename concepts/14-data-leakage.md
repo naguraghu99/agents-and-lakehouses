@@ -53,10 +53,10 @@ number is a "proof-of-trust" (Hiver's exact words), never let the exam paper car
 
 ## Where you'll use it
 
-- `AgenticAI-Hiver/ROADMAP.md` Phase 2 — the holdout rule definition.
-- `AgenticAI-Hiver/agent/tools.py` — the filter; `AgenticAI-Hiver/eval/run.py` — the verification.
-- `AgenticAI-Hiver/journey/decisions.md` #1 — the recorded decision.
-- `AgenticAI-Hiver/report/README.md` — the results line notes the holdout keeps retrieval honest.
+- `hiver/ROADMAP.md` Phase 2 — the holdout rule definition.
+- `hiver/agent/tools.py` — the filter; `hiver/eval/run.py` — the verification.
+- `hiver/journey/decisions.md` #1 — the recorded decision.
+- `hiver/report/README.md` — the results line notes the holdout keeps retrieval honest.
 
 ## Check yourself
 

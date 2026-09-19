@@ -46,11 +46,11 @@ everything upfront.
 
 ## Where you'll use it
 
-- `AgenticAI-Hiver/agent/graph.py` — LangGraph builds this loop as 3 named nodes that you can
+- `hiver/agent/graph.py` — LangGraph builds this loop as 3 named nodes that you can
   see, stop, and inspect individually.
-- `AgenticAI-Hiver/agent/tools.py` — the two tools above (with the golden-holdout filter from
+- `hiver/agent/tools.py` — the two tools above (with the golden-holdout filter from
   concept 14).
-- `AgenticAI-Hiver/ROADMAP.md` Phase 3 — the whole phase is "build the loop."
+- `hiver/ROADMAP.md` Phase 3 — the whole phase is "build the loop."
 
 ## Check yourself
 

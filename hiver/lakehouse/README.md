@@ -5,7 +5,7 @@
 ## What this is for
 - Ingest **1 brand subset only** (~20–50k tweets max, never full 3M) into a medallion lakehouse.
 - Produces clean, threaded conversations the agent can retrieve from, and a stratified pool for golden labelling.
-- Reuses the `bronze_silver_gold.py` pattern from `lakehouse-learning/week-1/` — but on real messy data, with Iceberg (not just Parquet).
+- Reuses the `bronze_silver_gold.py` pattern from `lakehouse/week-1/` — but on real messy data, with Iceberg (not just Parquet).
 
 ## Layers
 | Layer | Content | Properties |
@@ -38,4 +38,4 @@ lakehouse/
 ## Rules
 - Subsample always. Never load full 3M rows locally — profile with `df.sample(frac=0.01)`.
 - Bronze is append-only — fixes go in Silver (see `journey/00-start-here.md`).
-- Stack: RustFS (S3) + Spark + Iceberg REST via `podman-compose` (same as `lakehouse-learning/`).
+- Stack: RustFS (S3) + Spark + Iceberg REST via `podman-compose` (same as `lakehouse/`).

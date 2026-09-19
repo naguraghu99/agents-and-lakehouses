@@ -45,10 +45,10 @@ booth — know the difference so you can defend why you skipped the fancier ones
 
 ## Where you'll use it
 
-- `AgenticAI/40_day_of_agentic_ai/4.prompt_engineering/techniques/react.py`,
+- `agentic-ai-40-days/4.prompt_engineering/techniques/react.py`,
   `tree_of_thought.py`, `self_consistency.py`.
-- `AgenticAI-Hiver/agent/graph.py` (Phase 3) — the ReAct-shaped classify → retrieve → draft cycle.
-- `AgenticAI-Hiver/journey/decisions.md` — record "no ToT/self-consistency in the live agent: cost".
+- `hiver/agent/graph.py` (Phase 3) — the ReAct-shaped classify → retrieve → draft cycle.
+- `hiver/journey/decisions.md` — record "no ToT/self-consistency in the live agent: cost".
 
 ## Check yourself
 

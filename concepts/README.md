@@ -26,7 +26,7 @@ Every file follows the same shape so readers always know where to look:
 ## Check yourself      — 2–3 questions you should be able to answer in your own words
 ```
 
-Rules the writer follows (self-enforced, logged in `AgenticAI-Hiver/journey/learning-log.md`):
+Rules the writer follows (self-enforced, logged in `hiver/journey/learning-log.md`):
 
 1. **No unexplained jargon.** Every technical term is either the file's main subject, or is
    linked to another concept file, or is glossed in parentheses on first use.
@@ -68,11 +68,21 @@ Rules the writer follows (self-enforced, logged in `AgenticAI-Hiver/journey/lear
 | 23 | Memory and thread state | 5 | planned |
 | 24 | DAG orchestration (Airflow) | 5 | planned |
 | 25 | Lineage and data quality (DQ) checks | 4/5 | planned |
+| 26 | Containers for local data infra (podman, RustFS) | 0 | planned |
+| 27 | Object stores and blob paths (`s3a://`) | 2 | planned |
+| 28 | Spark vs pandas: distributed data at scale | 2 | planned |
+| 29 | Embeddings and vector search | 3 | planned |
+| 30 | REST APIs and web servers (FastAPI/uvicorn) | 3 | planned |
+
+Numbering note: `01–25` are the learning ladder (model → build → eval → harden).
+`26–30` are standalone *infrastructure* concepts — no prerequisites, met during the build
+days of Phases 0, 2 and 3, so they sit at the end rather than in the middle of the ladder.
+Same rule applies: written when the phase that uses them starts.
 
 Status definitions:
 
 - `done` — fully written and linked; if you spot a gap in one, log it in
-  `AgenticAI-Hiver/journey/learning-log.md`.
+  `hiver/journey/learning-log.md`.
 - `planned` — on the syllabus, will be written when its phase starts (rule 4 above).
 
 ---
@@ -83,3 +93,5 @@ Status definitions:
 - **Data person here?** Jump to 09, then 10–11, then back to 12–14 (RAG sits on both worlds).
 - **Building already?** The ROADMAP phase tells you which numbers to read before you build
   that phase's deliverable.
+- **Hitting an infra term during a build day** (s3a://, Spark, containers, embeddings)?
+  Read the relevant one of `26–30` — each is standalone, no ladder needed.

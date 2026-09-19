@@ -26,7 +26,7 @@ never touch Bronze.
 - It **forces honest auditing**: the `checks.sql` row counts (bronze→silver→gold, % dropped +
   why) are only meaningful because the layers are separated — you can see exactly where rows
   vanish.
-- It makes the earlier synthetic exercise real: `lakehouse-learning/week-1/bronze_silver_gold.py`
+- It makes the earlier synthetic exercise real: `lakehouse/week-1/bronze_silver_gold.py`
   ran on clean fake trades; Phase 2 runs the same shape on messy tweets where most of the
   work is *surviving the Silver step* (see concept 10 for why).
 
@@ -41,9 +41,9 @@ garbage bag directly in front of the judge; you show them the Gold exhibit and c
 
 ## Where you'll use it
 
-- `lakehouse-learning/week-1/` — the working synthetic example (RustFS + Spark + Iceberg).
-- `AgenticAI-Hiver/lakehouse/README.md` — this project's bronze/silver/gold spec.
-- `AgenticAI-Hiver/ROADMAP.md` Phase 2 — the build, with row-count proof in `journey/02-lakehouse-ingest.md`.
+- `lakehouse/week-1/` — the working synthetic example (RustFS + Spark + Iceberg).
+- `hiver/lakehouse/README.md` — this project's bronze/silver/gold spec.
+- `hiver/ROADMAP.md` Phase 2 — the build, with row-count proof in `journey/02-lakehouse-ingest.md`.
 - `concepts/10` (append-only), `concepts/11` (Parquet/Iceberg) — the mechanics inside each layer.
 
 ## Check yourself

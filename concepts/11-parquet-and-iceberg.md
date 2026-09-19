@@ -52,10 +52,10 @@ catalogue; you never dig through volumes blind.
 
 ## Where you'll use it
 
-- `lakehouse-learning/week-1/` — the synthetic start (Parquet; Iceberg catalog in compose).
-- `AgenticAI-Hiver/lakehouse/to_silver.py` / `to_gold.py` — MERGE-based thread reconstruction on
+- `lakehouse/week-1/` — the synthetic start (Parquet; Iceberg catalog in compose).
+- `hiver/lakehouse/to_silver.py` / `to_gold.py` — MERGE-based thread reconstruction on
   Iceberg.
-- `AgenticAI-Hiver/ROADMAP.md` Phase 2 & 5 — the Iceberg upgrade and later compaction/snapshot expiry.
+- `hiver/ROADMAP.md` Phase 2 & 5 — the Iceberg upgrade and later compaction/snapshot expiry.
 
 ## Check yourself
 

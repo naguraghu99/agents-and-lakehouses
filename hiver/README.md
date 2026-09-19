@@ -13,12 +13,12 @@ This repo is **both**:
 
 ## The Three Pieces (analyzed)
 
-**1. Your AgenticAI course** (`/AgenticAI/40_day_of_agentic_ai/`):
+**1. Your AgenticAI course** (`/agentic-ai-40-days/`):
 - Done: Python basics → data structures → LLM terminology (`details.md`) → prompt engineering (9 techniques: zero/few-shot, CoT, ReAct, ToT, self-consistency + CRISP/RICE frameworks via `groq_client.py`) → tool calling (`tool_calling.py` with LangChain `@tool` + `bind_tools` on Groq `openai/gpt-oss-120b`)
 - Stack: Groq + LangChain + LangGraph (installed, not yet used)
 - Missing for Hiver: agents/graphs, memory, RAG/grounding, eval/LLM-as-judge, guardrails/routing, tracing
 
-**2. Your Lakehouse roadmap** (`/lakehouse-learning/`):
+**2. Your Lakehouse roadmap** (`/lakehouse/`):
 - Week 1 DONE + working: RustFS (S3) + Spark + Iceberg REST via podman-compose, medallion `bronze_silver_gold.py` on synthetic trades
 - Week 2-5 planned but empty (README-only): W2 Parquet/Iceberg/time-travel → W3 streaming/partitioning/MERGE → W4 Airflow/Trino/maintenance → W5 DQ/governance/lineage
 - Gap: never used on *real messy data* yet
@@ -41,7 +41,7 @@ Follow `ROADMAP.md` in order. Each step has:
 Do not skip the journal. That *is* the GitHub course.
 
 ```
-AgenticAI-Hiver/
+hiver/
 ├── README.md               ← you are here
 ├── ROADMAP.md              ← full 7-phase plan
 ├── problem_statement.md    ← original brief

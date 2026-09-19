@@ -37,11 +37,11 @@ RAG is the trick of "fetch from the warehouse only the parts you put on the benc
 
 ## Where you'll use it
 
-- `AgenticAI/40_day_of_agentic_ai/4.prompt_engineering/contextual_prompting.py` — a technique
+- `agentic-ai-40-days/4.prompt_engineering/contextual_prompting.py` — a technique
   built entirely around what context, and how much, to include.
-- `AgenticAI-Hiver/agent/tools.py` — `search_historic_resolutions` returns a *small* number of
+- `hiver/agent/tools.py` — `search_historic_resolutions` returns a *small* number of
   threads precisely because the window is finite.
-- `AgenticAI-Hiver/ROADMAP.md` Phase 3 — "accuracy + cost/latency logged" per system.
+- `hiver/ROADMAP.md` Phase 3 — "accuracy + cost/latency logged" per system.
 
 ## Check yourself
 

@@ -78,7 +78,8 @@ queryable tables the agent retrieves from.
 
 ```
 # Agents and Lakehouses (repo root)
-├── COURSE.md                        ← you are here (this file)
+├── COURSE.md                        ← this file: orientation (why, rules, how the course works)
+│                                    ← daily front door: hiver/weekly-plan.html
 ├── concepts/                        ← the teaching layer: one file per small concept
 │   ├── README.md                    ← how explainers are written + full index
 │   └── NN-name.md                   ← plain-English explainers, numbered in order of use
@@ -91,6 +92,7 @@ queryable tables the agent retrieves from.
 │   └── week-1/  …  week-5/         (week 1 done, rest planned)
 │
 └── hiver/                 ← the build = the course's project
+    ├── weekly-plan.html                   ← course front door (week-by-week schedule, concepts linked)
     ├── ROADMAP.md                    ← the 7-phase plan (this is the course's syllabus)
     ├── problem_statement.md          ← the OpenHiver assignment
     ├── journey/                      ← learning journals (the evidence trail)
@@ -183,10 +185,14 @@ the moment they surface — the assistant reads that file first every session.
 
 1. Set up your machine — [`SETUP.md`](SETUP.md): Python + one free Groq key (Track A) and
    the lakehouse containers (Track B).
-2. Read `hiver/ROADMAP.md` (the syllabus).
-3. Read `concepts/01-what-is-an-llm.md` and `concepts/09-medallion-architecture.md` (the two
+2. Open `hiver/weekly-plan.html` — **the course's front door**: a week-by-week schedule
+   (phase → weeks → concepts with links → files to run → exit checkboxes) that tells you what
+   to complete each day on a ~1 hour/day pace, from both agentic AI and lakehouse, all the way
+   to the Hiver submission.
+3. Read `hiver/ROADMAP.md` (the syllabus the schedule follows).
+4. Read `concepts/01-what-is-an-llm.md` and `concepts/09-medallion-architecture.md` (the two
    worlds in one page each).
-4. Complete Phase 0 — **both parallel tracks** 0A (tool-calling agent) and 0B (medallion
+5. Complete Phase 0 — **both parallel tracks** 0A (tool-calling agent) and 0B (medallion
    pipeline) — then Phase 1. No pipeline code before the framing doc is filled.
 
 Track live status at any time in [`PROGRESS.md`](PROGRESS.md).

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hiver — Week-by-Week Learning Plan (Agentic AI + Lakehouse)</title>
+<style>
+  :root{
+    --ink:#1a2332; --muted:#5b6b80; --line:#dde3ec; --bg:#f6f8fb;
+    --accent:#2f6fed; --ok:#1c8b4c; --warn:#b45309; --card:#ffffff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font:15px/1.6 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+  header{background:linear-gradient(120deg,#13233f,#1f4172);color:#fff;padding:28px 5vw 22px}
+  header h1{margin:0 0 6px;font-size:26px}
+  header p{margin:2px 0;color:#c9d6ec}
+  main{max-width:1080px;margin:0 auto;padding:24px 5vw 60px}
+  h2{font-size:21px;margin:36px 0 10px;border-bottom:2px solid var(--line);padding-bottom:6px}
+  h3{font-size:16px;margin:0 0 6px;color:var(--accent)}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin:14px 0}
+  .legend span b{color:var(--ink)}
+  .note{background:#fff8ec;border:1px solid #f0d9ab;border-left:4px solid var(--warn);border-radius:6px;padding:12px 14px;margin:14px 0}
+  .note b{color:var(--warn)}
+  .cards{display:grid;gap:16px}
+  .week{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;box-shadow:0 1px 2px rgba(20,40,80,.05)}
+  .week .top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .week .goal{color:var(--muted);font-size:13px;margin-top:2px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:12px}
+  @media(max-width:760px){.grid3{grid-template-columns:1fr}}
+  .span{background:#f2f5fa;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:13.5px}
+  .span h4{margin:0 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  .span ul{margin:4px 0;padding-left:18px}
+  .span li{margin-bottom:3px}
+  .phase{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-top:14px}
+  .phase .meta{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;margin:6px 0 10px}
+  .pill{background:#eaf0fb;color:var(--accent);border-radius:99px;padding:2px 10px;font-weight:600}
+  .pill.w{background:#e8f6ee;color:var(--ok)}
+  .pill.o{background:#fdf0e0;color:var(--warn)}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .concepts{list-style:none;padding:0;margin:8px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+  .concepts li{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:3px 10px;font-size:13px}
+  .concepts .planned{color:var(--muted);font-style:italic}
+  .files{margin:10px 0 0;font-size:13.5px}
+  .files code{background:#eef1f6;padding:1px 6px;border-radius:4px;font-size:12.5px}
+  .check{list-style:none;padding:0;margin:8px 0 0;font-size:13.5px}
+  .check li{padding:3px 0 3px 26px;position:relative}
+  .check li::before{content:"☐";position:absolute;left:0;color:var(--accent)}
+  .check li.done::before{content:"☑";color:var(--ok)}
+  footer{margin-top:40px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:14px}
+  .track{font-weight:600}
+  .ttl{display:inline-block;min-width:120px}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Hiver — Solve the OpenHiver SDE take&#8209;home</h1>
+  <p>One problem, two skills: Agentic AI + Data Lakehouse, learned week by week.</p>
+  <p>Pace: <b>~1 hour/day</b> · This file is the course's <b>front door</b> (the week-by-week schedule) · Follows <a href="ROADMAP.md" style="color:#9db8e8">hiver/ROADMAP.md</a> · Status ledger: <a href="../PROGRESS.md" style="color:#9db8e8">PROGRESS.md</a> · Want the pitch, rules, and setup first? <a href="../COURSE.md" style="color:#9db8e8">COURSE.md</a> → <a href="../SETUP.md" style="color:#9db8e8">SETUP.md</a></p>
+</header>
+
+<main>
+
+<div class="note">
+  <b>Two sacred rules (from OpenHiver)</b> — every week keeps them in sight:
+  1) a clean clone must reproduce the headline numbers in <b>&lt;15 minutes</b> (use tiny, subsampled
+  data);  2) every headline number carries a <b>"what's misleading about this?"</b> note.
+  Exit checkboxes are the definition of "done" — a week isn't done until its boxes are ticked and
+  its <code>journey/0X-*.md</code> journal is written.
+</div>
+
+<div class="legend">
+  <span><b>Agentic AI:</b> <a href="../agentic-ai-40-days/">modules 0–9</a></span>
+  <span><b>Lakehouse:</b> <a href="../lakehouse/">weeks 1–5</a></span>
+  <span><b>The build:</b> <a href="ROADMAP.md">phases 0–6</a></span>
+  <span><b>Teaching:</b> <a href="../concepts/README.md">concepts 01–30</a></span>
+</div>
+
+<h2>The shape of the plan</h2>
+<p>
+  <b>T-shaped learning.</b> You never "finish" one subject before starting the other — Phase&#8209;0
+  gives you a shallow, provable slice of <i>both</i> (tool calling + a medallion pipeline), then the
+  Hiver build integrates them and supplies depth on demand. Lakehouse weeks 2–5 happen <i>inside</i>
+  Hiver phases 2–5; LangGraph (agentic module 6) is learned <i>inside</i> phase 3. Concepts are
+  read at the moment their phase uses them (never before — that's the course rule), so concept files
+  marked <i>planned</i> are linked to the index: they get written when the phase starts.
+</p>
+<table style="border-collapse:collapse;width:100%;font-size:13.5px">
+  <tr style="background:#eef1f6">
+    <th style="text-align:left;padding:6px 8px;border:1px solid var(--line)">Phase</th>
+    <th style="text-align:left;padding:6px 8px;border:1px solid var(--line)">Weeks</th>
+    <th style="text-align:left;padding:6px 8px;border:1px solid var(--line)">Name</th>
+    <th style="text-align:left;padding:6px 8px;border:1px solid var(--line)">What you ship</th>
+  </tr>
+  <tr><td style="padding:6px 8px;border:1px solid var(--line)">0</td><td style="padding:6px 8px;border:1px solid var(--line)">W1</td><td style="padding:6px 8px;border:1px solid var(--line)">Orientation (two parallel tracks)</td><td style="padding:6px 8px;border:1px solid var(--line)">filled <code>journey/00-start-here.md</code></td></tr>
+  <tr><td style="padding:6px 8px;border:1px solid var(--line)">1</td><td style="padding:6px 8px;border:1px solid var(--line)">W1–W2</td><td style="padding:6px 8px;border:1px solid var(--line)">Problem framing</td><td style="padding:6px 8px;border:1px solid var(--line)"><code>journey/01-problem-framing.md</code></td></tr>
+  <tr><td style="padding:6px 8px;border:1px solid var(--line)">2</td><td style="padding:6px 8px;border:1px solid var(--line)">W2–W4</td><td style="padding:6px 8px;border:1px solid var(--line)">Lakehouse ingest (Bronze→Silver→Gold)</td><td style="padding:6px 8px;border:1px solid var(--line)">real pipeline + <code>gold/eval_pool.csv</code></td></tr>
+  <tr><td style="padding:6px 8px;border:1px solid var(--line)">3</td><td style="padding:6px 8px;border:1px solid var(--line)">W4–W6</td><td style="padding:6px 8px;border:1px solid var(--line)">Baselines + Agent v0</td><td style="padding:6px 8px;border:1px solid var(--line)"><code>agent/graph.py</code> + 2 baselines</td></tr>
+  <tr><td style="padding:6px 8px;border:1px solid var(--line)">4</td><td style="padding:6px 8px;border:1px solid var(--line)">W6–W7</td><td style="padding:6px 8px;border:1px solid var(--line)">Golden set + eval harness</td><td style="padding:6px 8px;border:1px solid var(--line)"><code>eval/golden.csv</code> + <code>eval/run.py</code></td></tr>
+  <tr><td style="padding:6px 8px;border:1px solid var(--line)">5</td><td style="padding:6px 8px;border:1px solid var(--line)">W8–W9</td><td style="padding:6px 8px;border:1px solid var(--line)">Harden (streaming, DAG, guardrails)</td><td style="padding:6px 8px;border:1px solid var(--line)"><code>journey/05-harden.md</code> (optional for submission)</td></tr>
+  <tr><td style="padding:6px 8px;border:1px solid var(--line)">6</td><td style="padding:6px 8px;border:1px solid var(--line)">W10</td><td style="padding:6px 8px;border:1px solid var(--line)">Report + publish</td><td style="padding:6px 8px;border:1px solid var(--line)"><code>report/report.md</code> + public repo</td></tr>
+</table>
+
+<h2>Fast track (if 3–4 weeks / more hours are available)</h2>
+<p>
+  Skip Phase 5, tighten Phase 2 (silver-first, minimal gold), and overlap labelling with the agent.
+  The ROADMAP's fast path is <b>Phases 1 → 2 → 3 → 4 → 6</b> — the full 10-week plan below is the
+  recommended <b>full-mastery</b> route.
+</p>
+
+<h2>Week-by-week (1 hour/day ~ 10 weeks)</h2>
+
+<div class="cards">
+
+  <!-- ============ WEEK 1 ============ -->
+  <section class="week">
+    <div class="top"><h3>Week 1 — Phase 0 exit + Phase 1 kickoff</h3><span class="pill w">Goal: prove the two foundations</span></div>
+    <div class="grid3">
+      <div class="span"><h4>Agentic AI (tracks 0A)</h4>
+        <ul>
+          <li>Re-run your tool-calling loop: <code>agentic-ai-40-days/5.tool_calling/tool_calling_homework.py</code></li>
+          <li>Explain the <code>bind_tools → tool_calls → execute → re-invoke</code> loop in your own words (the Phase-0A exit item)</li>
+          <li>If flaky, review <code>5.tool_calling/details.md</code> + <code>agentic_loop.md</code></li>
+        </ul>
+      </div>
+      <div class="span"><h4>Lakehouse (track 0B)</h4>
+        <ul>
+          <li><code>podman-compose up -d</code> in <code>lakehouse/</code></li>
+          <li>Re-run <code>lakehouse/week-1/bronze_silver_gold.py</code>; screenshot the RustFS buckets</li>
+          <li>Answer "why is Bronze append-only?" (Phase-0B exit item)</li>
+        </ul>
+      </div>
+      <div class="span"><h4>The build + concepts</h4>
+        <ul>
+          <li>Fill <code>journey/00-start-here.md</code> (gates Phase 1): temp 0 vs 1.0 AND Bronze vs Gold — and how a tool-calling agent would retrieve from a Gold table</li>
+          <li>Download the data — Kaggle <code>twcs.csv</code> (~3M rows), keep it outside the repo</li>
+          <li>Concepts: read before/while working — see Phase 0 card below</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WEEK 2 ============ -->
+  <section class="week">
+    <div class="top"><h3>Week 2 — Finish Phase 1, start Phase 2</h3><span class="pill w">Goal: framing decided, ingest begins</span></div>
+    <div class="grid3">
+      <div class="span"><h4>Agentic AI</h4>
+        <ul>
+          <li>Intent taxonomy design (v0: 6–9 intents: flight_delay, baggage, refund, booking_change, rude_service, praise, other…)</li>
+          <li>Task decomposition: classify → draft → route as 3 sub-tasks; define "good = ?"</li>
+        </ul>
+      </div>
+      <div class="span"><h4>Lakehouse</h4>
+        <ul>
+          <li>Profile the 1% sample with pandas: shape, missing <code>response_tweet_id</code>, language mix</li>
+          <li>Stand up <code>lakehouse/</code> structure: <code>bronze/ silver/ gold/</code> buckets</li>
+          <li>Bronze ingest: 1-brand raw subset, immutable, partitioned by <code>created_at</code></li>
+        </ul>
+      </div>
+      <div class="span"><h4>The build + concepts</h4>
+        <ul>
+          <li>Pick the brand (shortlist: AmericanAir / AppleSupport / AmazonHelp — high volume, clear intents)</li>
+          <li>Write <code>journey/01-problem-framing.md</code>: brand + why, intents, out-of-scope list, "good =" definition</li>
+          <li>Concepts: Phase 1 → Phase 2 cards below</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WEEK 3 ============ -->
+  <section class="week">
+    <div class="top"><h3>Week 3 — Phase 2: Silver threading</h3><span class="pill w">Goal: a queryable clean-thread table</span></div>
+    <div class="grid3">
+      <div class="span"><h4>Agentic AI (supporting)</h4>
+        <ul>
+          <li>Data prep <i>for LLMs</i>: thinking about what clean threads look like as retrieval inputs (dedup, language filter)</li>
+          <li>Acknowledge heavy loss: many inbound tweets have no reply — "single-tweet threads" are valid</li>
+        </ul>
+      </div>
+      <div class="span"><h4>Lakehouse</h4>
+        <ul>
+          <li>Silver: clean + thread-reconstruct (join <code>tweet_id</code> ↔ <code>response_tweet_id</code>), dedup, language-filter</li>
+          <li>Write Silver as an <b>Iceberg table</b> (not just Parquet) — this completes lakehouse week 2</li>
+          <li>Centerpiece of the journal: "% dropped + why"</li>
+        </ul>
+      </div>
+      <div class="span"><h4>The build + concepts</h4>
+        <ul>
+          <li><code>journey/02-lakehouse-ingest.md</code> draft: row counts bronze→silver→gold, % dropped + why, partition choice</li>
+          <li><b>Export <code>eval_pool</code> AS SOON AS Silver stabilizes</b> — labelling is the long pole, parallel with Phase 3</li>
+          <li>Concepts: Phase 2 card below</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WEEK 4 ============ -->
+  <section class="week">
+    <div class="top"><h3>Week 4 — Finish Phase 2 (Gold), start Phase 3</h3><span class="pill w">Goal: gold for retrieval + baselines</span></div>
+    <div class="grid3">
+      <div class="span"><h4>Agentic AI</h4>
+        <ul>
+          <li>Read <b>module 6 (LangGraph)</b> — the planned gap; read when the phase starts</li>
+          <li>Refresh module 4 prompting (few-shot, instruction-based) + module 5 tool calling + module 7 (simple RAG)</li>
+        </ul>
+      </div>
+      <div class="span"><h4>Lakehouse</h4>
+        <ul>
+          <li>Gold: <code>threads</code>, <code>intent_candidates</code> (weak keyword labels), <code>eval_pool</code> (stratified source, 200–300 rows)</li>
+          <li>Export <code>eval_pool</code> to CSV — <b>holdout rule:</b> these <code>tweet_id</code>s are EXCLUDED from the retrieval index</li>
+        </ul>
+      </div>
+      <div class="span"><h4>The build + concepts</h4>
+        <ul>
+          <li>Baseline A (trivial): regex/keyword classifier + template reply + always-escalate router</li>
+          <li>Baseline B (simple): zero-shot Groq classifier + prompt-only drafter (no retrieval)</li>
+          <li>Concepts: Phases 3 card below</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WEEK 5 ============ -->
+  <section class="week">
+    <div class="top"><h3>Week 5 — Phase 3: Agent v0 on LangGraph</h3><span class="pill w">Goal: working agent over Gold</span></div>
+    <div class="grid3">
+      <div class="span"><h4>Agentic AI</h4>
+        <ul>
+          <li>Build the 3-node graph: <b>classify → retrieve → draft + route</b></li>
+          <li>Tools: <code>search_historic_resolutions(thread)</code> (over Gold) + <code>escalate(reason)</code></li>
+          <li>Prompts reuse module-4 techniques; temp 0; few-shot + instruction-based</li>
+        </ul>
+      </div>
+      <div class="span"><h4>Lakehouse</h4>
+        <ul>
+          <li>Gold tables as the retrieval source (brand's historic resolutions)</li>
+          <li>Enforce the holdout at index build + in <code>agent/graph.py</code> + <code>tools.py</code> (retrieval must never touch a golden example's own thread)</li>
+        </ul>
+      </div>
+      <div class="span"><h4>The build + concepts</h4>
+        <ul>
+          <li>Run all 3 (A, B, v0) on <code>eval_pool</code>; log accuracy + cost/latency</li>
+          <li>Grounding caveat in framing: ~2017 data = "follows the brand's documented historical pattern", <i>not</i> "is correct policy now"</li>
+          <li><code>journey/03-agent-v0.md</code>: prompts pasted, 5 errors pasted, what RAG fixed vs didn't</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WEEK 6 ============ -->
+  <section class="week">
+    <div class="top"><h3>Week 6 — Finish Phase 3, start Phase 4 (labelling)</h3><span class="pill w">Goal: agent done, golden set growing</span></div>
+    <div class="grid3">
+      <div class="span"><h4>Agentic AI</h4>
+        <ul>
+          <li>Tune/troubleshoot Agent v0 on leftover failures; cost &amp; latency pass</li>
+          <li>Read eval concepts (17–20, written when Phase 4 starts): precision/recall/F1, LLM-as-judge, BLEU/ROUGE, Cohen's κ</li>
+        </ul>
+      </div>
+      <div class="span"><h4>Lakehouse</h4>
+        <ul>
+          <li>Week 5 in practice later; for now: keep <code>eval_pool</code> stable so labelling doesn't re-run on moving data</li>
+        </ul>
+      </div>
+      <div class="span"><h4>The build + concepts</h4>
+        <ul>
+          <li><b>Hand-label 150–250 rows</b> from <code>gold/eval_pool</code>, stratified by intent + confidence: <code>text, true_intent, good_reply_traits, should_escalate, notes</code> → <code>eval/golden.csv</code></li>
+          <li>Labelling is the long pole — keep going every spare hour this week and next</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WEEK 7 ============ -->
+  <section class="week">
+    <div class="top"><h3>Week 7 — Phase 4: eval harness + judge</h3><span class="pill w">Goal: reproducible numbers under 15 min</span></div>
+    <div class="grid3">
+      <div class="span"><h4>Agentic AI</h4>
+        <ul>
+          <li>LLM-as-judge rubric (groundedness, tone-match, actionability, no-hallucination) with a <b>DIFFERENT model/prompt/temperature</b> than the drafter</li>
+          <li>Failure taxonomy; re-score 30–50 judge outputs → report Cohen's κ honestly</li>
+        </ul>
+      </div>
+      <div class="span"><h4>Lakehouse</h4>
+        <ul>
+          <li>Week 5 in practice: DQ checks + lineage (which silver version → which golden label → which score)</li>
+        </ul>
+      </div>
+      <div class="span"><h4>The build + concepts</h4>
+        <ul>
+          <li>Metrics: intent acc/F1 · escalation precision/recall · reply BLEU/ROUGE + judge · <b>retrieval hit-rate/recall@k</b> (did the right thread get retrieved?)</li>
+          <li><code>eval/run.py</code> reproduces headline numbers in &lt;15 min</li>
+          <li><code>journey/04-evaluation.md</code> + mandatory "what's misleading about my headline number?" draft + <code>journey/decisions.md</code></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WEEK 8 ============ -->
+  <section class="week">
+    <div class="top"><h3>Week 8 — Phase 5: Harden, part 1</h3><span class="pill o">Optional for submission · required for mastery</span></div>
+    <div class="grid3">
+      <div class="span"><h4>Agentic AI</h4>
+        <ul>
+          <li>Guardrails: PII redaction pre-LLM, tone, refusal; confidence-threshold router</li>
+          <li>Memory/thread state; tracing (LangSmith logs in Silver); cost control</li>
+        </ul>
+      </div>
+      <div class="span"><h4>Lakehouse</h4>
+        <ul>
+          <li>Week 3 in practice: <b>Structured Streaming file-source backlog</b> — simulated (twcs.csv is static; say so honestly in the journal)</li>
+        </ul>
+      </div>
+      <div class="span"><h4>The build + concepts</h4>
+        <ul>
+          <li>Concepts 21–25 (written when Phase 5 starts): memory &amp; thread state, DAG orchestration, DQ/lineage, confidence thresholds/routing, guardrails</li>
+          <li><code>journey/05-harden.md</code> draft: before/after failure examples</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WEEK 9 ============ -->
+  <section class="week">
+    <div class="top"><h3>Week 9 — Phase 5: Harden, part 2 + Phase 6 start</h3><span class="pill o">Orchestration, ops</span></div>
+    <div class="grid3">
+      <div class="span"><h4>Agentic AI</h4>
+        <ul>
+          <li>Wire guardrails + router into the graph; verify before/after failure examples</li>
+        </ul>
+      </div>
+      <div class="span"><h4>Lakehouse</h4>
+        <ul>
+          <li>Week 4 in practice: <b>Airflow DAG</b> (or <code>make pipeline</code> if Airflow is too heavy): ingest → silver → gold → eval</li>
+          <li>Trino ad-hoc queries over Iceberg; compaction / snapshot expiry</li>
+        </ul>
+      </div>
+      <div class="span"><h4>The build + concepts</h4>
+        <ul>
+          <li>Finish <code>journey/05-harden.md</code>: DAG screenshot, Trino query results</li>
+          <li>Kick off Phase 6: read what "6 sections of <code>report/report.md</code>" needs; list last 10–15 decisions</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WEEK 10 ============ -->
+  <section class="week">
+    <div class="top"><h3>Week 10 — Phase 6: Report + Publish</h3><span class="pill w">Goal: a runnable public artifact</span></div>
+    <div class="grid3">
+      <div class="span"><h4>Agentic AI + Lakehouse</h4>
+        <ul>
+          <li>Synthesis: the story of one problem taught by two skillsets; end-to-end system diagram</li>
+        </ul>
+      </div>
+      <div class="span"><h4>The build</h4>
+        <ul>
+          <li><code>report/report.md</code>: framing, results vs 2 baselines, top-5 failures with real examples, misleading-number section, next-week plan, 10–15 decisions</li>
+        </ul>
+      </div>
+      <div class="span"><h4>Publish</h4>
+        <ul>
+          <li>Polish root README run instructions: clean clone → headline numbers in &lt;15 min</li>
+          <li>Push public; submit to anurag@hiverhq.com</li>
+          <li><code>journey/06-retro.md</code>: what you'd teach differently — closes the course</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<h2>Per-phase: concepts (with links) + files to run + exit checklist</h2>
+<p>Concept numbering follows first-use order. Files marked <i>planned</i> are written <b>when their
+phase starts</b> (course rule 4) — until then, read the section listed in the
+<a href="../concepts/README.md">concepts index</a>.</p>
+
+<!-- ============ PHASE 0 ============ -->
+<div class="phase">
+  <h3>Phase 0 — Orientation + two parallel tracks</h3>
+  <div class="meta"><span class="pill">W1</span><span class="pill w">exit = filled journey/00-start-here.md</span></div>
+  <div class="files">
+    <b>Agentic:</b> <code>agentic-ai-40-days/0.python_basics/</code> …
+    <a href="../agentic-ai-40-days/5.tool_calling/tool_calling.py"><code>5.tool_calling/tool_calling.py</code></a>
+    (and the course <code>tool_calling_homework.py</code>) ·
+    <b>Lakehouse:</b>
+    <a href="../lakehouse/week-1/bronze_silver_gold.py"><code>lakehouse/week-1/bronze_silver_gold.py</code></a>
+  </div>
+  <ul class="concepts">
+    <li><a href="../concepts/01-what-is-an-llm.md">01 What is an LLM?</a></li>
+    <li><a href="../concepts/02-tokens-and-context.md">02 Tokens &amp; context window</a></li>
+    <li><a href="../concepts/03-sampling-params.md">03 Sampling (temp/top-k/top-p)</a></li>
+    <li><a href="../concepts/04-prompting-techniques.md">04 Prompting techniques</a></li>
+    <li><a href="../concepts/05-chain-of-thought.md">05 Chain-of-thought</a></li>
+    <li><a href="../concepts/06-reasoning-frameworks.md">06 ReAct / ToT / self-consistency</a></li>
+    <li><a href="../concepts/07-agent-loop.md">07 Agent loop</a></li>
+    <li><a href="../concepts/08-tool-calling.md">08 Tool calling / bind_tools</a></li>
+    <li><a href="../concepts/09-medallion-architecture.md">09 Medallion Bronze→Silver→Gold</a></li>
+    <li><a href="../concepts/10-append-only-and-partitioning.md">10 Append-only &amp; partitioning</a></li>
+    <li><a href="../concepts/11-parquet-and-iceberg.md">11 Parquet &amp; Iceberg</a></li>
+    <li class="planned"><a href="../concepts/README.md">26 Containers (podman/RustFS) — planned</a></li>
+  </ul>
+  <ul class="check">
+    <li>Re-ran tool-calling; explained the <code>bind_tools</code> loop in own words</li>
+    <li>Re-ran week-1 pipeline; screenshot RustFS buckets</li>
+    <li>Filled <code>journey/00-start-here.md</code> incl. the temp 0-vs-1.0 AND Bronze-vs-Gold connection</li>
+  </ul>
+</div>
+
+<!-- ============ PHASE 1 ============ -->
+<div class="phase">
+  <h3>Phase 1 — Problem framing</h3>
+  <div class="meta"><span class="pill">W1–W2</span><span class="pill">Concepts first: 15, 16</span><span class="pill w">exit = journey/01-problem-framing.md</span></div>
+  <div class="files">
+    <b>Agentic:</b> intent taxonomy + task decomposition ·
+    <b>Lakehouse:</b> pandas profiling of the 1% sample (no full ingest yet)
+  </div>
+  <ul class="concepts">
+    <li><a href="../concepts/01-what-is-an-llm.md">01 What is an LLM?</a></li>
+    <li><a href="../concepts/03-sampling-params.md">03 Sampling params</a></li>
+    <li><a href="../concepts/04-prompting-techniques.md">04 Prompting techniques</a></li>
+    <li><a href="../concepts/07-agent-loop.md">07 Agent loop</a></li>
+    <li><a href="../concepts/15-baseline-thinking.md">15 Baseline thinking</a></li>
+    <li><a href="../concepts/16-golden-set-and-sampling.md">16 Golden set &amp; sampling</a></li>
+  </ul>
+  <ul class="check">
+    <li>Brand chosen + why (suggestion: AmericanAir / AppleSupport / AmazonHelp)</li>
+    <li>v0 intents listed (6–9); out-of-scope list written</li>
+    <li>"good = ?" defined; dataset recency stated (2017 ≠ current policy)</li>
+  </ul>
+</div>
+
+<!-- ============ PHASE 2 ============ -->
+<div class="phase">
+  <h3>Phase 2 — Lakehouse ingest: real tweets Bronze→Silver→Gold</h3>
+  <div class="meta"><span class="pill">W2–W4</span><span class="pill">Lakehouse weeks 2–3 in practice</span><span class="pill w">exit = journey/02-lakehouse-ingest.md</span></div>
+  <div class="files">
+    <b>Lakehouse:</b>
+    <a href="../lakehouse/week-1/bronze_silver_gold.py"><code>bronze_silver_gold.py</code></a> pattern, trades → tweets ·
+    <b>Agentic (supporting):</b> thread reconstruction + cleaning <i>for prompts</i>
+  </div>
+  <ul class="concepts">
+    <li><a href="../concepts/09-medallion-architecture.md">09 Medallion architecture</a></li>
+    <li><a href="../concepts/10-append-only-and-partitioning.md">10 Append-only &amp; partitioning</a></li>
+    <li><a href="../concepts/11-parquet-and-iceberg.md">11 Parquet &amp; Iceberg</a></li>
+    <li><a href="../concepts/16-golden-set-and-sampling.md">16 Golden set &amp; sampling</a></li>
+    <li class="planned"><a href="../concepts/README.md">27 Object stores &amp; blob paths — planned</a></li>
+    <li class="planned"><a href="../concepts/README.md">28 Spark vs pandas at scale — planned</a></li>
+  </ul>
+  <ul class="check">
+    <li><code>s3a://bronze/tweets/</code>: 1-brand subset, immutable, partitioned by <code>created_at</code></li>
+    <li>Silver thread table queryable (Iceberg); "% dropped + why" documented</li>
+    <li>Gold: <code>threads</code> + <code>intent_candidates</code> (weak labels) + <code>eval_pool</code> exported as CSV (200–300 rows)</li>
+    <li>Holdout recorded in <code>journey/decisions.md</code>: eval_pool <code>tweet_id</code>s excluded from retrieval index</li>
+  </ul>
+</div>
+
+<!-- ============ PHASE 3 ============ -->
+<div class="phase">
+  <h3>Phase 3 — Baselines + Agent v0 (LangGraph)</h3>
+  <div class="meta"><span class="pill">W4–W6</span><span class="pill">Agentic module 6 learned here (planned gap)</span><span class="pill w">exit = journey/03-agent-v0.md</span></div>
+  <div class="files">
+    <b>Agentic:</b>
+    <a href="../agentic-ai-40-days/4.prompt_engineering/"><code>4.prompt_engineering/</code></a> ·
+    <a href="../agentic-ai-40-days/5.tool_calling/tool_calling_homework.py"><code>5.tool_calling/</code></a> ·
+    <a href="../agentic-ai-40-days/7.simple_rag/"><code>7.simple_rag/</code></a> ·
+    <b>Build:</b> <code>hiver/agent/graph.py</code> + <code>tools.py</code>
+  </div>
+  <ul class="concepts">
+    <li><a href="../concepts/07-agent-loop.md">07 Agent loop</a></li>
+    <li><a href="../concepts/08-tool-calling.md">08 Tool calling / bind_tools</a></li>
+    <li><a href="../concepts/12-rag.md">12 RAG</a></li>
+    <li><a href="../concepts/13-grounding.md">13 Grounding</a></li>
+    <li><a href="../concepts/14-data-leakage.md">14 Data leakage (golden holdout)</a></li>
+    <li><a href="../concepts/15-baseline-thinking.md">15 Baseline thinking</a></li>
+    <li><a href="../concepts/16-golden-set-and-sampling.md">16 Golden set &amp; sampling</a></li>
+    <li class="planned"><a href="../concepts/README.md">29 Embeddings &amp; vector search — planned</a></li>
+    <li class="planned"><a href="../concepts/README.md">30 REST APIs (FastAPI/uvicorn) — planned</a></li>
+  </ul>
+  <ul class="check">
+    <li>Baseline A (trivial) + Baseline B (simple) run on eval_pool</li>
+    <li>Agent v0: 3 nodes (classify → retrieve → draft+route); tools = <code>search_historic_resolutions</code> + <code>escalate</code>; holdout enforced</li>
+    <li>All 3 scored; accuracy + cost/latency logged; grounding caveat in framing</li>
+  </ul>
+</div>
+
+<!-- ============ PHASE 4 ============ -->
+<div class="phase">
+  <h3>Phase 4 — Golden set + eval harness</h3>
+  <div class="meta"><span class="pill">W6–W7</span><span class="pill">Lakehouse week 5: DQ + lineage</span><span class="pill w">exit = eval/golden.csv + eval/run.py</span></div>
+  <div class="files">
+    <b>Build:</b> <code>hiver/eval/golden.csv</code> · <code>hiver/eval/run.py</code> · <code>hiver/eval/judge.py</code> ·
+    <b>Lakehouse:</b> DQ checks + lineage (which silver version → which label → which score)
+  </div>
+  <ul class="concepts">
+    <li><a href="../concepts/14-data-leakage.md">14 Data leakage</a></li>
+    <li><a href="../concepts/16-golden-set-and-sampling.md">16 Golden set &amp; sampling</a></li>
+    <li class="planned"><a href="../concepts/README.md">17 Precision/recall/F1 — planned</a></li>
+    <li class="planned"><a href="../concepts/README.md">18 LLM-as-judge — planned</a></li>
+    <li class="planned"><a href="../concepts/README.md">19 BLEU &amp; ROUGE — planned</a></li>
+    <li class="planned"><a href="../concepts/README.md">20 Cohen's κ — planned</a></li>
+  </ul>
+  <ul class="check">
+    <li>150–250 hand labels, stratified; <code>eval/golden.csv</code> complete</li>
+    <li>Metrics incl. <b>retrieval hit-rate / recall@k</b> (a RAG failure at retrieval otherwise hides in reply scores)</li>
+    <li>Judge = different model/prompt/temperature than drafter; κ reported honestly</li>
+    <li><code>eval/run.py</code> reproduces headline numbers in &lt;15 min; misleading-number note written</li>
+  </ul>
+</div>
+
+<!-- ============ PHASE 5 ============ -->
+<div class="phase">
+  <h3>Phase 5 — Harden: streaming, orchestration, governance</h3>
+  <div class="meta"><span class="pill">W8–W9</span><span class="pill o">optional for submission · required for mastery</span></div>
+  <div class="files">
+    <b>Lakehouse:</b>
+    <a href="../lakehouse/week-3/"><code>week-3</code></a> (streaming) ·
+    <a href="../lakehouse/week-4/"><code>week-4</code></a> (orchestration/Trino) ·
+    <b>Agentic:</b> guardrails, memory/thread state, tracing, cost control
+  </div>
+  <ul class="concepts">
+    <li class="planned"><a href="../concepts/README.md">21 Confidence thresholds &amp; routing — planned</a></li>
+    <li class="planned"><a href="../concepts/README.md">22 Guardrails: PII, tone, refusal — planned</a></li>
+    <li class="planned"><a href="../concepts/README.md">23 Memory &amp; thread state — planned</a></li>
+    <li class="planned"><a href="../concepts/README.md">24 DAG orchestration (Airflow) — planned</a></li>
+    <li class="planned"><a href="../concepts/README.md">25 Lineage &amp; DQ checks — planned</a></li>
+  </ul>
+  <ul class="check">
+    <li>Confidence-threshold router + PII redaction pre-LLM + LangSmith trace in Silver</li>
+    <li>Airflow DAG (or <code>make pipeline</code>) + Trino queries over Iceberg; compaction/snapshot expiry</li>
+    <li><code>journey/05-harden.md</code>: before/after failures, DAG screenshot, Trino results, honest "simulated" admission</li>
+  </ul>
+</div>
+
+<!-- ============ PHASE 6 ============ -->
+<div class="phase">
+  <h3>Phase 6 — Report + publish</h3>
+  <div class="meta"><span class="pill">W10</span><span class="pill w">exit = report/report.md + public repo</span></div>
+  <div class="files">
+    <b>Build:</b> <code>hiver/report/report.md</code> · <code>README.md</code> run instructions ·
+    <b>Course:</b> <code>journey/06-retro.md</code>
+  </div>
+  <ul class="concepts">
+    <li><a href="../concepts/README.md">All concepts' synthesis</a> — decision log + next-week plan</li>
+  </ul>
+  <ul class="check">
+    <li>Report: framing, results vs 2 baselines, top-5 failures with real examples, misleading-number section, next week, 10–15 decisions</li>
+    <li>Clean-clone repro in &lt;15 min verified end-to-end; pushed public; submission sent</li>
+    <li><code>journey/06-retro.md</code>: what you'd teach differently</li>
+  </ul>
+</div>
+
+<footer>
+  Weekly plan for the Hiver build · pace 1 h/day · follow the same status language as
+  <a href="../PROGRESS.md">PROGRESS.md</a> and <a href="ROADMAP.md">ROADMAP.md</a> ·
+  courses: <a href="../COURSE.md">COURSE.md</a> · setup: <a href="../SETUP.md">SETUP.md</a> ·
+  teaching layer: <a href="../concepts/README.md">concepts/README.md</a>
+</footer>
+
+</main>
+</body>
+</html>

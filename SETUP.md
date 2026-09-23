@@ -27,16 +27,27 @@ python3 --version   # needs to report 3.10 or higher
 
 ### 2. Create a virtual environment
 
+We use **uv** (the Rust-based, drop-in replacement for pip/venv) for environment and dependency management.
+
+Install uv once (official standalone installer — no sudo):
+
 ```bash
-cd agentic-ai-40-days
-python3 -m venv .venv
-source .venv/bin/activate       # Linux/macOS
-# .venv\Scripts\activate        # Windows (PowerShell)
-python -m pip install --upgrade pip
-pip install -r requirements.txt
+curl -LsSf https://astral.sh/uv/install.sh | sh
+# ensure ~/.local/bin (or the printed path) is on your PATH, then:
+uv --version
 ```
 
-The requirements include Groq, LangChain, LangGraph, ChromaDB (for RAG), FastAPI/uvicorn (for the async module) and ruff. `pip` will resolve the whole locked set.
+Create the environment and install the pinned set (exact match to `requirements.txt`):
+
+```bash
+cd agentic-ai-40-days
+uv venv .venv
+source .venv/bin/activate           # Linux/macOS
+# .venv\Scripts\activate            # Windows (PowerShell)
+uv pip sync requirements.txt
+```
+
+The requirements include Groq, LangChain, LangGraph, ChromaDB (for RAG), FastAPI/uvicorn (for the async module) and ruff. `uv pip sync` installs the whole set exactly as pinned — fast, reproducible, and it uninstalls anything extra. (The nearest pip equivalent, `pip install -r requirements.txt`, still works but resolves slowly.)
 
 ### 3. API keys — what is required vs optional
 

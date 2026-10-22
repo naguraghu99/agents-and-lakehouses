@@ -2,7 +2,7 @@
 
 A five-week, build-it-yourself course: turn a tiny local object store into a real lakehouse
 (RustFS + Spark + Iceberg + Trino), explaining each layer as you stand it up. It is one of
-the two course tracks (the other is `agentic-ai-40-days/`), and its official status lives
+the two course tracks (the other is the [separate Agentic AI course](https://github.com/naguraghu99/40_day_of_agentic_ai)), and its official status lives
 in [`PROGRESS.md`](../PROGRESS.md).
 
 The deeper idea: **weeks 2–5 are not held as separate exercises.** They are completed inside

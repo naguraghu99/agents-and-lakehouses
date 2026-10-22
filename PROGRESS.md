@@ -7,7 +7,7 @@ journal entry is a gap, not progress.
 
 ## One-line status
 
-> Course shell complete. Agentic AI days -3 → 5 done, day 7+ partially pulled in. Lakehouse
+> Course shell complete. Agentic AI days -3 → 11 done, day 7+ pulled in. Lakehouse
 > week 1 done (synthetic); weeks 2–5 happen inside the Hiver build. Hiver build: framing
 > started, Phase 0 exit items still open.
 
@@ -15,14 +15,14 @@ journal entry is a gap, not progress.
 
 | Area | Completed | In progress | Next |
 |---|---|---|---|
-| Agentic AI | Python basics, data structures, LLM terminology, prompting, tool calling (days -3 → 5) | RAG, async coding, data validation (days 7–9, pulled ahead) | LangGraph + agent loop (module 6) |
+| Agentic AI | Python basics → custom tools, i.e. modules -3 → 11 (days -3 → 11) | RAG, async coding, data validation (days 7–9, pulled ahead) | LangGraph + agent loop (module 6) |
 | Lakehouse | Week 1: RustFS + Spark + Iceberg medallion on synthetic trades | Weeks 2–5 (folded into Hiver Phases 2–5) | Week 2 → Phase 2 of the build |
 | Hiver build | Problem framing drafted; project plan, decisions, learning log open | Phase 1 problem framing | Phase 0 exit items → Phase 2 lakehouse ingest |
 | Concepts layer | 01–16 written | infra 26–30 + eval concepts 17–25 planned | write each when its phase starts |
 
 ---
 
-## 1. Agentic AI course — `agentic-ai-40-days/`
+## 1. Agentic AI course — [separate fork](https://github.com/naguraghu99/40_day_of_agentic_ai)
 
 | Module | Status |
 |---|---|
@@ -36,9 +36,17 @@ journal entry is a gap, not progress.
 | 7. Simple RAG | pulled in ahead of schedule (needed for the build) |
 | 8. Async coding | pulled in ahead of schedule |
 | 9. Data validation | pulled in ahead of schedule |
+| 10. Memory management | done (synced 2026-10) — [module folder](https://github.com/naguraghu99/40_day_of_agentic_ai/tree/main/10.memory_management) |
+| 11. Custom tools (+ MCP intro) | done (synced 2026-10) — [module folder](https://github.com/naguraghu99/40_day_of_agentic_ai/tree/main/11.tools-custom) |
 
 Status language: `done` · `in progress` · `pulled in ahead of schedule` (synced during the
 2026-09 restructure) · `planned`.
+
+Both new modules are `done` as **synced course content**, not as course homework: the upstream code
+is in place and `details.md` explains it, but nothing here has been run end-to-end against Groq yet,
+so there is no journey entry for them. Module 10's `6.semantic_memory.py` additionally needs
+`langchain-huggingface` + `sentence-transformers`, which are deliberately **not** in the pinned set
+(see [`SETUP.md`](SETUP.md)) — so it is "done" only once that extra install is verified.
 
 ---
 

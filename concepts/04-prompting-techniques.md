@@ -46,7 +46,7 @@ they stop improvising.
 
 ## Where you'll use it
 
-- `agentic-ai-40-days/4.prompt_engineering/techniques/` — one runnable `.py` file
+- [`4.prompt_engineering/techniques/`](https://github.com/naguraghu99/40_day_of_agentic_ai/tree/main/4.prompt_engineering/techniques) — one runnable `.py` file
   per technique (zero_shot, few_shot, instruction_based, role_based, contextual_prompting).
 - `hiver/agent/prompts/` — classifier, drafter, router, judge prompts (Phase 3-4).
 - `hiver/journey/03-agent-v0.md` — you'll paste the final prompts there.

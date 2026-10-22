@@ -37,7 +37,7 @@ RAG is the trick of "fetch from the warehouse only the parts you put on the benc
 
 ## Where you'll use it
 
-- `agentic-ai-40-days/4.prompt_engineering/contextual_prompting.py` — a technique
+- [`4.prompt_engineering/contextual_prompting.py`](https://github.com/naguraghu99/40_day_of_agentic_ai/blob/main/4.prompt_engineering/contextual_prompting.py) — a technique
   built entirely around what context, and how much, to include.
 - `hiver/agent/tools.py` — `search_historic_resolutions` returns a *small* number of
   threads precisely because the window is finite.

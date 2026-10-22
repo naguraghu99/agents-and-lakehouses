@@ -45,7 +45,7 @@ booth — know the difference so you can defend why you skipped the fancier ones
 
 ## Where you'll use it
 
-- `agentic-ai-40-days/4.prompt_engineering/techniques/react.py`,
+- [`4.prompt_engineering/techniques/react.py`](https://github.com/naguraghu99/40_day_of_agentic_ai/blob/main/4.prompt_engineering/techniques/react.py),
   `tree_of_thought.py`, `self_consistency.py`.
 - `hiver/agent/graph.py` (Phase 3) — the ReAct-shaped classify → retrieve → draft cycle.
 - `hiver/journey/decisions.md` — record "no ToT/self-consistency in the live agent: cost".

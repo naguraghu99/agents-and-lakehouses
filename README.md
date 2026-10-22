@@ -11,6 +11,6 @@ headline number comes with a "what's misleading about this?" note.
 
 - **Orientation (how the course works, the sacred rules):** [`COURSE.md`](COURSE.md)
 - **The teaching layer (explained from zero):** [`concepts/`](concepts/)
-- **40-day agentic AI course (follow-along, synced):** [`agentic-ai-40-days/`](agentic-ai-40-days/)
+- **40-day agentic AI course (separate fork):** [naguraghu99/40_day_of_agentic_ai](https://github.com/naguraghu99/40_day_of_agentic_ai)
 - **Lakehouse course:** [`lakehouse/`](lakehouse/)
 - **The build — the Hiver project + its plan:** [`hiver/`](hiver/) · [`ROADMAP.md`](hiver/ROADMAP.md)

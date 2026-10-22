@@ -79,7 +79,7 @@ demands it (T-shaped: shallow in both, deep where needed).
 
 ### Phase 0A — Agentic AI foundations
 - Python basics, LLM params (temp/top-k/top-p), 9 prompting techniques, basic tool calling
-- **Use:** `agentic-ai-40-days/` modules 0–5 · concepts [`01`](../concepts/01-what-is-an-llm.md) → [`08`](../concepts/08-tool-calling.md)
+- **Use:** `40_day_of_agentic_ai/` modules 0–5 · concepts [`01`](../concepts/01-what-is-an-llm.md) → [`08`](../concepts/08-tool-calling.md)
 - [ ] Re-run `tool_calling.py`, explain `bind_tools` flow in your own words in `journey/00-start-here.md`
 
 ### Phase 0B — Lakehouse foundations

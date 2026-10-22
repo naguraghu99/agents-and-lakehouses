@@ -5,7 +5,7 @@
 This is a public, learn-by-building course. It is made of three things that live in this
 repository:
 
-1. **A 40-day Agentic AI course** — `agentic-ai-40-days/`
+1. **A 40-day Agentic AI course** — [separate fork](https://github.com/naguraghu99/40_day_of_agentic_ai)
 2. **A Lakehouse course** — `lakehouse/`
 3. **A real problem to solve with both** — the OpenHiver SDE take-home — `hiver/`
 
@@ -69,7 +69,7 @@ queryable tables the agent retrieves from.
 - **You.** If you are doing this course, you are learning both skill sets from scratch.
 - **Target reader of this course:** someone who knows *basic* Python (variables, loops,
   functions, dicts/lists) and nothing else about AI or data engineering. If you don't have
-  that yet, do `agentic-ai-40-days/0.python_basics/` first.
+  that yet, start with the [Python basics module](https://github.com/naguraghu99/40_day_of_agentic_ai/tree/main/0.python_basics).
 - **No GPU, no big infra.** Everything runs on a laptop with free/cheap APIs and containers.
 
 ---
@@ -83,10 +83,6 @@ queryable tables the agent retrieves from.
 ├── concepts/                        ← the teaching layer: one file per small concept
 │   ├── README.md                    ← how explainers are written + full index
 │   └── NN-name.md                   ← plain-English explainers, numbered in order of use
-│
-├── agentic-ai-40-days/               ← the 40-day agentic AI course (synced from syedjaferk)
-│   ├── 0.python_basics/  …  5.tool_calling/   (days -3 → 5)
-│   └── 7.simple_rag/ … 9.data_validation/     (latest sync, 2026-09)
 │
 ├── lakehouse/              ← your lakehouse course
 │   └── week-1/  …  week-5/         (week 1 done, rest planned)
@@ -106,9 +102,10 @@ glossed inline.
 
 **Where `concepts/` ends and the course modules begin:** `concepts/` is the *why* —
 one page each, plain English, for a reader who has never met the idea. The modules in
-`agentic-ai-40-days/` are the *how* — follow-along code, runnable exercises, real output
+The [separate 40-day course](https://github.com/naguraghu99/40_day_of_agentic_ai) is the *how* — follow-along code, runnable exercises, real output
 (`concepts/` tells you what you're doing, the module shows you running it). If a concept
 confuses you, read it, then run the module it points at in "Where you'll use it".
+The separate course fork lives at `../40_day_of_agentic_ai/` when cloned beside this repository.
 
 Setup (Python, Groq key, lakehouse containers) is in [`SETUP.md`](SETUP.md); the single
 status page is [`PROGRESS.md`](PROGRESS.md).

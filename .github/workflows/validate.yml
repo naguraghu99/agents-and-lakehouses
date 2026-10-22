@@ -34,5 +34,5 @@ jobs:
             echo "no python files found" && exit 1
           fi
           python -m compileall -q \
-            agentic-ai-40-days lakehouse hiver .github/scripts 2>&1 \
+            lakehouse hiver .github/scripts 2>&1 \
             | grep -v '^Listing' || true

@@ -55,7 +55,7 @@ back.
 
 ## Where you'll use it
 
-- `agentic-ai-40-days/5.tool_calling/tool_calling.py` — the working example (Groq
+- [`5.tool_calling/tool_calling.py`](https://github.com/naguraghu99/40_day_of_agentic_ai/blob/main/5.tool_calling/tool_calling.py) — the working example (Groq
   + LangChain `@tool` + `bind_tools`).
 - `hiver/agent/tools.py` — the project's real tools, same mechanism.
 - `hiver/journey/00-start-here.md` — Phase 0 asks you to explain this loop in 3 sentences.

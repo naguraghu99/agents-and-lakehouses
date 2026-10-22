@@ -33,10 +33,6 @@ def main() -> int:
                 if bad in p.name:
                     fail("bad folder name", f"{p.name} ({bad}) -> rename")
 
-    # The async module must exist under its corrected name.
-    if not (ROOT / "agentic-ai-40-days/8.async_coding").is_dir():
-        fail("async module not found inside agentic-ai-40-days/8.async_coding")
-
     # 3. Local markdown links (relative "../x/y.md") must resolve.
     md_files = list(ROOT.rglob("*.md"))
     link_re = re.compile(r"\]\(([^)#]+)(?:#[^)]*)?\)")

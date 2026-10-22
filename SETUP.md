@@ -4,7 +4,7 @@ This course has **two independent tracks** — get each one running before its p
 
 | Track | Where | What you need | Optional |
 |---|---|---|---|
-| Agentic AI course | `agentic-ai-40-days/` | Python 3.10+ · a free Groq API key | Ollama (local models) |
+| Agentic AI course | [separate fork](https://github.com/naguraghu99/40_day_of_agentic_ai) | Python 3.10+ · a free Groq API key | Ollama (local models) |
 | Lakehouse course | `lakehouse/` | Podman (or Docker) + `podman-compose` | AWS CLI (host, for `s3 ls`) |
 
 Both together need roughly **4 GB of free RAM** and ~2 GB of disk for the lakehouse containers.
@@ -17,7 +17,7 @@ There is no GPU requirement — every LLM call in this repo goes to Groq's free 
 
 ### 1. Python version
 
-The pinned dependency set (`agentic-ai-40-days/requirements.txt`) requires **Python 3.10+**. Python 3.11 / 3.12 is what it is tested with.
+The pinned dependency set (`40_day_of_agentic_ai/requirements.txt`) requires **Python 3.10+**. Python 3.11 / 3.12 is what it is tested with.
 
 Check your version:
 
@@ -37,10 +37,12 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 uv --version
 ```
 
-Create the environment and install the pinned set (exact match to `requirements.txt`):
+If you have not already cloned the separate course fork, clone it beside this repository. Then
+create the environment and install the pinned set (exact match to `requirements.txt`):
 
 ```bash
-cd agentic-ai-40-days
+git clone https://github.com/naguraghu99/40_day_of_agentic_ai.git ../40_day_of_agentic_ai
+cd ../40_day_of_agentic_ai
 uv venv .venv
 source .venv/bin/activate           # Linux/macOS
 # .venv\Scripts\activate            # Windows (PowerShell)
@@ -49,11 +51,21 @@ uv pip sync requirements.txt
 
 The requirements include Groq, LangChain, LangGraph, ChromaDB (for RAG), FastAPI/uvicorn (for the async module) and ruff. `uv pip sync` installs the whole set exactly as pinned — fast, reproducible, and it uninstalls anything extra. (The nearest pip equivalent, `pip install -r requirements.txt`, still works but resolves slowly.)
 
+Two modules need one extra step beyond the pinned set:
+
+```bash
+uv pip install langchain-huggingface sentence-transformers   # 10.memory_management/6.semantic_memory.py only
+```
+
+That script downloads `all-MiniLM-L6-v2` (~90 MB) on first run; everything else in modules 10 and 11
+runs on the pinned set. Module 11's MCP scripts need the venv **activated** (they launch
+`python mcp_server.py` as a subprocess and look it up on `PATH`).
+
 ### 3. API keys — what is required vs optional
 
 | Variable | Required? | Used by | Where to get it |
 |---|---|---|---|
-| `GROQ_API_KEY` | **Yes** for LLM modules (4, 5, 7, 8) | the Groq client + LangChain Groq | Free at https://console.groq.com/keys |
+| `GROQ_API_KEY` | **Yes** for LLM modules (4, 5, 7, 8, 10, 11) | the Groq client + LangChain Groq | Free at https://console.groq.com/keys |
 | `GEMINI_API_KEY` | No — nothing in the course calls it yet | reserved | https://aistudio.google.com/apikey |
 | `META_*` / Llama keys | No — reserved for future modules | reserved | — |
 
@@ -64,7 +76,7 @@ The reader also supports **Ollama** (`langchain-ollama` is in the pinned deps) i
 Each LLM module ships an `.env.example`. Copy it and fill in your key:
 
 ```bash
-# from agentic-ai-40-days/4.prompt_engineering/
+# from 40_day_of_agentic_ai/4.prompt_engineering/
 cp .env.example .env
 # edit .env →  GROQ_API_KEY="gsk_..."
 ```
@@ -75,6 +87,8 @@ The example modules (e.g. `groq_client.py`, `tool_calling.py`) read the key via 
 cd 4.prompt_engineering && python groq_client.py
 cd 5.tool_calling        && python tool_calling.py
 cd 7.simple_rag          && python simple_rag.py
+cd 10.memory_management   && python 1.buffer_memory.py
+cd 11.tools-custom        && python 4_database_tools.py
 ```
 
 **Never commit a `.env` or the raw key files.** See [Secrets, data, and credentials](#secrets-data-and-credentials).

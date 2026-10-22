@@ -14,7 +14,7 @@ This repo is **both**:
 
 ## The Three Pieces (analyzed)
 
-**1. Your AgenticAI course** (`/agentic-ai-40-days/`):
+**1. Your AgenticAI course** (`../40_day_of_agentic_ai/`):
 - Done: Python basics → data structures → LLM terminology (`details.md`) → prompt engineering (9 techniques: zero/few-shot, CoT, ReAct, ToT, self-consistency + CRISP/RICE frameworks via `groq_client.py`) → tool calling (`tool_calling.py` with LangChain `@tool` + `bind_tools` on Groq `openai/gpt-oss-120b`)
 - Stack: Groq + LangChain + LangGraph (installed, not yet used)
 - Missing for Hiver: agents/graphs, memory, RAG/grounding, eval/LLM-as-judge, guardrails/routing, tracing

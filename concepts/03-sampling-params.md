@@ -43,7 +43,7 @@ biggest pockets that together cover p of the wheel."
 
 ## Where you'll use it
 
-- `agentic-ai-40-days/4.prompt_engineering/groq_client.py` — see the temperature
+- [`4.prompt_engineering/groq_client.py`](https://github.com/naguraghu99/40_day_of_agentic_ai/blob/main/4.prompt_engineering/groq_client.py) — see the temperature
   parameter you are passing.
 - `hiver/ROADMAP.md` Phase 0 exit: "explain temp 0 vs 1.0" — that is this concept.
 - `hiver/agent/prompts/` — the classifier/drafter prompts are run at temp 0.

@@ -22,12 +22,12 @@ agent/
 ├── README.md          ← you are here
 ├── graph.py           ← LangGraph: 3 nodes + edge logic
 ├── tools.py           ← search_historic_resolutions (golden-holdout filtered), escalate (+ PII redaction in Phase 5)
-├── prompts/           ← classifier, drafter, router, judge prompts (reuse techniques from agentic-ai-40-days/4.prompt_engineering/)
+├── prompts/           ← classifier, drafter, router, judge prompts (reuse techniques from 40_day_of_agentic_ai/4.prompt_engineering/)
 └── run.py             ← run all 3 systems over gold/eval_pool, log accuracy + cost/latency + retrieval hit-rate
 ```
 
 ## Stack
-- Groq (`openai/gpt-oss-120b`) + LangChain `@tool` / `bind_tools` + LangGraph (see `agentic-ai-40-days/5.tool_calling/tool_calling.py`).
+- Groq (`openai/gpt-oss-120b`) + LangChain `@tool` / `bind_tools` + LangGraph (see `40_day_of_agentic_ai/5.tool_calling/tool_calling.py`).
 - Phase 5 additions (not yet): thread-state memory, guardrails (PII/tone/refusal), tracing, cost control.
 
 ## Exit criteria (Phase 3)

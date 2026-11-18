@@ -76,6 +76,27 @@ queryable tables the agent retrieves from.
 
 ---
 
+## Course index — the intended sequence, in one place
+
+You should not have to click around to discover the order. This is the recommended route at
+~1 hour/day; "status" is honest and the source of truth for each item is linked from
+[`PROGRESS.md`](PROGRESS.md).
+
+| Order | Track / phase | Covers | Prereq | Time | Status | Advanced / optional |
+|---|---|---|---|---|---|---|
+| 1 | Setup → Phase 0 | `SETUP.md` · fork `0`–`5` · `lakehouse/week-1` | basic Python | weeks 1–2 | fork 0–5 done · week 1 done | local models via Ollama |
+| 2 | Phase 1 — framing | brand, intents, "good" | Phase 0 exit | week 2 | in progress | ML Essentials slice (Stage 3 gap) |
+| 3 | Phase 2 — ingest | `lakehouse/week-2`–`3` | week 1 | weeks 3–4 | planned inside the build | Parquet / Spark / Iceberg internals experiments |
+| 4 | Phase 3 — agent v0 | fork `7`–`11`, `16`–`18` + LangGraph gap | Phase 2 Gold tables | weeks 4–6 | modules synced | MCP in depth |
+| 5 | Phase 4 — eval | concepts `14`, `16`–`20` | Phase 3 | weeks 6–7 | planned | judge limits, human eval, cost/latency |
+| 6 | Phase 5 — harden | fork `12`–`15` · `lakehouse/week-3`–`4` | Phase 3 | weeks 8–9 | planned | multi-agent, production serving |
+| 7 | Phase 6 — report + capstone | `report/report.md` | all above | week 10 | planned | interview rounds |
+
+**External reference for depth:** the [GoDisai AI Agent Engineering syllabus](https://godisai.in/programs/ai-agent-engineering/#syllabus)
+is the agentic side's full syllabus — use it to go deeper, not to add more technologies to this build.
+
+---
+
 ## The four layers of this repo
 
 ```
@@ -126,6 +147,56 @@ For each phase in `hiver/ROADMAP.md`:
 5. **Log one decision** in `journey/decisions.md` when you make a non-obvious call.
 
 Order matters. Do not skip phases — later work hands you the failure analysis material.
+
+---
+
+## The course standard: depth over breadth
+
+**A learner who deeply understands five technologies and can troubleshoot them independently
+gains more than one who has merely integrated fifteen by following instructions.** So this
+course does not keep adding tools. It takes the ones already here through a full engineering
+cycle: **understand → implement → test → debug → optimise**.
+
+Every module — in either track — is written to the same eight-part shape. If a module is
+missing a part, that is a gap to fill, not a style choice:
+
+1. **Problem statement** — what problem are we solving, and why does it need this idea?
+2. **Conceptual explanation** — the underlying principle in plain English, no unexplained jargon.
+3. **Architecture** — a picture of how the components interact (diagram or numbered flow).
+4. **Hands-on implementation** — build it incrementally, in small runnable steps.
+5. **Testing** — verify the expected behaviour with a concrete check, not a vibe.
+6. **Failure scenarios** — break it on purpose: what goes wrong, how do you notice, how do you recover?
+7. **Performance considerations** — the trade-offs (cost, latency, scale) behind the choice.
+8. **Independent exercise** — solve a related problem without following the steps.
+
+And every module states four **learning objectives** up front, so technology exposure is never
+mistaken for understanding:
+
+- **Understand:** the learner can explain the idea in their own words.
+- **Implement:** the learner can build a small working version from scratch.
+- **Problem solved:** the learner can name the situation where this idea is the right tool (and
+  where a simpler approach wins).
+- **Assess:** the learner passes the module's `Check yourself` / definition-of-done items
+  without looking.
+
+**Agent fundamentals come before agent frameworks.** Before LangGraph or MCP, a learner must
+be able to explain inference and the context window (`concepts/01`–`03`), tool calling and
+structured output (`08`), the agent execution loop (`07`), state and memory (`23`, planned),
+and human-in-the-loop (`13.HIL` in the fork). They must also answer two questions in
+`journey/decisions.md`: *is an agent actually needed here, or is a deterministic workflow
+better?* and *is this a single-agent or multi-agent problem?* Advanced frameworks are tools,
+not prerequisites — a simpler workflow that passes the eval is the better answer.
+
+**Every practical module must be reproducible on its own.** Ship tested dependency versions
+(`requirements.txt`), a Compose environment (`SETUP.md`), a small sample dataset, the expected
+output, an automated validation command (`python3 .github/scripts/check_repo.py` at minimum),
+a troubleshooting note, a working reference implementation, and an independent assignment with
+written criteria. `done` and `planned` are always labelled explicitly — see
+[`PROGRESS.md`](PROGRESS.md).
+
+Assessment is not an afterthought: eval, golden sets, judge limitations, human checks, and
+cost/latency benchmarks are core material (Phase 4), and the capstone has its own rubric in
+[`hiver/ROADMAP.md`](hiver/ROADMAP.md).
 
 ---
 

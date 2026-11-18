@@ -45,6 +45,29 @@ measured against.
 
 ---
 
+## Depth experiments (planned — depth over breadth)
+
+Integration is not understanding. Each week also has a **performance experiment** that makes an
+architectural choice visible: change one thing, measure the effect, write down what you saw in
+the week's journal. All of these are `planned`; none is a prerequisite for the Hiver submission.
+**Status is honest by design** — a planned experiment stays listed here until it is actually run.
+
+| Week / technology | What to look inside | Experiment (change one thing → measure) | Evidence to keep |
+|---|---|---|---|
+| 2 · Parquet | row groups, column chunks, encodings, compression, statistics | write the same silver table with different row-group sizes / codecs; read only one column with a predicate and compare bytes read + time | `EXPLAIN`/file-size table + note on predicate pushdown |
+| 2 · Spark | execution plan, shuffle, partitioning, skew, AQE, memory | run the thread join with and without AQE / repartition; compare `df.explain()` plans, shuffle read, spill and wall time | two plans side by side + timings |
+| 2 · Iceberg | metadata files, manifests, snapshots, partition evolution, compaction | inspect `metadata/` after two writes; time-travel to the first snapshot; run compaction and compare file count + query time | snapshot IDs + before/after file counts |
+| 4 · Trino | query execution, distributed planning, predicate pushdown, connector behaviour | `EXPLAIN` a query over Iceberg with and without a date filter; compare connector pushdown and scanned split count | plan output + split counts |
+| 4 · Airflow | retries, idempotency, backfills, dependencies, failure recovery | kill a task mid-run and retry; trigger a backfill for one day; confirm no duplicate rows in gold | DAG run screenshot + idempotency proof |
+| 5 · DQ / lineage | constraints, catalog metadata, silver → label → score lineage | inject a null/duplicate into silver and confirm the DQ assertion fails and the bad row never reaches golden | failing check + lineage trace |
+
+Each experiment follows the course's full cycle (problem → concept → architecture → build →
+test → failure → trade-off → independent exercise), as defined in
+[`COURSE.md`](../COURSE.md). The goal is to be able to *troubleshoot* these technologies
+independently, not just to have started them once.
+
+---
+
 ## Get started
 
 - **Never touched a lakehouse?** Start at week 1 and run it end to end. [Setup](../SETUP.md)

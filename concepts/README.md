@@ -19,12 +19,28 @@ Every file follows the same shape so readers always know where to look:
 
 **One-liner:** one plain sentence — what this thing is.
 
-## What it is         — the definition, no jargon, short paragraphs
+**Learning objectives** — state all four before the explanation:
+- Understand: what it is and when it is the right tool
+- Implement: a small runnable thing the reader builds
+- Problem solved: the failure it prevents / problem it solves
+- Assess: the "Check yourself" questions below
+
+## What it is          — problem statement + definition, no jargon, short paragraphs
 ## Why it matters here — why the Hiver build forces you to understand it
+## Architecture        — how it interacts with the other pieces (words or a small diagram)
 ## Mental model        — the analogy / picture that makes it stick
+## Hands-on            — the incremental build, linked to a real file in this repo
+## Failure scenarios   — what goes wrong, how you notice, how you recover
+## Trade-offs          — cost / latency / scale behind the choice
 ## Where you'll use it — concrete file paths in this repo that exercise it
 ## Check yourself      — 2–3 questions you should be able to answer in your own words
+## Independent exercise — one related problem to solve without following the steps
 ```
+
+These sections are the `concepts/` form of the course-wide 8-step cycle in
+[`COURSE.md`](../COURSE.md) (understand → implement → test → debug → optimise). A short
+explainer may merge sections, but a concept is not `done` until objectives, a failure case,
+and an assessment are present.
 
 Rules the writer follows (self-enforced, logged in `hiver/journey/learning-log.md`):
 

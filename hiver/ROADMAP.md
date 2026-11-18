@@ -140,7 +140,20 @@ demands it (T-shaped: shallow in both, deep where needed).
 - Metrics: intent accuracy/F1, escalation precision/recall, reply: BLEU/ROUGE (auto) + 1-5 judge rubric (groundedness, tone-match, actionability, no-hallucination), and RETRIEVAL: context hit-rate / recall@k — did the right supporting thread actually get retrieved? A RAG failure at retrieval otherwise only shows up indirectly in reply scores.
 - Judge model: use a DIFFERENT model (or at least a different prompt + temperature) than the drafter — a judge that shares the drafter's model biases agreement up. State the judge model in `eval/judge.py` and report κ honestly.
 - Judge agreement: you re-score 30-50 judge outputs, report Cohen's κ or % agreement
-- [ ] `eval/golden.csv` (150+ rows) + `eval/run.py` reproduces headline numbers in <15 min
+- **Retrieval quality:** precision@k / recall@k *and* context relevance — report them separately
+  from reply scores, so a retrieval failure is not hidden by a fluent answer
+- **Faithfulness:** groundedness + a hallucination test (same question with retrieval removed or
+  with deliberately wrong context) — a grounded answer must change or refuse
+- **Golden set as regression suite:** version `eval/golden.csv`; after every agent change rerun
+  `eval/run.py` and record the delta — a number that moves without an explanation is a bug
+- **Judge limitations:** state position/length bias and self-preference risk; keep the human-scored
+  subset as the anchor; never present judge score as ground truth
+- **Human evaluation:** 30-50 examples scored by you with the same rubric, reported alongside the judge
+- **Cost and latency:** tokens, cost per 100 queries, and p50/p95 latency per component (classify,
+  retrieve, draft, judge) — not just an average
+- **Baseline comparison:** one table with trivial → simple → agent on every metric above
+- [ ] `eval/golden.csv` (150+ rows, versioned) + `eval/run.py` reproduces headline numbers in <15 min
+- [ ] Baseline comparison table + cost/latency + regression deltas recorded
 - [ ] `journey/04-evaluation.md` + mandatory "what's misleading about my headline number" draft
 
 ## Phase 5 — Harden: Streaming, Orchestration, Governance (5-7 days, optional for submission, required for mastery)
@@ -150,6 +163,25 @@ demands it (T-shaped: shallow in both, deep where needed).
 - Add: confidence-threshold router, PII redaction pre-LLM, LangSmith/trace log in Silver
 - Airflow DAG (or `make pipeline` if Airflow too heavy) + Trino ad-hoc queries over Iceberg
 - **Why this is here (honesty in `journey/05-harden.md`):** streaming a *static* twcs.csv is a simulated backlog — it ticks the lakehouse Week-3 checkbox but adds no real insight. State that explicitly in the log; the point is the mechanism (file-source → compact → snapshot expiry), not the data flow.
+
+### Failure scenarios to inject and recover from
+
+For each one, write **cause → how you detected it → recovery → prevention**, and paste the
+before/after evidence into `journey/05-harden.md`. These exercises turn "it ran once" into
+"I can troubleshoot it".
+
+| Failure | Inject it | Expected safeguard |
+|---|---|---|
+| LLM API timeout / rate limit | bad key or throttled calls | retry with backoff + a degraded fallback response |
+| Incorrect tool invocation | call a tool with wrong/missing args | schema validation (Pydantic) + reject before execution |
+| Duplicate data ingestion | rerun the bronze ingest twice | bronze immutability + idempotent MERGE into silver |
+| Partial pipeline failure | kill the task between silver and gold | checkpoint restart, no duplicate or missing gold rows |
+| Stale vector embeddings | edit a gold thread without reindexing | content hash / version on each chunk + rebuild trigger |
+| Invalid or malicious input | empty, oversized, and prompt-injection strings | validation at the boundary + PII redaction + injection guard |
+| Permission violation | use a key without write access to gold | least-privilege credentials, deny by default, clear error |
+| Agent loop / token burn | remove the iteration cap | max iterations + per-query token budget + trace alert |
+
+- [ ] All eight scenarios recorded with evidence; at least four safeguards implemented in code
 - [ ] `journey/05-harden.md`: before/after failure examples, DAG screenshot, Trino query results
 
 ## Phase 6 — Report + Course Publish (2-3 days)
@@ -159,6 +191,30 @@ demands it (T-shaped: shallow in both, deep where needed).
 - Polish `README.md` run instructions (<15 min repro), push to GitHub public
 - [ ] Report complete; repo runnable from clean clone; submission sent
 - [ ] Final `journey/06-retro.md`: what you'd teach differently — this closes your self-learning course
+
+---
+
+## Capstone assessment rubric
+
+The Hiver build is the capstone: not a guided clone, but an end-to-end system you can defend.
+Score each row **1 = missing · 2 = works but fragile · 3 = robust and evidenced**. Target: **3**
+on the first five rows and at least **2** everywhere else. Paste the self-score and evidence
+links into `report/report.md`; a score without a link to a file or journal entry does not count.
+
+| Criterion | What "3" looks like — evidence to show |
+|---|---|
+| Architecture quality | a diagram + a written reason for each boundary (agent / lakehouse / eval), with rejected alternatives in `journey/decisions.md` |
+| Correctness | baseline comparison table, retrieval and intent metrics reproduced by `eval/run.py` in <15 min |
+| Data quality | bronze→silver→gold row counts with "% dropped + why", DQ assertions, holdout enforced in code |
+| Agent reliability | failure scenarios from Phase 5 recorded cause → detection → recovery → prevention; regression deltas after each change |
+| Retrieval performance | precision@k / recall@k and context relevance reported separately from reply scores |
+| Observability | traces/token counts per node, DAG run history, lineage silver → label → score |
+| Security | PII redaction, prompt-injection guard, least-privilege credentials, no secrets in git |
+| Cost and latency | tokens + cost per 100 queries, p50/p95 per component, one stated trade-off |
+| Documentation | README reproduces from clean clone; every headline number has a "what's misleading" note; 10-15 decisions logged |
+
+This rubric is deliberately about depth, not tool count: using fewer technologies well scores
+higher than integrating many without evidence.
 
 ---
 

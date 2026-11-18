@@ -48,9 +48,9 @@ words; the researcher decides facts. You are the researcher.
 
 ## Where you'll use it
 
-- `AgenticAI-Hiver/agent/tools.py` — `search_historic_resolutions` (the retrieval tool).
-- `AgenticAI-Hiver/agent/prompts/drafter.txt` — the "use ONLY the provided context" instruction.
-- `AgenticAI-Hiver/ROADMAP.md` Phase 3 — "what RAG fixed vs didn't" is your journey-log deliverable.
+- `hiver/agent/tools.py` — `search_historic_resolutions` (the retrieval tool).
+- `hiver/agent/prompts/drafter.txt` — the "use ONLY the provided context" instruction.
+- `hiver/ROADMAP.md` Phase 3 — "what RAG fixed vs didn't" is your journey-log deliverable.
 
 ## Check yourself
 

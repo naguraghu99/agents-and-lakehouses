@@ -48,9 +48,9 @@ you open the one drawer you need instead of reading every page.
 
 ## Where you'll use it
 
-- `AgenticAI-Hiver/lakehouse/README.md` — "Bronze is append-only" is a stated rule; fixes go in Silver.
-- `AgenticAI-Hiver/lakehouse/ingest.py` — the date-partitioned Bronze load.
-- `AgenticAI-Hiver/journey/00-start-here.md` — asks you to explain why Bronze is append-only.
+- `hiver/lakehouse/README.md` — "Bronze is append-only" is a stated rule; fixes go in Silver.
+- `hiver/lakehouse/ingest.py` — the date-partitioned Bronze load.
+- `hiver/journey/00-start-here.md` — asks you to explain why Bronze is append-only.
 
 ## Check yourself
 

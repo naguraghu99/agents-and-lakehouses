@@ -1,7 +1,6 @@
 ---
 description: Workflow Manager for Data Lakehouse Implementation
 mode: all
-model: openrouter/nvidia/nemotron-3-super-120b-a12b:free
 temperature: 0.2
 tools:
   read: true

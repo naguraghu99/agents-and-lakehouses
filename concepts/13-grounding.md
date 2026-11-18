@@ -46,9 +46,9 @@ as policy evolves. Cite honestly, and say plainly that it's historical.
 
 ## Where you'll use it
 
-- `AgenticAI-Hiver/ROADMAP.md` Phase 3 — the grounding caveat (2017 data), wording for the framing doc.
-- `AgenticAI-Hiver/eval/judge.py` (planned) — `groundedness` rubric dimension.
-- `AgenticAI-Hiver/agent/prompts/drafter.txt` — "only use the provided context; this is the
+- `hiver/ROADMAP.md` Phase 3 — the grounding caveat (2017 data), wording for the framing doc.
+- `hiver/eval/judge.py` (planned) — `groundedness` rubric dimension.
+- `hiver/agent/prompts/drafter.txt` — "only use the provided context; this is the
   brand's historical pattern."
 - `concepts/14` — the leakage rule that keeps grounding scores honest.
 

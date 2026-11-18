@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verified Video Curriculum: Risk & Governance Engineering</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --success: #10b981;
+      --badge-video: #3b0764;
+      --badge-video-text: #d8b4fe;
+      --badge-playlist: #1e3a8a;
+      --badge-playlist-text: #93c5fd;
+      --badge-course: #064e3b;
+      --badge-course-text: #6ee7b7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      padding: 32px 16px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 20px;
+    }
+
+    .progress-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 30px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .progress-bar-bg {
+      background: #334155;
+      height: 10px;
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      background: var(--success);
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .track-section {
+      margin-bottom: 32px;
+    }
+
+    .track-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--accent);
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+
+    .topic-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .topic-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      padding: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: border-color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .topic-card.completed {
+      border-color: #064e3b;
+      opacity: 0.75;
+    }
+
+    .topic-card.completed .topic-title-text {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    input[type="checkbox"] {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #64748b;
+      border-radius: 4px;
+      background: transparent;
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 3px;
+      display: grid;
+      place-content: center;
+      transition: all 0.2s ease;
+    }
+
+    input[type="checkbox"]:checked {
+      background: var(--success);
+      border-color: var(--success);
+    }
+
+    input[type="checkbox"]:checked::before {
+      content: "✔";
+      font-size: 13px;
+      color: #ffffff;
+    }
+
+    .topic-content {
+      flex: 1;
+    }
+
+    .topic-header-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .topic-title-text {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-video {
+      background: var(--badge-video);
+      color: var(--badge-video-text);
+    }
+
+    .badge-playlist {
+      background: var(--badge-playlist);
+      color: var(--badge-playlist-text);
+    }
+
+    .badge-course {
+      background: var(--badge-course);
+      color: var(--badge-course-text);
+    }
+
+    .topic-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .topic-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 500;
+    }
+
+    .topic-link:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+
+    .topic-link::after {
+      content: " ↗";
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Verified Video Curriculum: Risk & Governance Engineering</h1>
+      <p class="subtitle">Direct, verified individual videos, curated playlists, and video courses with local persistent progress tracking.</p>
+      
+      <div class="progress-card">
+        <div class="progress-header">
+          <span>Curriculum Progress</span>
+          <span id="progress-text">0 of 9 Completed (0%)</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progress-fill"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Track 1: Counterparty Credit Risk & Capital Drivers -->
+    <section class="track-section">
+      <h2 class="track-title">1. Counterparty Exposure, Optimization & Capital Drivers</h2>
+      <div class="topic-list">
+        
+        <div class="topic-card" data-id="v_ccr_1">
+          <input type="checkbox" id="chk_v_ccr_1" />
+          <div class="topic-content">
+            <div class="topic-header-row">
+              <span class="topic-title-text">Bionic Turtle: FRM Counterparty Credit Exposure</span>
+              <span class="badge badge-video">Direct Video</span>
+            </div>
+            <p class="topic-desc">David Harper breaks down bilateral derivative exposure vs. funded loans, mark-to-market distributions over time, Expected Exposure (EE), and Potential Future Exposure (PFE).</p>
+            <a class="topic-link" href="https://www.youtube.com/watch?v=nJFCNQ7_6iw" target="_blank" rel="noopener noreferrer">Watch on YouTube: FRM Counterparty Credit Exposure</a>
+          </div>
+        </div>
+
+        <div class="topic-card" data-id="v_ccr_2">
+          <input type="checkbox" id="chk_v_ccr_2" />
+          <div class="topic-content">
+            <div class="topic-header-row">
+              <span class="topic-title-text">MIT OpenCourseWare: Lecture 10 - Counterparty Risk Optimization</span>
+              <span class="badge badge-video">Direct Video</span>
+            </div>
+            <p class="topic-desc">Graduate lecture by Quantile / LSEG at MIT. Details how banks optimize Initial Margin (IM), netting across Central Clearing Counterparties (CCPs), SIMM calibrations, and convex optimization solvers.</p>
+            <a class="topic-link" href="https://www.youtube.com/watch?v=VbtXo62ROC4" target="_blank" rel="noopener noreferrer">Watch on YouTube: MIT Lecture 10</a>
+          </div>
+        </div>
+
+        <div class="topic-card" data-id="v_ccr_3">
+          <input type="checkbox" id="chk_v_ccr_3" />
+          <div class="topic-content">
+            <div class="topic-header-row">
+              <span class="topic-title-text">AnalystPrep: Wrong-Way Risk, CVA & Central Clearing</span>
+              <span class="badge badge-video">Direct Video</span>
+            </div>
+            <p class="topic-desc">Comprehensive 40-minute deep dive on Wrong-Way Risk (WWR) adverse correlation, jump-to-default collateral devaluation, CVA adjustments, and CCP default fund mechanics.</p>
+            <a class="topic-link" href="https://www.youtube.com/watch?v=zsE1nBaxj0Q" target="_blank" rel="noopener noreferrer">Watch on YouTube: Wrong-way Risk (FRM Part 2)</a>
+          </div>
+        </div>
+
+        <div class="topic-card" data-id="v_ccr_4">
+          <input type="checkbox" id="chk_v_ccr_4" />
+          <div class="topic-content">
+            <div class="topic-header-row">
+              <span class="topic-title-text">AnalystPrep: Credit Risk Measurement and Management</span>
+              <span class="badge badge-playlist">Full Playlist</span>
+            </div>
+            <p class="topic-desc">Complete multi-part playlist covering Counterparty Exposure, Central Clearing, Default Probabilities, Credit Default Swaps, and Portfolio Credit Risk.</p>
+            <a class="topic-link" href="https://www.youtube.com/playlist?list=PLIYnk9FMYcktxSOSPYgzdSzMMrUQpm4C4" target="_blank" rel="noopener noreferrer">Open YouTube Playlist (Credit Risk Measurement)</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Track 2: Trade Modeling, Netting & Collateral Technology -->
+    <section class="track-section">
+      <h2 class="track-title">2. Trade Schemas, Close-out Netting & CDM Architecture</h2>
+      <div class="topic-list">
+
+        <div class="topic-card" data-id="v_cdm_1">
+          <input type="checkbox" id="chk_v_cdm_1" />
+          <div class="topic-content">
+            <div class="topic-header-row">
+              <span class="topic-title-text">ISDA Official: Understanding the ISDA Master Agreement</span>
+              <span class="badge badge-video">Direct Video</span>
+            </div>
+            <p class="topic-desc">The official video by ISDA explaining how master agreements standardize derivative contracts, define legal Events of Default, and consolidate transactions into a single net closeout payment.</p>
+            <a class="topic-link" href="https://www.youtube.com/watch?v=2N3n6nP13pI" target="_blank" rel="noopener noreferrer">Watch on YouTube: Understanding the ISDA Master Agreement</a>
+          </div>
+        </div>
+
+        <div class="topic-card" data-id="v_cdm_2">
+          <input type="checkbox" id="chk_v_cdm_2" />
+          <div class="topic-content">
+            <div class="topic-header-row">
+              <span class="topic-title-text">FINOS: How to Get Started with the Common Domain Model (CDM)</span>
+              <span class="badge badge-video">Direct Video</span>
+            </div>
+            <p class="topic-desc">Nearly 2-hour technical presentation and live coding walkthrough by FINOS and ISDA leads covering the Rosetta DSL, CDM event/trade model, and code generation for Python/Java.</p>
+            <a class="topic-link" href="https://www.youtube.com/watch?v=zdO7W4lSJLo" target="_blank" rel="noopener noreferrer">Watch on YouTube: Get Started with CDM</a>
+          </div>
+        </div>
+
+        <div class="topic-card" data-id="v_cdm_3">
+          <input type="checkbox" id="chk_v_cdm_3" />
+          <div class="topic-content">
+            <div class="topic-header-row">
+              <span class="topic-title-text">FINOS: Official Common Domain Model (CDM) Playlist</span>
+              <span class="badge badge-playlist">Full Playlist</span>
+            </div>
+            <p class="topic-desc">Curated video playlist featuring official working group recordings, architecture sessions, and technical demos of CDM implementations across capital markets.</p>
+            <a class="topic-link" href="https://www.youtube.com/playlist?list=PLmPXh6nBuhJsqoqAAIryD6P7N1cacdgJM" target="_blank" rel="noopener noreferrer">Open YouTube Playlist (FINOS CDM)</a>
+          </div>
+        </div>
+
+        <div class="topic-card" data-id="v_cdm_4">
+          <input type="checkbox" id="chk_v_cdm_4" />
+          <div class="topic-content">
+            <div class="topic-header-row">
+              <span class="topic-title-text">Linux Foundation LFEL1016: Introduction to the CDM</span>
+              <span class="badge badge-course">Free Video Course</span>
+            </div>
+            <p class="topic-desc">Structured, self-paced video training course created by the Linux Foundation and FINOS. Explains how trade events, collateral state transitions, and master agreements are modeled programmatically.</p>
+            <a class="topic-link" href="https://training.linuxfoundation.org/training/introduction-to-the-common-domain-model-cdm-lfel1016/" target="_blank" rel="noopener noreferrer">Enroll Free: Linux Foundation LFEL1016</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Track 3: Quantitative Modeling & Governance Simulation -->
+    <section class="track-section">
+      <h2 class="track-title">3. Quantitative Risk Simulation & Enterprise Modeling</h2>
+      <div class="topic-list">
+
+        <div class="topic-card" data-id="v_gov_1">
+          <input type="checkbox" id="chk_v_gov_1" />
+          <div class="topic-content">
+            <div class="topic-header-row">
+              <span class="topic-title-text">Columbia University: Financial Engineering & Risk Management Part II</span>
+              <span class="badge badge-course">Free Video Course</span>
+            </div>
+            <p class="topic-desc">Full video course from Columbia University covering credit derivatives, default simulation models, and Credit Valuation Adjustment (CVA). Can be audited for free.</p>
+            <a class="topic-link" href="https://www.coursera.org/learn/financial-engineering-2" target="_blank" rel="noopener noreferrer">Access Columbia University Course on Coursera</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "verified_video_risk_tracker_2026";
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const progressFill = document.getElementById("progress-fill");
+    const progressText = document.getElementById("progress-text");
+
+    function loadState() {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+      checkboxes.forEach((chk) => {
+        const id = chk.closest(".topic-card").dataset.id;
+        if (saved[id]) {
+          chk.checked = true;
+          chk.closest(".topic-card").classList.add("completed");
+        }
+      });
+      updateProgress();
+    }
+
+    function saveState() {
+      const state = {};
+      checkboxes.forEach((chk) => {
+        const id = chk.closest(".topic-card").dataset.id;
+        state[id] = chk.checked;
+      });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const total = checkboxes.length;
+      let completed = 0;
+      checkboxes.forEach((chk) => {
+        if (chk.checked) completed++;
+      });
+      const pct = Math.round((completed / total) * 100);
+      progressFill.style.width = pct + "%";
+      progressText.textContent = `${completed} of ${total} Completed (${pct}%)`;
+    }
+
+    checkboxes.forEach((chk) => {
+      chk.addEventListener("change", (e) => {
+        const card = e.target.closest(".topic-card");
+        if (e.target.checked) {
+          card.classList.add("completed");
+        } else {
+          card.classList.remove("completed");
+        }
+        saveState();
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", loadState);
+  </script>
+</body>
+</html>

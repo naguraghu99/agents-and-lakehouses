@@ -48,9 +48,9 @@ outside* the students' textbook (concept 14's holdout) so nobody "studies the an
 
 ## Where you'll use it
 
-- `AgenticAI-Hiver/lakehouse/README.md` — the parallel-labelling rule (export early, label during Phase 3).
-- `AgenticAI-Hiver/eval/sampling.md` and `eval/golden.csv` (planned) — the note + the truth.
-- `AgenticAI-Hiver/ROADMAP.md` Phase 4 — the labelling spec + exit criteria.
+- `hiver/lakehouse/README.md` — the parallel-labelling rule (export early, label during Phase 3).
+- `hiver/eval/sampling.md` and `eval/golden.csv` (planned) — the note + the truth.
+- `hiver/ROADMAP.md` Phase 4 — the labelling spec + exit criteria.
 - `Concept 14` — why the golden ids are also the holdout ids.
 
 ## Check yourself

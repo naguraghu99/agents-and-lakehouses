@@ -5,9 +5,11 @@
 This is a public, learn-by-building course. It is made of three things that live in this
 repository:
 
-1. **A 40-day Agentic AI course** — `AgenticAI/40_day_of_agentic_ai/`
-2. **A Lakehouse course** — `lakehouse-learning/`
-3. **A real problem to solve with both** — the OpenHiver SDE take-home — `AgenticAI-Hiver/`
+1. **A 40-day Agentic AI course** — [separate fork](https://github.com/naguraghu99/40_day_of_agentic_ai),
+   which is the expanded Stage 6 of the [GoDisai **AI Agent Engineering** syllabus](https://godisai.in/programs/ai-agent-engineering/#syllabus)
+   (6 stages, 12 modules) that this repo follows on the agentic side
+2. **A Lakehouse course** — `lakehouse/`
+3. **A real problem to solve with both** — the OpenHiver SDE take-home — `hiver/`
 
 Every small concept you meet along the way is explained in plain English in `concepts/`,
 with no jargon left unexplained. If you are a beginner, that layer is for you.
@@ -37,6 +39,11 @@ courses for real:
 - "Prove it's good enough to trust" → forces golden sets, LLM-as-judge, baselines, and
   honest failure analysis — the part everyone skips.
 
+> **The dataset is not in this repo.** The Hiver problem uses the Kaggle dataset
+> `thoughtvector/customer-support-on-twitter` (`twcs.csv`, ~3M rows, ~2017). Download it
+> yourself and keep it outside the repo — it is large, historical, and can't be
+> redistributed from here. See [`SETUP.md`](SETUP.md).
+
 So this repo is three things at once: **my learning plan**, **the build**, and **the public
 course that teaches everything used in the build** — as a course for others, one small
 explained concept at a time.
@@ -64,7 +71,7 @@ queryable tables the agent retrieves from.
 - **You.** If you are doing this course, you are learning both skill sets from scratch.
 - **Target reader of this course:** someone who knows *basic* Python (variables, loops,
   functions, dicts/lists) and nothing else about AI or data engineering. If you don't have
-  that yet, do `AgenticAI/40_day_of_agentic_ai/0.python_basics/` first.
+  that yet, start with the [Python basics module](https://github.com/naguraghu99/40_day_of_agentic_ai/tree/main/0.python_basics).
 - **No GPU, no big infra.** Everything runs on a laptop with free/cheap APIs and containers.
 
 ---
@@ -72,20 +79,18 @@ queryable tables the agent retrieves from.
 ## The four layers of this repo
 
 ```
-Coding/
-├── COURSE.md                        ← you are here (this file)
+# Agents and Lakehouses (repo root)
+├── COURSE.md                        ← this file: orientation (why, rules, how the course works)
+│                                    ← daily front door: hiver/weekly-plan.html
 ├── concepts/                        ← the teaching layer: one file per small concept
 │   ├── README.md                    ← how explainers are written + full index
 │   └── NN-name.md                   ← plain-English explainers, numbered in order of use
 │
-├── AgenticAI/                       ← your 40-day agentic AI course
-│   └── 40_day_of_agentic_ai/
-│       ├── 0.python_basics/  …  5.tool_calling/   (days -3 → 5)
-│
-├── lakehouse-learning/              ← your lakehouse course
+├── lakehouse/              ← your lakehouse course
 │   └── week-1/  …  week-5/         (week 1 done, rest planned)
 │
-└── AgenticAI-Hiver/                 ← the build = the course's project
+└── hiver/                 ← the build = the course's project
+    ├── weekly-plan.html                   ← course front door (week-by-week schedule, concepts linked)
     ├── ROADMAP.md                    ← the 7-phase plan (this is the course's syllabus)
     ├── problem_statement.md          ← the OpenHiver assignment
     ├── journey/                      ← learning journals (the evidence trail)
@@ -97,11 +102,21 @@ tells you *what* to build and *why*. The `journey/` logs are the proof that it a
 happened. Nothing is assumed — if a term appears, it either has its own concept file or is
 glossed inline.
 
+**Where `concepts/` ends and the course modules begin:** `concepts/` is the *why* —
+one page each, plain English, for a reader who has never met the idea. The modules in
+The [separate 40-day course](https://github.com/naguraghu99/40_day_of_agentic_ai) is the *how* — follow-along code, runnable exercises, real output
+(`concepts/` tells you what you're doing, the module shows you running it). If a concept
+confuses you, read it, then run the module it points at in "Where you'll use it".
+The separate course fork lives at `../40_day_of_agentic_ai/` when cloned beside this repository.
+
+Setup (Python, Groq key, lakehouse containers) is in [`SETUP.md`](SETUP.md); the single
+status page is [`PROGRESS.md`](PROGRESS.md).
+
 ---
 
 ## How the course works (the loop)
 
-For each phase in `AgenticAI-Hiver/ROADMAP.md`:
+For each phase in `hiver/ROADMAP.md`:
 
 1. **Read the concepts** linked for that phase (`concepts/` — plain English, a few minutes each).
 2. **Build the thing** the phase describes (small, runnable, subsampled).
@@ -116,18 +131,71 @@ Order matters. Do not skip phases — later work hands you the failure analysis 
 
 ## The learning path (Roadmap → Concepts → Artifact)
 
-| Phase | Quick summary | Concepts you'll meet | Artifact you ship |
+The agentic side follows the [GoDisai **AI Agent Engineering** syllabus](https://godisai.in/programs/ai-agent-engineering/#syllabus):
+**6 stages, 12 modules, in the order you learn them**. This repo does not duplicate that
+syllabus — it *uses* it. The [40-day fork](https://github.com/naguraghu99/40_day_of_agentic_ai)
+already in this course is its Stage 6 expanded into daily modules. The lakehouse course is the
+second spine. Both spines get stitched together by the Hiver build.
+
+Read each row as: **Roadmap** = where the work is specified (fork module + build phase),
+**Concepts** = the plain-English explainers in `concepts/`, **Artifact** = the thing you keep
+and can show.
+
+| GoDisai stage (module) | Roadmap — fork module + build phase | Concepts you'll meet | Artifact you ship |
 |---|---|---|---|
-| 0 | Baseline: run the toy pipelines | 01–08 | filled `journey/00-start-here.md` |
-| 1 | Pick a brand, define intents + "good" | 01–07, 15, 16 | `journey/01-problem-framing.md` |
-| 2 | Real tweets → Bronze → Silver → Gold (label in parallel) | 09–16 | `lakehouse/` pipeline + `eval/golden.csv` |
-| 3 | Agent v0: classify → retrieve → draft/route + baselines | 07, 08, 12–16 | `agent/graph.py`, baselines |
-| 4 | Golden set + eval harness + judge | 16–21 (planned) | `eval/run.py` + reproducible numbers |
-| 5 | Harden: guardrails, memory, DAG, streaming | 22–25 (planned) | hardened agent + `journey/05-harden.md` |
-| 6 | Report + publish | — | `report/report.md` + public repo |
+| 1 · Python for AI (Python Fundamentals) | `0.python_basics`–`2.number_guessing_game` → Phase 0A | — (basic Python assumed) | number-guessing game + filled `journey/00-start-here.md` |
+| 2 · Talk to models well (Prompt Engineering · LLM Apps with LangChain and Groq) | `3.llm_and_terminology`–`5.tool_calling` → Phases 0A, 3 | 01–08 | Groq app returning clean JSON; runnable tool-calling agent |
+| 3 · Know how models learn (ML Essentials) | *honest gap — see note* → Phases 1, 4 | 14–16, 17–20 *(planned)* | intent taxonomy that survives eval; "good = ?" in `journey/01-problem-framing.md` |
+| 4 · Search by meaning (Vector Databases and Search) | `17.rag_embedding`–`18.rag_as_agent` → Phases 2, 3 | 11, 29 *(planned)* | Gold tables as the retrieval source + embedding/vector-search notes |
+| 5 · Answer from your own data (RAG) | `7.simple_rag`, `16.rag_as_agent`–`18.rag_as_agent` → Phase 3 | 12–14 | `agent/graph.py` — grounded drafts that cite historic threads |
+| 6 · Build and ship agents (40 Days of Agentic AI) | `8.async_coding`–`15.personalized_ai`, `18.rag_as_agent` → Phases 3–5 | 07, 08, 15, 16, 21–25, 30 *(planned)* | hardened agent → `eval/run.py` numbers → `report/report.md` |
+
+> **Stage 3 is an honest gap.** GoDisai teaches 23 ML topics there; this repo has no module for
+> them. You only need the decision-relevant slice — honest validation, precision/recall/F1,
+> threshold choice, leakage, drift — and those concepts (17–20) get written when Phase 4 forces
+> the eval harness. Don't go learn all of ML first; the sequencing rule below applies.
+
+The lakehouse course is the other spine, folded into the build instead of taught standalone:
+
+| Lakehouse week | Landed in | Artifact you ship |
+|---|---|---|
+| 1 · Ingestion, storage, local env | Phase 0B | synthetic Bronze → Silver → Gold on RustFS + Spark + Iceberg |
+| 2 · Parquet, tables, metadata | Phase 2 | real-tweets Bronze → Silver → Gold (Iceberg) |
+| 3 · Streaming, partitioning, resilience | Phase 5 | simulated backlog + partitioned tables |
+| 4 · Orchestration, querying, ops | Phase 5 | Airflow DAG + Trino queries |
+| 5 · Data quality, catalog, governance | Phase 4 | DQ checks + golden-set provenance |
+
+### And the build phases themselves — your study driver
+
+**This is the table to work from.** Each phase names the exact module to study in each course —
+`fork/…` = [40-day Agentic AI fork](https://github.com/naguraghu99/40_day_of_agentic_ai),
+`lakehouse/week-N` = the local lakehouse course — then the `concepts/` numbers to read beside
+it. Don't pick modules yourself; let the build phase tell you which ones you need, in order.
+Full checkboxes live in [`hiver/ROADMAP.md`](hiver/ROADMAP.md).
+
+| Phase | Quick summary | Modules to study → concepts you'll meet | Artifact you ship |
+|---|---|---|---|
+| 0 | Orientation + two parallel tracks: 0A agentic, 0B lakehouse | **Agentic:** `fork/0.python_basics` → `fork/5.tool_calling` (via `1.data_structures`, `2.number_guessing_game`, `3.llm_and_terminology`, `4.prompt_engineering`)<br>**Lakehouse:** `lakehouse/week-1`<br>**Concepts:** 01–08, 09–11, 26 | filled `journey/00-start-here.md` |
+| 1 | Pick a brand, define intents + "good" | **Agentic:** revisit `fork/4.prompt_engineering` (few-shot/instruction → taxonomy prompts)<br>**Lakehouse:** revisit `lakehouse/week-1` (1% sampling + profiling)<br>**Concepts:** 15, 16 (+ 01–07) | `journey/01-problem-framing.md` |
+| 2 | Real tweets → Bronze → Silver → Gold (label in parallel) | **Agentic:** no new module — apply `fork/4.prompt_engineering` to thread-cleaning prompts<br>**Lakehouse:** `lakehouse/week-2` (Parquet, Iceberg, metadata) + `lakehouse/week-3` (partition transforms)<br>**Concepts:** 09–16, 27, 28 | `lakehouse/` pipeline + `eval/golden.csv` |
+| 3 | Agent v0: classify → retrieve → draft/route + baselines | **Agentic:** `fork/7.simple_rag`, `fork/8.async_coding`, `fork/9.data_validation`, `fork/10.memory_management`, `fork/11.tools-custom`, `fork/16.rag_as_agent` → `fork/18.rag_as_agent`; read the LangGraph gap (module 6) when the phase starts<br>**Lakehouse:** none new — Gold tables are the retrieval source<br>**Concepts:** 07, 08, 12–16, 29, 30 | `agent/graph.py`, baselines |
+| 4 | Golden set + eval harness + judge | **Agentic:** no dedicated fork module yet — GoDisai Stage 6 "RAG Evaluation" / "Agent Evaluation and Observability"; apply `fork/9.data_validation`<br>**Lakehouse:** `lakehouse/week-5` (DQ + lineage)<br>**Concepts:** 14, 16–20 | `eval/run.py` + reproducible numbers |
+| 5 | Harden: guardrails, memory, DAG, streaming | **Agentic:** `fork/12.LCEL`, `fork/13.HIL`, `fork/14.context`, `fork/15.personalized_ai` (+ revisit `fork/10.memory_management`, `fork/11.tools-custom`)<br>**Lakehouse:** `lakehouse/week-3` (streaming), `lakehouse/week-4` (Airflow + Trino)<br>**Concepts:** 21–25 | hardened agent + `journey/05-harden.md` |
+| 6 | Report + publish | **Agentic:** no new module — synthesis of Stage 6<br>**Lakehouse:** none new<br>**Concepts:** — | `report/report.md` + public repo |
 
 > Concepts marked *(planned)* are written when the project reaches that phase — the course
 > grows with the build, so nothing goes stale. See the index in `concepts/README.md` for status.
+
+## T-shaped learning — the sequencing rule
+
+**Learn concepts separately, practice them together, deepen them only when the project
+demands it.** The GoDisai stages and the lakehouse weeks are two spines, not a gate to finish
+before you start building: Phase 0 gives you a shallow, provable slice of each — a runnable
+tool-calling agent and a Bronze → Silver → Gold pipeline — nothing more. Then the Hiver build
+integrates them and supplies depth on demand: lakehouse weeks 2–5 happen *inside* Phases 2–5,
+and LangGraph, memory, and streaming are learned when the agent phases require them. Do **not**
+complete either syllabus in isolation before joining the build, and do **not** reach for
+advanced tooling early — everything is a dead end until the project asks for it.
 
 ---
 
@@ -144,19 +212,29 @@ Order matters. Do not skip phases — later work hands you the failure analysis 
 ## Status (honest, current)
 
 - **Course shell:** this file + the `concepts/` layer.
-- **40-day Agentic AI course:** days -3 → 5 done (basics → tool calling); rests on the roadmap.
+- **40-day Agentic AI course (GoDisai Stage 6):** days -3 → 11 done (basics → custom tools);
+   modules 12–18 (LCEL, HIL, RAG) synced, resting on the roadmap. See `PROGRESS.md`.
 - **Lakehouse course:** week 1 done (synthetic); weeks 2–5 are completed *inside* the Hiver
   build (this is the point).
-- **The build:** Phase 0 exit items pending (journey templates empty). See `AgenticAI-Hiver/ROADMAP.md`.
+- **The build:** Phase 0 exit items pending (journey templates empty). See `hiver/ROADMAP.md`.
 
-Corrections, wrong guesses, and preferences are logged in `AgenticAI-Hiver/journey/learning-log.md`
+Corrections, wrong guesses, and preferences are logged in `hiver/journey/learning-log.md`
 the moment they surface — the assistant reads that file first every session.
 
 ---
 
 ## Start here
 
-1. Read `AgenticAI-Hiver/ROADMAP.md` (the syllabus).
-2. Read `concepts/01-what-is-an-llm.md` and `concepts/09-medallion-architecture.md` (the two
+1. Set up your machine — [`SETUP.md`](SETUP.md): Python + one free Groq key (Track A) and
+   the lakehouse containers (Track B).
+2. Open `hiver/weekly-plan.html` — **the course's front door**: a week-by-week schedule
+   (phase → weeks → concepts with links → files to run → exit checkboxes) that tells you what
+   to complete each day on a ~1 hour/day pace, from both agentic AI and lakehouse, all the way
+   to the Hiver submission.
+3. Read `hiver/ROADMAP.md` (the build syllabus the schedule follows).
+4. Read `concepts/01-what-is-an-llm.md` and `concepts/09-medallion-architecture.md` (the two
    worlds in one page each).
-3. Complete Phase 0, then Phase 1 — no pipeline code before the framing doc is filled.
+5. Complete Phase 0 — **both parallel tracks** 0A (tool-calling agent) and 0B (medallion
+   pipeline) — then Phase 1. No pipeline code before the framing doc is filled.
+
+Track live status at any time in [`PROGRESS.md`](PROGRESS.md).

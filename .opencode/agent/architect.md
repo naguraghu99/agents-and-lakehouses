@@ -1,7 +1,6 @@
 ---
 description: Deep-reasoning Data Lakehouse Systems Architect
 mode: primary
-model: openrouter/nvidia/nemotron-3-ultra-550b-a55b:free
 temperature: 0.3
 tools:
   read: true

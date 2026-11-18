@@ -1,7 +1,6 @@
 ---
 description: High-speed Data Engineering Programmer
 mode: subagent
-model: openrouter/nvidia/nemotron-3.5-lightning:free
 temperature: 0.1
 tools:
   read: true

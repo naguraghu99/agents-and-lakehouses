@@ -26,8 +26,13 @@
 
 ## How to run
 
+> **Planned — no script shipped yet.** This week is completed *inside* Hiver Phase 2; the
+> ingest script lives at `hiver/lakehouse/ingest.py` once written. Until then, the week-1
+> `bronze_silver_gold.py` pattern is your reference.
+
 ```bash
-podman-compose exec spark python /home/.../<your ingest script>
+# once hiver/lakehouse/ingest.py exists:
+podman-compose exec spark python /home/hiver/lakehouse/ingest.py
 ```
 
 ## Definition of done

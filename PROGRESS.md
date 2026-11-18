@@ -7,15 +7,15 @@ journal entry is a gap, not progress.
 
 ## One-line status
 
-> Course shell complete. Agentic AI days -3 → 11 done, day 7+ pulled in. Lakehouse
-> week 1 done (synthetic); weeks 2–5 happen inside the Hiver build. Hiver build: framing
-> started, Phase 0 exit items still open.
+> Course shell complete. Agentic AI days -3 → 18 synced (12–18 added in the 2026-10 pull).
+> Lakehouse week 1 done (synthetic); weeks 2–5 happen inside the Hiver build. Hiver build:
+> framing started, Phase 0 exit items still open.
 
 ## At a glance
 
 | Area | Completed | In progress | Next |
 |---|---|---|---|
-| Agentic AI | Python basics → custom tools, i.e. modules -3 → 11 (days -3 → 11) | RAG, async coding, data validation (days 7–9, pulled ahead) | LangGraph + agent loop (module 6) |
+| Agentic AI | Python basics → custom tools, i.e. modules -3 → 18 synced | Stage 6 advanced material (LCEL, HIL, context, personalisation, RAG) synced but not yet run | LangGraph + agent loop (module 6) |
 | Lakehouse | Week 1: RustFS + Spark + Iceberg medallion on synthetic trades | Weeks 2–5 (folded into Hiver Phases 2–5) | Week 2 → Phase 2 of the build |
 | Hiver build | Problem framing drafted; project plan, decisions, learning log open | Phase 1 problem framing | Phase 0 exit items → Phase 2 lakehouse ingest |
 | Concepts layer | 01–16 written | infra 26–30 + eval concepts 17–25 planned | write each when its phase starts |
@@ -38,15 +38,32 @@ journal entry is a gap, not progress.
 | 9. Data validation | pulled in ahead of schedule |
 | 10. Memory management | done (synced 2026-10) — [module folder](https://github.com/naguraghu99/40_day_of_agentic_ai/tree/main/10.memory_management) |
 | 11. Custom tools (+ MCP intro) | done (synced 2026-10) — [module folder](https://github.com/naguraghu99/40_day_of_agentic_ai/tree/main/11.tools-custom) |
+| 12. LCEL (chains, parallel, passthrough) | synced (2026-10) — code only, no `details.md` yet |
+| 13. HIL (human-in-the-loop) | synced (2026-10) — code only, no `details.md` yet |
+| 14. Context management | synced (2026-10) — code only, no `details.md` yet |
+| 15. Personalised AI | synced (2026-10) — code only, no `details.md` yet |
+| 16. RAG as agent (minimal) | synced (2026-10) — code only, no `details.md` yet |
+| 17. RAG embeddings (dense + sparse) | synced (2026-10) — code only, no `details.md` yet |
+| 18. RAG as agent (advanced: 7 techniques) | synced (2026-10) — code only, no `details.md` yet |
 
-Status language: `done` · `in progress` · `pulled in ahead of schedule` (synced during the
-2026-09 restructure) · `planned`.
+Status language: `done` · `in progress` · `pulled in ahead of schedule` / `synced (2026-10)`
+(course content pulled from upstream; not yet run end-to-end here) · `planned`.
 
-Both new modules are `done` as **synced course content**, not as course homework: the upstream code
-is in place and `details.md` explains it, but nothing here has been run end-to-end against Groq yet,
-so there is no journey entry for them. Module 10's `6.semantic_memory.py` additionally needs
+> **Naming note:** modules `16.rag_as_agent` and `18.rag_as_agent` share the same folder name.
+> `16` is the minimal "RAG wrapped as an agent tool" demo; `18` is the advanced suite
+> (metadata filtering, re-ranking, semantic caching, query expansion, context compression,
+> parent retriever, multi-vector retrieval). Read `16` first, then `18`.
+
+Modules 10 and 11 are `done` as **synced course content**, not as course homework: the upstream
+code is in place and `details.md` explains it, but nothing here has been run end-to-end against Groq
+yet, so there is no journey entry for them. Module 10's `6.semantic_memory.py` additionally needs
 `langchain-huggingface` + `sentence-transformers`, which are deliberately **not** in the pinned set
 (see [`SETUP.md`](SETUP.md)) — so it is "done" only once that extra install is verified.
+
+Modules 12–18 are `synced` but **weaker**: they ship runnable code with **no `details.md`/README**,
+so there is written guidance for modules 0–5, 10 and 11 only. Until those docs exist, treat the
+code as the source of truth and read it top-to-bottom before running. Writing the missing
+`details.md` files is tracked as an open gap (see the course review).
 
 ---
 

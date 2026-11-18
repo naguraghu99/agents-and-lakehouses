@@ -26,9 +26,13 @@
 
 ## How to run
 
+> **Planned — nothing to run yet.** There is no `Makefile`, no Airflow service in the compose
+> file, and no Trino service yet. This week is built during Hiver Phase 5; the commands below
+> are the target, not current fact.
+
 ```bash
-# after the orchestrator is up (see SETUP.md / week-1 stack)
-make pipeline       # or the Airflow DAG triggered via its web UI
+# once the pipeline + Trino exist:
+make pipeline                                            # or the Airflow DAG via its UI
 trino --execute "SELECT count(*) FROM iceberg.gold.threads"
 ```
 

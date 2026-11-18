@@ -26,9 +26,14 @@
 
 ## How to run
 
+> **Planned — `dq_checks.py` does not exist yet.** This week is completed *inside* Hiver Phase 4;
+> the checks will live under `hiver/lakehouse/` (e.g. `checks.sql`). The Iceberg REST endpoint
+> below is real and up when the week-1 stack is running.
+
 ```bash
-python week-5/dq_checks.py              # assertions over the gold tables
-# then inspect catalog history:
+# once the DQ checks exist:
+python hiver/lakehouse/dq_checks.py     # assertions over the gold tables
+# inspect catalog history (this works today):
 curl -s http://localhost:8181/v1/config # Iceberg REST is a JSON API, no UI
 ```
 

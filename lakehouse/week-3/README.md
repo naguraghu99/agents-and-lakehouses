@@ -27,8 +27,13 @@
 
 ## How to run
 
+> **Planned — no script shipped yet.** Built during Hiver Phase 5. The job does not exist in
+> this repo yet; do not look for it. When built, it will live under `hiver/lakehouse/` and run
+> with the command below.
+
 ```bash
-podman-compose exec spark spark-submit ...   # path under week-3 when built
+# once the streaming job exists:
+podman-compose exec spark spark-submit /home/hiver/lakehouse/stream_to_silver.py
 ```
 
 ## Definition of done

@@ -127,3 +127,17 @@ These are the exit checks each later week will be held to (the phases that own t
   rootless networking (`week-1/README.md`).
 - **The `Exited (0)` one-shot containers.** `rustfs-perms` and `rustfs-init` are *supposed*
   to exit 0. See `week-1/README.md` before "fixing" them.
+
+---
+
+## Deeper reference decks (optional, not part of the build)
+
+Two standalone HTML decks in this folder go wider than the 5-week build. They are reading
+material — no exit criteria depend on them:
+
+- [`modern_data_engineering_mastery.html`](modern_data_engineering_mastery.html) — broader
+  modern-data-engineering survey.
+- [`workplace_data_platform_30_day_mastery_with_original_resources.html`](workplace_data_platform_30_day_mastery_with_original_resources.html)
+  — 30-day data-platform plan with original resources.
+
+Read them for context/vocabulary; skip them if depth over breadth is the goal.

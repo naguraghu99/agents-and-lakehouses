@@ -39,8 +39,16 @@ Every file follows the same shape so readers always know where to look:
 
 These sections are the `concepts/` form of the course-wide 8-step cycle in
 [`COURSE.md`](../COURSE.md) (understand → implement → test → debug → optimise). A short
-explainer may merge sections, but a concept is not `done` until objectives, a failure case,
-and an assessment are present.
+explainer may merge sections, but new or revised concepts are not `done` until objectives, a
+failure case, and an assessment are present.
+
+**Honest conformance:** concepts `01`–`16` were written before this standard existed. They are
+grandfathered — they carry the original five sections (`What it is`, `Why`, `Mental model`,
+`Where you'll use it`, `Check yourself`) but not yet `Learning objectives`, `Failure scenarios`
+or `Independent exercise`. Each one is upgraded to the full shape the next time its phase is
+revisited (not rewritten ahead of use, per rule 4 below). So: **all `01`–`16` are currently
+five-section (grandfathered); every concept written from `17` on is full eight-section.** A
+grandfathered concept is still valid course material — just not yet at the newer bar.
 
 Rules the writer follows (self-enforced, logged in `hiver/journey/learning-log.md`):
 
